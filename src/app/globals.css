@@ -1,0 +1,87 @@
+@import "tailwindcss";
+@import "@fontsource/lato";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --parchment: #f5efe0;
+  --ink-brown: #2c1a0e;
+  --dusty-rose: #c9a0a0;
+  --sage-green: #8a9e7e;
+  --antique-gold: #c8a84b;
+  --highlight-gold: #f1e4b3;
+  --highlight-rose: #e8c7c7;
+  --highlight-sage: #c4d4ba;
+  --highlight-lavender: #d4cce6;
+  --highlight-amber: #f0d9a0;
+  --paper-light: #faf6ed;
+  --paper-border: #e0d5c0;
+  --shadow: rgba(44, 26, 14, 0.08);
+}
+
+.dark {
+  --parchment: #18120e;
+  --ink-brown: #ddd2c4;
+  --dusty-rose: #9e6f6f;
+  --sage-green: #6a7e5e;
+  --antique-gold: #d4b85c;
+  --highlight-gold: #4a3f28;
+  --highlight-rose: #4a2e2e;
+  --highlight-sage: #2e3d28;
+  --highlight-lavender: #2e2840;
+  --highlight-amber: #4a3d1a;
+  --paper-light: #1f1a15;
+  --paper-border: #352e26;
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+@theme inline {
+  --color-parchment: var(--parchment);
+  --color-ink-brown: var(--ink-brown);
+  --color-dusty-rose: var(--dusty-rose);
+  --color-sage-green: var(--sage-green);
+  --color-antique-gold: var(--antique-gold);
+  --color-highlight-gold: var(--highlight-gold);
+  --color-highlight-rose: var(--highlight-rose);
+  --color-highlight-sage: var(--highlight-sage);
+  --color-highlight-lavender: var(--highlight-lavender);
+  --color-highlight-amber: var(--highlight-amber);
+  --color-paper-light: var(--paper-light);
+  --color-paper-border: var(--paper-border);
+  --color-shadow: var(--shadow);
+  --font-serif: "Lora", Georgia, "Times New Roman", serif;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Lato", "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background-color: var(--parchment);
+  color: var(--ink-brown);
+  font-family: var(--font-serif);
+}
+
+::selection {
+  background-color: var(--antique-gold);
+  color: var(--ink-brown);
+}
+
+.dark ::selection {
+  background-color: var(--antique-gold);
+  color: #18120e;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--paper-border) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--paper-border);
+  border-radius: 3px;
+}
