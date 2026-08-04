@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-04T00:01:00.000Z",
+  "title": "Design System: Ethics · Unit I Reviewer",
+  "extensions": {
+    "colorMeta": {
+      "komiks-red": {
+        "role": "primary",
+        "displayName": "Komiks Red",
+        "canonical": "#a62a1e",
+        "tonalRamp": [
+          "#3a0d0a",
+          "#5a130d",
+          "#7a1c13",
+          "#a62a1e",
+          "#c24433",
+          "#d9694f",
+          "#ea9a7e",
+          "#f7d2c0"
+        ]
+      },
+      "komiks-teal": {
+        "role": "secondary",
+        "displayName": "Komiks Teal",
+        "canonical": "#0f6b5c",
+        "tonalRamp": [
+          "#062420",
+          "#09372f",
+          "#0c4b40",
+          "#0f6b5c",
+          "#1d8a76",
+          "#3aa693",
+          "#74c4b2",
+          "#c4e8de"
+        ]
+      },
+      "ink-black": {
+        "role": "neutral",
+        "displayName": "Ink Black",
+        "canonical": "#211d16",
+        "tonalRamp": [
+          "#14110c",
+          "#211d16",
+          "#2e2a21",
+          "#3c372d",
+          "#4a443a",
+          "#585148",
+          "#6d6350",
+          "#a99e88"
+        ]
+      },
+      "cream-newsprint": {
+        "role": "neutral",
+        "displayName": "Cream Newsprint",
+        "canonical": "#f4efe2",
+        "tonalRamp": [
+          "#16130c",
+          "#201b12",
+          "#2a2419",
+          "#3a3326",
+          "#6d6350",
+          "#d6c9ac",
+          "#ede4cd",
+          "#f4efe2"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#6d6350",
+        "tonalRamp": [
+          "#2c2922",
+          "#3a352b",
+          "#4a443a",
+          "#585148",
+          "#6d6350",
+          "#8a7f68",
+          "#a99e88",
+          "#c9c0ac"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The ETHICS masthead and cover title only." },
+      "headline": { "displayName": "Headline", "purpose": "Lesson and page headings, text-balanced." },
+      "title": { "displayName": "Title", "purpose": "Lesson titles in the table of contents panel." },
+      "body": { "displayName": "Body", "purpose": "Narration and quiz options at ~68ch measure, text-pretty." },
+      "small-body": { "displayName": "Small Body", "purpose": "Panel summary lines, glossary definitions, source cards, compact narration." },
+      "label": { "displayName": "Label", "purpose": "Micro-labels, callout tags, nav, control names — uppercase Archivo." },
+      "micro": { "displayName": "Micro", "purpose": "Key-cap hints, source card labels, cover meta rows, quiz kind tags. Never interactive." }
+    },
+    "shadows": [
+      { "name": "panel", "value": "4px 4px 0 var(--border)", "purpose": "Komiks registration shadow under all block panels." },
+      { "name": "control", "value": "3px 3px 0 var(--border)", "purpose": "Offset shadow under buttons and small interactive panels." },
+      { "name": "pressed", "value": "2px 2px 0 var(--border)", "purpose": "Hover state: element shifts +1px and the shadow tightens." }
+    ],
+    "roundedMeta": {
+      "stamp": { "role": "panel", "displayName": "Stamp", "canonical": "6px", "purpose": "The corner of a comic panel — every panel, button, input, and chip." },
+      "focus-ring": { "role": "control", "displayName": "Focus Ring", "canonical": "2px", "purpose": "The focus-visible ring corner on interactive chrome." },
+      "scrollbar": { "role": "control", "displayName": "Scrollbar", "canonical": "3px", "purpose": "The thin scrollbar thumb corner." }
+    },
+    "motion": [
+      { "name": "press", "value": "transform 120ms ease-out, box-shadow 120ms ease-out", "purpose": "Comic-book press on buttons and interactive panels." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The red stamp — first-class action: mark complete, save, finish quiz.",
+      "html": "<button class=\"ds-btn-primary\">Mark complete</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 24px; border: 2px solid var(--foreground); border-radius: var(--radius); background: var(--primary); color: var(--primary-contrast); font-family: var(--font-archivo), 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; box-shadow: 3px 3px 0 var(--border); cursor: pointer; transition: transform 120ms ease-out, box-shadow 120ms ease-out; } .ds-btn-primary:hover { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--border); } .ds-btn-primary:active { transform: translate(3px, 3px); box-shadow: none; } .ds-btn-primary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; } .ds-btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Paper button — unmark, retake quiz, cancel actions.",
+      "html": "<button class=\"ds-btn-secondary\">Retake quiz</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 24px; border: 2px solid var(--foreground); border-radius: var(--radius); background: var(--panel); color: var(--foreground); font-family: var(--font-archivo), 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; box-shadow: 3px 3px 0 var(--border); cursor: pointer; transition: transform 120ms ease-out, box-shadow 120ms ease-out, background 120ms ease-out; } .ds-btn-secondary:hover { background: var(--panel-muted); transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--border); } .ds-btn-secondary:active { transform: translate(3px, 3px); box-shadow: none; } .ds-btn-secondary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }"
+    },
+    {
+      "name": "Panel Card",
+      "kind": "card",
+      "refersTo": "panel-card",
+      "description": "The komiks panel — every block container with an ink rule and registration shadow.",
+      "html": "<article class=\"ds-panel\"><header class=\"ds-panel-head\"><span class=\"ds-panel-tag\">Learning outcomes</span></header><div class=\"ds-panel-body\"><p>Read each lesson top to bottom like a page of the issue.</p></div></article>",
+      "css": ".ds-panel { border: 2px solid var(--foreground); border-radius: var(--radius); background: var(--panel); box-shadow: 4px 4px 0 var(--border); overflow: hidden; } .ds-panel-head { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-bottom: 2px solid var(--foreground); background: var(--panel-muted); } .ds-panel-tag { font-family: var(--font-archivo), 'Helvetica Neue', Arial, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--foreground); } .ds-panel-body { padding: 16px; color: var(--foreground); font-family: var(--font-spectral), Georgia, serif; font-size: 15px; line-height: 1.7; }"
+    },
+    {
+      "name": "Key Term Chip",
+      "kind": "chip",
+      "refersTo": "key-term-chip",
+      "description": "Inline term with a printed definition popup (speech-bubble tail).",
+      "html": "<span class=\"ds-term\">valuation<span class=\"ds-term-bubble\"><strong>Valuation</strong><span>The act of determining what is worth anything.</span></span></span>",
+      "css": ".ds-term { position: relative; display: inline-block; padding: 0 4px; border: 2px solid var(--foreground); border-radius: var(--radius); background: var(--background); color: var(--primary); font-family: var(--font-spectral), Georgia, serif; font-size: 15px; font-weight: 600; cursor: pointer; } .ds-term-bubble { position: absolute; left: 0; top: 100%; z-index: 30; margin-top: 12px; display: block; width: 280px; max-width: 80vw; padding: 8px 12px; border: 2px solid var(--foreground); border-radius: var(--radius); background: var(--panel); box-shadow: 4px 4px 0 var(--border); } .ds-term-bubble::before { content: \"\"; position: absolute; top: -9px; left: 18px; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 8px solid var(--foreground); } .ds-term-bubble strong { display: block; font-family: var(--font-archivo), 'Helvetica Neue', Arial, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--primary); } .ds-term-bubble span { display: block; margin-top: 2px; font-size: 14px; line-height: 1.55; color: var(--foreground); }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Ink-outlined textarea for Challenge reflection answers.",
+      "html": "<label class=\"ds-label\" for=\"ds-a\">Your answer to the challenge question</label><textarea id=\"ds-a\" class=\"ds-input\" rows=\"4\" placeholder=\"Write your answer here\"></textarea>",
+      "css": ".ds-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; } .ds-input { display: block; width: 100%; resize: vertical; padding: 8px 12px; border: 2px solid var(--foreground); border-radius: var(--radius); background: var(--background); color: var(--foreground); font-family: var(--font-spectral), Georgia, serif; font-size: 14px; line-height: 1.6; } .ds-input::placeholder { color: var(--muted); } .ds-input:focus { outline: 2px solid var(--primary); outline-offset: 2px; }"
+    },
+    {
+      "name": "Search Button",
+      "kind": "nav",
+      "refersTo": "search-button",
+      "description": "Masthead search control with a / key hint.",
+      "html": "<button class=\"ds-search\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m21 21-4.3-4.3\"/></svg><span>Search</span><kbd>/</kbd></button>",
+      "css": ".ds-search { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px; border: 2px solid var(--foreground); border-radius: var(--radius); background: var(--panel); color: var(--muted); font-family: var(--font-archivo), 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; } .ds-search:hover { background: var(--panel-muted); color: var(--foreground); } .ds-search kbd { padding: 0 4px; border: 1px solid var(--border); border-radius: 2px; background: var(--panel-muted); font-family: inherit; font-size: 10px; color: var(--muted); } .ds-search:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Komiks Issue Reader",
+    "overview": "Unit I reads as a Filipino komiks issue: a newsprint-bound magazine the student picks up before the exam and reads story-first. Panels instead of cards, halftone dots instead of gradients, 2px ink rules with hard offset shadows instead of soft elevation — the module is a cover story, each lesson a new page of the issue, and finishing a quiz stamps a verdict in red ink. The design refuses the generic editorial reader that every long-form study app ships: there is no glass, no rounded softness, no neutral gray-taupe tablet chrome. The personality is newspaperman-dramatic and warm. Spectral's literary serif carries the narration with the gravity of a byline, while Archivo's compressed sans runs the masthead, labels, and controls like the type on a comic's cover credits. Density sits high enough to feel like print — real paragraph rhythm, justified confidence, generous gutters — yet every interactive element (a key term, a highlight, a quiz option) is unmistakably a printed thing you can poke.",
+    "keyCharacteristics": [
+      "Komiks panels as the container grammar: every block is a 2px ink-outlined panel with a hard offset registration shadow.",
+      "Halftone dot fields as the only texture — flat SVG dot patterns, never gradients.",
+      "Exactly one accent stamp: komiks red. Teal is the ink for answers and \"on file\" states only.",
+      "Serif narration at ~68ch measure; sans chrome that names itself in uppercase micro-labels.",
+      "Light newsprint and dark \"night press\" themes, both printed on the same ink vocabulary.",
+      "Motion is comic-book energy on interaction: buttons press down a hair and shift their offset shadow — one authored moment per component, nothing ambient."
+    ],
+    "rules": [
+      { "name": "The One-Stamp Rule", "body": "Komiks red is used on a small minority of any given screen. Its rarity is what makes the stamp read as a stamp; when red appears everywhere, nothing is approved.", "section": "colors" },
+      { "name": "The Print-Measure Rule", "body": "Narration paragraphs never exceed ~68ch, so the reader returns to the same comfortable line length on every lesson page and never reads a full-width wall of ink.", "section": "typography" },
+      { "name": "The No-Glow Rule", "body": "Depth comes only from offset ink shadows. Any blurred, colored, or zero-offset shadow is decoration and is banned.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do set every block inside a 2px ink-outlined panel with a hard offset shadow — that is the komiks container grammar.",
+      "Do keep narration to the ~68ch print measure with text-pretty paragraphs and text-balance headings.",
+      "Do use Komiks Red only for stamps, verdicts, and first-class actions; confirm correct answers and saved work in Komiks Teal.",
+      "Do texture surfaces with halftone dot fields only where the printed world lives (the cover band), never content areas.",
+      "Do keep one pressed-panel motion per interactive element — press in, shadow tightens, done.",
+      "Do ship both newsprint light and night-press dark themes from the same ink token set."
+    ],
+    "donts": [
+      "Don't use gradients, glow, blur, or soft-rounded elevation — depth is hard offset ink shadows only.",
+      "Don't reach for purple/violet or any accent beyond the red stamp and teal confirmation.",
+      "Don't use raw bg-white/text-black — all surfaces and text come from the newsprint/ink tokens.",
+      "Don't break the reading column to card grids on the lesson page — it is an article, not a dashboard.",
+      "Don't let the rounded corners soften past a stamp's crisp 6px or become pills."
+    ]
+  }
+}
