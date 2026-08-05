@@ -1,37 +1,19 @@
 "use client";
 
-import { useRef } from "react";
 import Link from "next/link";
 import { AppHeader } from "@/components/layout/app-header";
 import { SearchDialog } from "@/components/search/search-dialog";
-import { getLessonsByUnit, unit } from "@/lib/content";
+import { getLessonsByUnit, unit2 } from "@/lib/content";
 import { useLessonProgress } from "@/lib/hooks";
 import { CheckIcon, ArrowRightIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
-export default function Home() {
-  const { progress, loading, completedCount } = useLessonProgress();
-  const tocRef = useRef<HTMLOListElement>(null);
-  const unitLessons = getLessonsByUnit(1);
-
-  function onTocKeyDown(e: React.KeyboardEvent) {
-    if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
-    const links = Array.from(
-      tocRef.current?.querySelectorAll<HTMLAnchorElement>("a[data-toc-row]") ?? [],
-    );
-    if (links.length === 0) return;
-    const currentIndex = links.indexOf(document.activeElement as HTMLAnchorElement);
-    const nextIndex =
-      e.key === "ArrowDown"
-        ? currentIndex < 0
-          ? 0
-          : Math.min(currentIndex + 1, links.length - 1)
-        : currentIndex < 0
-          ? links.length - 1
-          : Math.max(currentIndex - 1, 0);
-    e.preventDefault();
-    links[nextIndex]?.focus();
-  }
+export default function UnitTwoPage() {
+  const { progress, loading } = useLessonProgress();
+  const unitLessons = getLessonsByUnit(2);
+  const completedCount = unitLessons.filter((lesson) =>
+    progress.some((item) => item.lessonSlug === lesson.slug && item.completed),
+  ).length;
 
   return (
     <div className="flex min-h-dvh flex-col bg-background font-serif text-foreground">
@@ -50,16 +32,18 @@ export default function Home() {
             <div className="mt-10 flex items-start justify-between gap-6">
               <div>
                 <p className="font-sans text-[11px] font-bold uppercase tracking-[0.28em] text-primary">
-                  Unit I
+                  Unit II
                 </p>
                 <h1 className="mt-3 text-balance font-serif text-6xl font-bold leading-none tracking-tight sm:text-7xl">
-                  Ethics
+                  Utilitarianism
                 </h1>
                 <p className="mt-3 font-serif text-lg italic text-muted">
-                  A Collegiate Study
+                  {unit2.tagline}
                 </p>
                 <p className="mt-6 max-w-[52ch] text-balance font-serif text-[17px] leading-relaxed text-foreground/90">
-                  {unit.title}
+                  An ethical theory arguing for the goodness of pleasure and
+                  determining right behavior based on the usefulness of an
+                  action&rsquo;s consequences.
                 </p>
               </div>
               <span
@@ -81,7 +65,7 @@ export default function Home() {
 
         <div className="mx-auto max-w-3xl px-4 pb-24 pt-10 sm:px-6">
           <div className="relative overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[5px_5px_0_var(--border)]">
-            <ol ref={tocRef} role="list" onKeyDown={onTocKeyDown} className="divide-y-2 divide-foreground/15">
+            <ol role="list" className="divide-y-2 divide-foreground/15">
               {unitLessons.map((lesson) => {
                 const p = progress.find((item) => item.lessonSlug === lesson.slug);
                 const isFirst = lesson.number === 1;
@@ -89,7 +73,6 @@ export default function Home() {
                   <li key={lesson.slug} className="relative">
                     <Link
                       href={`/lesson?slug=${lesson.slug}`}
-                      data-toc-row
                       className="group flex w-full items-center gap-5 px-5 py-6 text-left transition-colors hover:bg-panel-muted sm:px-6"
                     >
                       <span
@@ -127,11 +110,11 @@ export default function Home() {
           </div>
 
           <p className="mt-8 max-w-[62ch] text-pretty font-serif text-[15px] leading-relaxed text-muted">
-            Read each lesson like an issue page by page — tap a red term to pop
-            its definition, drag a selection to mark it in ink, answer the check
-            at the end, and keep your Challenge reflections on file. Press{" "}
-            <kbd className="rounded-sm border border-foreground/40 bg-panel px-1 font-sans text-xs text-foreground">/</kbd>{" "}
-            anywhere to search the whole unit.
+            The lessons follow Bentham and Mill from the Mamasapano clash to the
+            principle of utility, the principle of the greatest number, and
+            their account of justice and rights. Read each lesson page by page,
+            tap a red term to pop its definition, answer the check at the end,
+            and keep your Challenge reflections on file.
           </p>
 
           <div className="mt-10 rounded-[var(--radius)] border-2 border-foreground bg-panel px-5 py-4 shadow-[4px_4px_0_var(--border)]">
@@ -146,7 +129,7 @@ export default function Home() {
             <div
               className="mt-2 h-3 w-full border-2 border-foreground bg-background"
               role="progressbar"
-              aria-label="Overall Unit I progress"
+              aria-label="Overall Unit II progress"
               aria-valuenow={completedCount}
               aria-valuemin={0}
               aria-valuemax={unitLessons.length}
@@ -165,36 +148,13 @@ export default function Home() {
             )}
           </div>
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            <Link
-              href="/unit/1/wrap-up"
-              className="group flex items-center justify-between gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 shadow-[3px_3px_0_var(--border)] transition-transform hover:-translate-y-0.5"
-            >
-              <span className="min-w-0">
-                <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.16em] text-muted">
-                  Unit I wrap-up
-                </span>
-                <span className="block truncate font-serif text-sm font-semibold text-foreground">
-                  HARNESS · SUMMARY · KEY WORDS
-                </span>
-              </span>
-              <ArrowRightIcon className="h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              href="/unit/2"
-              className="group flex items-center justify-between gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 shadow-[3px_3px_0_var(--border)] transition-transform hover:-translate-y-0.5"
-            >
-              <span className="min-w-0">
-                <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.16em] text-muted">
-                  Next
-                </span>
-                <span className="block truncate font-serif text-sm font-semibold text-foreground">
-                  Unit II · Utilitarianism
-                </span>
-              </span>
-              <ArrowRightIcon className="h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
+          <Link
+            href="/"
+            className="mt-6 inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-[0.12em] text-primary underline-offset-4 hover:underline"
+          >
+            <ArrowRightIcon className="h-4 w-4 rotate-180 text-primary" />
+            Back to Unit I
+          </Link>
         </div>
       </main>
     </div>

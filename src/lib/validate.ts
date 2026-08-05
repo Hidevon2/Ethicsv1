@@ -5,6 +5,11 @@ export const lessonSlugs: LessonSlug[] = [
   "valuation",
   "thinking-of-ethics",
   "sources-of-authority",
+  "senses-of-the-self",
+  "the-common-good",
+  "principle-of-utility",
+  "principle-of-the-greatest-number",
+  "justice-and-rights",
 ];
 
 export function isLessonSlug(value: string): value is LessonSlug {

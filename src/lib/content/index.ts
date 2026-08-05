@@ -1,23 +1,59 @@
-import type { Lesson, LessonSlug } from "@/lib/types";
+import type { Lesson, LessonSlug, Unit, UnitNumber } from "@/lib/types";
 import { lesson01 } from "@/lib/content/lesson-01";
 import { lesson02 } from "@/lib/content/lesson-02";
 import { lesson03 } from "@/lib/content/lesson-03";
 import { lesson04 } from "@/lib/content/lesson-04";
+import { lesson05 } from "@/lib/content/lesson-05";
+import { unit2Lesson01 } from "@/lib/content/unit2/lesson-01";
+import { unit2Lesson02 } from "@/lib/content/unit2/lesson-02";
+import { unit2Lesson03 } from "@/lib/content/unit2/lesson-03";
+import { unit2Lesson04 } from "@/lib/content/unit2/lesson-04";
 
-export const unit = {
+export const unit1: Unit = {
   number: "I",
   title: "The Ethical Dimension of Human Existence",
   tagline: "Unit I of Ethics",
 };
 
-export const lessons: Lesson[] = [lesson01, lesson02, lesson03, lesson04];
+export const unit2: Unit = {
+  number: "II",
+  title: "Utilitarianism",
+  tagline: "Unit II of Ethics",
+};
+
+export const unit = unit1;
+
+export const units: Unit[] = [unit1, unit2];
+
+export const lessons: Lesson[] = [
+  lesson01,
+  lesson02,
+  lesson03,
+  lesson04,
+  lesson05,
+  unit2Lesson01,
+  unit2Lesson02,
+  unit2Lesson03,
+  unit2Lesson04,
+];
+
+export function getUnit(unit: UnitNumber): Unit {
+  return unit === 2 ? unit2 : unit1;
+}
+
+export function getLessonsByUnit(unit: UnitNumber): Lesson[] {
+  return lessons.filter((lesson) => (lesson.unit ?? 1) === unit);
+}
 
 export function getLesson(slug: string): Lesson | undefined {
   return lessons.find((lesson) => lesson.slug === slug);
 }
 
-export function getLessonByNumber(number: number): Lesson | undefined {
-  return lessons.find((lesson) => lesson.number === number);
+export function getLessonByNumber(
+  number: number,
+  unit: UnitNumber = 1,
+): Lesson | undefined {
+  return getLessonsByUnit(unit).find((lesson) => lesson.number === number);
 }
 
 export function getAdjacentLesson(slug: LessonSlug, direction: -1 | 1): Lesson | undefined {
@@ -41,6 +77,10 @@ export const glossary: GlossaryEntry[] = lessons.flatMap((lesson) =>
     definition: term.definition,
   })),
 );
+
+export function findGlossaryTerm(slug: string): GlossaryEntry | undefined {
+  return glossary.find((entry) => entry.termSlug === slug);
+}
 
 export function stripMarkers(text: string): string {
   return text.replace(/\{\{[a-z0-9-]+\}\}/g, "");

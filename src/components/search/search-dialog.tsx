@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { searchLessons, unit } from "@/lib/content";
+import { searchLessons } from "@/lib/content";
 import { SearchIcon, XIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
@@ -91,7 +91,7 @@ export function SearchDialog() {
         <div className="flex items-center gap-2 border-b-2 border-foreground px-3">
           <SearchIcon className="h-4 w-4 shrink-0 text-muted" />
           <label htmlFor="search-input" className="sr-only">
-            Search Unit I
+            Search all lessons
           </label>
           <input
             ref={inputRef}
@@ -102,7 +102,7 @@ export function SearchDialog() {
               setQuery(e.target.value);
               setActiveIndex(0);
             }}
-            placeholder={`Search ${unit.title}…`}
+            placeholder={`Search ${"lessons and key terms"}…`}
             className="h-12 w-full bg-transparent font-serif text-base text-foreground placeholder:text-muted focus:outline-none"
           />
           <button
@@ -124,7 +124,7 @@ export function SearchDialog() {
             </p>
           ) : results.length === 0 ? (
             <p className="px-4 py-8 text-center text-sm text-muted">
-              Nothing in Unit I matches &ldquo;{query}&rdquo;.
+              Nothing matches &ldquo;{query}&rdquo;.
             </p>
           ) : (
             <ul ref={listRef} role="listbox" aria-label="Search results">

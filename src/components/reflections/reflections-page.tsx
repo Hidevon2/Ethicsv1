@@ -38,7 +38,7 @@ export function ReflectionsPage() {
     <div>
       <header className="mb-10">
         <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
-          Unit I · Your voice
+          Your voice
         </p>
         <h1 className="mt-3 text-balance font-serif text-4xl font-bold leading-tight text-foreground sm:text-5xl">
           Reflections

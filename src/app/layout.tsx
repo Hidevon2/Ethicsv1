@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Spectral } from "next/font/google";
+import { SiteFooter } from "@/components/layout/site-footer";
 import "./globals.css";
 
 const spectral = Spectral({
@@ -16,9 +17,9 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: "Ethics · Unit I Reviewer — The Ethical Dimension of Human Existence",
+  title: "Ethics Reviewer — Units I & II",
   description:
-    "A lesson-by-lesson reviewer for Unit I of Ethics: the Mendez hazing case, valuation, the precise terms of moral thinking, and sources of authority — with quizzes, key terms, and reflection prompts.",
+    "A lesson-by-lesson reviewer for Ethics: Unit I on the ethical dimension of human existence (the Mendez hazing case, valuation, moral thinking, sources of authority, and senses of the self) and Unit II on utilitarianism (the common good, the principle of utility, the greatest number, and justice and rights) — with quizzes, key terms, and reflection prompts.",
 };
 
 export const viewport: Viewport = {
@@ -70,6 +71,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           }}
         />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

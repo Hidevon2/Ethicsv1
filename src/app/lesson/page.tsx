@@ -12,6 +12,8 @@ import { LessonHeader } from "@/components/lesson/lesson-header";
 import { LearningOutcomes } from "@/components/lesson/learning-outcomes";
 import { MarkComplete } from "@/components/lesson/mark-complete";
 import { Prose } from "@/components/lesson/prose";
+import { EditorNotes } from "@/components/lesson/editor-note";
+import { Profiles } from "@/components/lesson/profile-card";
 import { TermGlossary } from "@/components/lesson/term-glossary";
 import { ReflectionSection } from "@/components/lesson/reflection-section";
 import { LessonNav } from "@/components/lesson/lesson-nav";
@@ -67,7 +69,7 @@ function LessonView({ slug }: { slug: LessonSlug }) {
           Lesson not found
         </h1>
         <p className="mt-3 font-serif text-muted">
-          The slug you opened does not match any lesson in Unit I.
+          The slug you opened does not match any lesson in the module.
         </p>
         <Link
           href="/"
@@ -104,6 +106,8 @@ function LessonView({ slug }: { slug: LessonSlug }) {
             onAddAnnotation={add}
             onRemoveAnnotation={(id) => void remove(id)}
           />
+          <Profiles profiles={lesson.profiles ?? []} />
+          <EditorNotes notes={lesson.editorNotes ?? []} />
           <TermGlossary lesson={lesson} />
           <section
             id="reflections"

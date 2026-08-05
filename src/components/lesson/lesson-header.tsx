@@ -1,6 +1,11 @@
 import type { Lesson } from "@/lib/types";
+import { getLessonsByUnit } from "@/lib/content";
 
 export function LessonHeader({ lesson }: { lesson: Lesson }) {
+  const unit = lesson.unit ?? 1;
+  const roman = unit === 2 ? "II" : "I";
+  const count = getLessonsByUnit(unit).length;
+
   return (
     <header className="mb-10">
       <div className="mb-4 flex items-center gap-3">
@@ -9,7 +14,7 @@ export function LessonHeader({ lesson }: { lesson: Lesson }) {
         </span>
         <span className="h-px flex-1 bg-foreground/30" />
         <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
-          Unit I · Lesson {lesson.number} of 4
+          Unit {roman} · Lesson {lesson.number} of {count}
         </span>
       </div>
       <h1 className="text-balance font-serif text-4xl font-bold leading-tight text-foreground sm:text-5xl">

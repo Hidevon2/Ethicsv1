@@ -4,13 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { SearchIcon } from "@/components/ui/icons";
-import { unit } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { href: "/", label: "Lessons" },
   { href: "/sources", label: "Sources" },
   { href: "/reflections", label: "Reflections" },
+];
+
+const UNIT_TABS = [
+  { href: "/", label: "Unit I", activeOn: (pathname: string) => !pathname.startsWith("/unit/2") },
+  { href: "/unit/2", label: "Unit II", activeOn: (pathname: string) => pathname.startsWith("/unit/2") },
 ];
 
 export function AppHeader() {
@@ -31,10 +35,31 @@ export function AppHeader() {
           <span className="text-lg font-bold uppercase tracking-tight text-primary">
             Ethics
           </span>
-          <span className="hidden text-[11px] font-semibold uppercase tracking-[0.18em] text-muted sm:inline">
-            {unit.number} · {unit.title}
-          </span>
         </Link>
+
+        <nav
+          className="hidden items-center gap-1 font-sans sm:flex"
+          aria-label="Units"
+        >
+          {UNIT_TABS.map((tab) => {
+            const active = tab.activeOn(pathname);
+            return (
+              <Link
+                key={tab.href}
+                href={tab.href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "rounded-[var(--radius)] border-2 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.1em] transition-colors",
+                  active
+                    ? "border-foreground bg-primary text-primary-contrast"
+                    : "border-transparent text-muted hover:bg-panel-muted hover:text-foreground",
+                )}
+              >
+                {tab.label}
+              </Link>
+            );
+          })}
+        </nav>
 
         <nav className="ml-auto flex items-center gap-1 font-sans" aria-label="Primary">
           {NAV_ITEMS.map((item) => {

@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
-import { SparkIcon, EyeIcon, ListCheckIcon, BoltIcon } from "@/components/ui/icons";
+import { SparkIcon, EyeIcon, ListCheckIcon, BoltIcon, PenIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
-export type CalloutVariant = "think" | "experience" | "assess" | "challenge";
+export type CalloutVariant = "think" | "experience" | "assess" | "challenge" | "note";
 
 const VARIANTS: Record<
   CalloutVariant,
@@ -27,6 +27,11 @@ const VARIANTS: Record<
     label: "Challenge",
     icon: <BoltIcon className="h-3.5 w-3.5" />,
     tagClass: "bg-primary text-primary-contrast",
+  },
+  note: {
+    label: "Note",
+    icon: <PenIcon className="h-3.5 w-3.5" />,
+    tagClass: "bg-muted text-background",
   },
 };
 

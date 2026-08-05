@@ -2,9 +2,22 @@ export type LessonSlug =
   | "brotherhood-or-violence"
   | "valuation"
   | "thinking-of-ethics"
-  | "sources-of-authority";
+  | "sources-of-authority"
+  | "senses-of-the-self"
+  | "the-common-good"
+  | "principle-of-utility"
+  | "principle-of-the-greatest-number"
+  | "justice-and-rights";
 
-export type LessonNumber = 1 | 2 | 3 | 4;
+export type LessonNumber = 1 | 2 | 3 | 4 | 5;
+
+export type UnitNumber = 1 | 2;
+
+export interface Unit {
+  number: "I" | "II";
+  title: string;
+  tagline: string;
+}
 
 export interface KeyTerm {
   slug: string;
@@ -66,9 +79,25 @@ export type QuizItem =
   | QuizClassification
   | QuizMatching;
 
+export interface Profile {
+  id: string;
+  name: string;
+  lifespan: string;
+  role: string;
+  facts: string[];
+}
+
+export interface EditorNote {
+  id: string;
+  label: string;
+  note: string;
+  blocks: NarrativeBlock[];
+}
+
 export interface Lesson {
   slug: LessonSlug;
   number: LessonNumber;
+  unit?: UnitNumber;
   title: string;
   coverLine: string;
   summary: string;
@@ -77,6 +106,8 @@ export interface Lesson {
   keyTerms: KeyTerm[];
   reflections: ReflectionQuestion[];
   quiz: QuizItem[];
+  profiles?: Profile[];
+  editorNotes?: EditorNote[];
 }
 
 export interface SourceComparison {
