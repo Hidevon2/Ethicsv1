@@ -252,5 +252,119 @@ export const lesson02: Lesson = {
       explanation:
         "Beauty is aesthetic (aisthesis); correct procedure is technical (techne); manners are etiquette; and price is economic — none of them ethical.",
     },
+    {
+      id: "l2-q11",
+      kind: "multiple-choice",
+      prompt: "From which Greek word does technical valuation come, and what does it mean?",
+      options: [
+        "techne — \"skill\" or \"craft\"",
+        "aisthesis — \"sense\" or \"feeling\"",
+        "ethos — \"character\"",
+        "logos — \"word\"",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Technical valuation comes from the Greek techne, meaning skill or craft, and judges the right or wrong way of doing something.",
+    },
+    {
+      id: "l2-q12",
+      kind: "multiple-choice",
+      prompt: "\"This song is beautiful\" is an example of which kind of valuation?",
+      options: ["Aesthetic", "Economic", "Technical", "Etiquette"],
+      correctIndex: 0,
+      explanation:
+        "Judgments of beauty and taste — liking a song or a movie — are aesthetic valuations, from aisthesis, \"sense\" or \"feeling.\"",
+    },
+    {
+      id: "l2-q13",
+      kind: "true-false",
+      prompt:
+        "A value judgment is a judgment that something is good or bad, right or wrong, beautiful or ugly, expensive or cheap.",
+      correct: true,
+      explanation:
+        "The lesson defines a value judgment as an evaluation of worth — good or bad, right or wrong, beautiful or ugly, expensive or cheap.",
+    },
+    {
+      id: "l2-q14",
+      kind: "multiple-choice",
+      prompt:
+        "Mixing the dry ingredients before the liquids in baking is an example of which kind of valuation?",
+      options: ["Technical", "Aesthetic", "Economic", "Ethical"],
+      correctIndex: 0,
+      explanation:
+        "In baking, the dry ingredients are mixed before the liquids — a standard of correct procedure, which is a technical valuation.",
+    },
+    {
+      id: "l2-q15",
+      kind: "true-false",
+      prompt:
+        "Judgments of etiquette, such as not picking one's nose in public, are ethical valuations.",
+      correct: false,
+      explanation:
+        "Etiquette covers relatively trivial approvals and disapprovals of manners and social form — small matters that are not ethics.",
+    },
+    {
+      id: "l2-q16",
+      kind: "multiple-choice",
+      prompt: "What does the Greek word aisthesis mean?",
+      options: [
+        "\"Sense\" or \"feeling\"",
+        "\"Skill\" or \"craft\"",
+        "\"Law\" or \"custom\"",
+        "\"Pleasure\" or \"pain\"",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Aesthetics comes from aisthesis, meaning \"sense\" or \"feeling\" — the source of our approval or disapproval of what we see, hear, smell, or taste.",
+    },
+    {
+      id: "l2-q17",
+      kind: "true-false",
+      prompt: "\"The Manila–Naga bus ticket is a bargain\" is an ethical valuation.",
+      correct: false,
+      explanation:
+        "Judging a price as a bargain is a monetary or economic valuation — it reports what things cost and is not ethical valuation.",
+    },
+    {
+      id: "l2-q18",
+      kind: "multiple-choice",
+      prompt: "Which statement is an etiquette valuation?",
+      options: [
+        "\"Knock politely before entering an office\"",
+        "\"This dress is ugly\"",
+        "\"The recipe calls for mixing dry ingredients first\"",
+        "\"Stealing is wrong\"",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Knocking politely is a matter of manners and social form — etiquette. Ugly is aesthetic, the recipe is technical, and stealing is ethical.",
+    },
+    {
+      id: "l2-q19",
+      kind: "multiple-choice",
+      prompt: "Why is monetary valuation not ethical valuation?",
+      options: [
+        "It reports what things cost and says nothing about right or wrong",
+        "Money is too trivial to matter",
+        "Prices are set by the government",
+        "It concerns only wealthy people",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Monetary valuation merely reports what things cost — it says nothing about right or wrong, good or evil, so it is real but not ethical valuation.",
+    },
+    {
+      id: "l2-q20",
+      kind: "matching",
+      prompt: "Match each kind of valuation with the source of its name or its standard.",
+      pairs: [
+        { left: "Aesthetics", right: "From aisthesis, \"sense\" or \"feeling\"" },
+        { left: "Technical valuation", right: "From techne, \"skill\" or \"craft\"" },
+        { left: "Etiquette", right: "Manners and social form — knocking, saying \"please\"" },
+        { left: "Economic value", right: "Price expressed in money, such as a cup of rice at twelve pesos" },
+      ],
+      explanation:
+        "Aesthetics is named for aisthesis; technical valuation for techne; etiquette governs manners; and economic value is price expressed in money.",
+    },
   ],
 };

@@ -16,7 +16,7 @@ export function SidebarToc({
     })),
     { href: "#glossary", label: "Key terms" },
     { href: "#reflections", label: "Reflections" },
-    { href: "#quiz", label: "Check yourself" },
+    { href: "#quiz", label: "Let's Quiz" },
   ];
 
   return (

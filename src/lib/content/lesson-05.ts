@@ -295,5 +295,148 @@ export const lesson05: Lesson = {
       explanation:
         "The claim that people ought to act in their own self-interest is prescriptive — that is ethical egoism.",
     },
+    {
+      id: "l5-q10",
+      kind: "multiple-choice",
+      prompt: "What are the two strong points the lesson credits to psychological egoism?",
+      options: [
+        "Simplicity and plausibility",
+        "Accuracy and evidence",
+        "Charity and kindness",
+        "Authority and tradition",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The lesson names simplicity — a single basis accounting for all actions — and plausibility, since self-interest plausibly lies behind many actions, even seemingly other-directed ones.",
+    },
+    {
+      id: "l5-q11",
+      kind: "multiple-choice",
+      prompt:
+        "Why is \"No one knows my situation better than myself\" a weak ground for refusing to listen to others?",
+      options: [
+        "Many human experiences are common, and others may have something useful to suggest, instruct, or admonish",
+        "No one ever understands anyone else",
+        "Our situations are always unique",
+        "Advice is never useful",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The lesson says the cliché breeds a mentality that imagines one's situation so personal that no one can understand it — yet many human experiences are common and others may have something useful to offer.",
+    },
+    {
+      id: "l5-q12",
+      kind: "true-false",
+      prompt: "The lesson says the psychological egoist's claim is not only plausible, but also irrefutable.",
+      correct: true,
+      explanation:
+        "Whatever one says, the psychological egoist can insist there is a self-serving motive at the root of everything — so the claim is plausible and irrefutable.",
+    },
+    {
+      id: "l5-q13",
+      kind: "multiple-choice",
+      prompt:
+        "Which action does the lesson give as other-directed behavior a psychological egoist would reinterpret?",
+      options: [
+        "Helping a friend spend a free Saturday building houses for Gawad Kalinga",
+        "Buying clothes for oneself",
+        "Watching a movie one enjoys",
+        "Walking and window-shopping in the mall",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The psychological egoist would read even that helpful act as serving a self-serving desire — perhaps impressing the friend or relieving guilt at being well-off.",
+    },
+    {
+      id: "l5-q14",
+      kind: "multiple-choice",
+      prompt: "According to the lesson, what does psychological egoism imply for moral decision?",
+      options: [
+        "The right thing to do does not matter — our minds have already determined what serves our interests",
+        "We must choose the most altruistic act",
+        "We should maximize pleasure for everyone",
+        "Decisions should always follow the law",
+      ],
+      correctIndex: 0,
+      explanation:
+        "If every action is already determined by self-interest, then in whatever way we act our minds have already decided — so choosing the right thing becomes pointless.",
+    },
+    {
+      id: "l5-q15",
+      kind: "true-false",
+      prompt: "Psychological egoism is a prescriptive theory that directs us to act in our own self-interest.",
+      correct: false,
+      explanation:
+        "Psychological egoism is descriptive — it claims all actions are in fact self-interested. Its prescriptive counterpart, which directs us to act in our own self-interest, is ethical egoism.",
+    },
+    {
+      id: "l5-q16",
+      kind: "multiple-choice",
+      prompt:
+        "Which cliché does the lesson say leaves no basis for a valuation other than the fact that the speaker made it?",
+      options: [
+        "\"It is good if I say that it is good.\"",
+        "\"No one can tell me what is right and wrong.\"",
+        "\"No one knows my situation better than myself.\"",
+        "\"I am entitled to my own opinion.\"",
+      ],
+      correctIndex: 0,
+      explanation:
+        "That cliché makes X good on the basis of the speaker saying so and for no other reason — leaving no basis for the valuation except the fact that the subject made it.",
+    },
+    {
+      id: "l5-q17",
+      kind: "true-false",
+      prompt:
+        "The lesson concludes that psychological egoism leads to a cynical view of humanity and a gloomy description of human nature.",
+      correct: true,
+      explanation:
+        "The lesson's verdict: psychological egoism leads to a cynical view of humanity, a gloomy description of human nature, and a useless theory for deciding what is right.",
+    },
+    {
+      id: "l5-q18",
+      kind: "multiple-choice",
+      prompt:
+        "Which of the following is given as a day-to-day example of acting in pursuit of self-interest?",
+      options: [
+        "I watch a movie because I enjoy it",
+        "I anonymously give up my seat with no benefit",
+        "I donate secretly expecting nothing in return",
+        "I help a stranger and forget it",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The lesson's day-to-day examples are self-interested: watching a movie or reading a book because one enjoys it, window-shopping, choosing a course that benefits oneself.",
+    },
+    {
+      id: "l5-q19",
+      kind: "multiple-choice",
+      prompt:
+        "In rebutting \"I am entitled to my own opinion,\" the lesson says the right to an opinion is often stubbornly misconstrued as:",
+      options: [
+        "some kind of immunity from criticism and correction",
+        "a duty to agree with others",
+        "a right to impose it on others",
+        "a license to act without consequences",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The right to believe and express one's opinion is not immunity from criticism — insisting on it regardless is a closed-mindedness that rightly invites censure.",
+    },
+    {
+      id: "l5-q20",
+      kind: "classification",
+      prompt: "Which of the four clichés of subjectivism is being rebutted here?",
+      categoryLabel: "Cliché",
+      categories: [
+        "No one can tell me what is right and wrong",
+        "No one knows my situation better than myself",
+        "I am entitled to my own opinion",
+        "It is good if I say that it is good",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The rebuttal runs: we realize we can be mistaken and corrected by others — why is this not also applicable in ethics? That targets \"No one can tell me what is right and wrong.\"",
+    },
   ],
 };

@@ -18,7 +18,7 @@ import { TermGlossary } from "@/components/lesson/term-glossary";
 import { ReflectionSection } from "@/components/lesson/reflection-section";
 import { LessonNav } from "@/components/lesson/lesson-nav";
 import { SidebarToc } from "@/components/lesson/sidebar-toc";
-import { QuizRunner } from "@/components/quiz/quiz-runner";
+import { QuizDialog } from "@/components/quiz/quiz-dialog";
 import { useLessonProgress, useAnnotations, useReflections } from "@/lib/hooks";
 
 function PageFrame({ children }: { children: React.ReactNode }) {
@@ -127,7 +127,7 @@ function LessonView({ slug }: { slug: LessonSlug }) {
               onRemove={(id) => void removeReflection(id)}
             />
           </section>
-          <QuizRunner
+          <QuizDialog
             lesson={lesson}
             best={progress?.quizBest ?? null}
             onSubmitScore={(score) => void submitScore(lesson.slug, score)}

@@ -195,5 +195,145 @@ export const lesson01: Lesson = {
       explanation:
         "The lesson uses these terms to describe the case: hazing as dangerous initiation rites, fraternity as the brotherhood involved, and ethics as the study that begins with such real-world cases.",
     },
+    {
+      id: "l1-q8",
+      kind: "multiple-choice",
+      prompt: "In which month and year did Cris Anthony Mendez die?",
+      options: ["August 2007", "January 2015", "June 2005", "December 2003"],
+      correctIndex: 0,
+      explanation:
+        "The report dates the death to August 2007, when a 20-year-old UP student died and the suspicion that met the news was hazing.",
+    },
+    {
+      id: "l1-q9",
+      kind: "multiple-choice",
+      prompt: "What suspicion met the news of Mendez's death?",
+      options: ["Hazing", "An accident", "An illness", "A crime of passion"],
+      correctIndex: 0,
+      explanation:
+        "The lesson says the suspicion that met the news of Mendez's death was hazing — the subjection of new members to dangerous initiation rites.",
+    },
+    {
+      id: "l1-q10",
+      kind: "true-false",
+      prompt: "Mendez was a 20-year-old student of the University of the Philippines.",
+      correct: true,
+      explanation:
+        "The report identifies Cris Anthony Mendez as a 20-year-old student of the University of the Philippines.",
+    },
+    {
+      id: "l1-q11",
+      kind: "true-false",
+      prompt: "After the death, the UP chancellor ordered every fraternity on campus to disband.",
+      correct: false,
+      explanation:
+        "The chancellor responded by asking every fraternity to justify its existence — not by ordering them to disband.",
+    },
+    {
+      id: "l1-q12",
+      kind: "true-false",
+      prompt: "The officers of Sigma Rho issued a public statement denouncing the death.",
+      correct: true,
+      explanation:
+        "Sigma Rho's officers publicly denounced the death, even as the members said to be involved in the hazing vanished.",
+    },
+    {
+      id: "l1-q13",
+      kind: "multiple-choice",
+      prompt: "Which best explains why the Mendez case remains unresolved?",
+      options: [
+        "No one was held accountable, and the circumstances remain a matter of suspicion rather than settled fact",
+        "The police closed the case as an accident",
+        "The family refused to cooperate",
+        "The fraternity paid damages to the family",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The lesson closes the report by noting that no one was held accountable and that the circumstances remain a matter of suspicion rather than of settled fact.",
+    },
+    {
+      id: "l1-q14",
+      kind: "multiple-choice",
+      prompt:
+        "Which term refers to initiation rites that humiliate, injure, or endanger new members?",
+      options: ["Hazing", "Fraternity", "Ethics", "Etiquette"],
+      correctIndex: 0,
+      explanation:
+        "Hazing is defined as the subjection of new members of a group — typically a fraternity — to initiation rites that humiliate, injure, or endanger them.",
+    },
+    {
+      id: "l1-q15",
+      kind: "multiple-choice",
+      prompt: "To which fraternity was Mendez believed to belong?",
+      options: ["Sigma Rho", "Sigma Delta", "Alpha Omega", "Tau Gamma"],
+      correctIndex: 0,
+      explanation:
+        "The report names Sigma Rho as the fraternity to which Mendez was believed to belong.",
+    },
+    {
+      id: "l1-q16",
+      kind: "multiple-choice",
+      prompt: "What happened to the members said to be involved in the hazing?",
+      options: [
+        "They could not be found and did not come forward",
+        "They were arrested the same week",
+        "They surrendered to the police",
+        "They publicly apologized",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The members said to be involved in the hazing vanished — they could not be found, and they did not come forward.",
+    },
+    {
+      id: "l1-q17",
+      kind: "true-false",
+      prompt:
+        "The lesson presents the Mendez case as an abstract theoretical exercise rather than a real-world moral problem.",
+      correct: false,
+      explanation:
+        "The lesson stresses the opposite: the Mendez case is a concrete real-world moral problem — the starting context of ethics — not an abstract theory.",
+    },
+    {
+      id: "l1-q18",
+      kind: "multiple-choice",
+      prompt: "Why does the lesson begin with the Mendez report rather than with a theory?",
+      options: [
+        "Because ethics begins where real people are wronged",
+        "Because hazing is the only moral problem",
+        "Because theories are not needed in ethics",
+        "Because the case is the most famous in history",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The lesson states that such real-world problems — not abstract theories first — are the starting context of ethics, precisely because ethics begins where real people are wronged.",
+    },
+    {
+      id: "l1-q19",
+      kind: "matching",
+      prompt: "Match each element of the case with its role in the lesson.",
+      pairs: [
+        { left: "Cris Anthony Mendez", right: "The 20-year-old UP student whose death opened the lesson" },
+        { left: "Sigma Rho", right: "The fraternity whose officers denounced the death" },
+        { left: "The UP chancellor", right: "Asked every fraternity to justify its existence" },
+        { left: "The case's status", right: "Unresolved — a matter of suspicion, not settled fact" },
+      ],
+      explanation:
+        "Mendez is the victim whose death opened the lesson; Sigma Rho is the fraternity whose leaders denounced it; the chancellor asked the fraternities to justify themselves; and the case itself remains unresolved.",
+    },
+    {
+      id: "l1-q20",
+      kind: "multiple-choice",
+      prompt:
+        "Which omission does the lesson emphasize alongside the wrong act of the hazing itself?",
+      options: [
+        "No one came forward to claim responsibility, and nobody identified those involved",
+        "The family did not file a case",
+        "The school did not issue a statement",
+        "The media stopped reporting the story",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The report emphasizes that nobody came forward and nobody identified the people involved in the rites that led to Mendez's death.",
+    },
   ],
 };

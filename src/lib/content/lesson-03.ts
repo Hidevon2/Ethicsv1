@@ -334,5 +334,71 @@ export const lesson03: Lesson = {
       explanation:
         "Issue: a situation calling for valuation. Decision: choosing the act. Judgment: an observer assessing another's act. Dilemma: torn between two goods or two evils.",
     },
+    {
+      id: "l3-q15",
+      kind: "multiple-choice",
+      prompt: "Which field of professional ethics governs the conduct of lawyers?",
+      options: ["Legal ethics", "Medical ethics", "Media ethics", "Business ethics"],
+      correctIndex: 0,
+      explanation:
+        "Professional ethics applies the vocabulary of ethics to a calling — legal ethics governs the conduct of lawyers, medical ethics of doctors, and media ethics of journalists.",
+    },
+    {
+      id: "l3-q16",
+      kind: "true-false",
+      prompt: "Media ethics governs the conduct of journalists.",
+      correct: true,
+      explanation:
+        "The lesson names media ethics as the professional ethics that governs the conduct of journalists.",
+    },
+    {
+      id: "l3-q17",
+      kind: "multiple-choice",
+      prompt: "According to the book, the distinction between \"ethical\" and \"moral\" is one of:",
+      options: [
+        "grammar, not of substance",
+        "substance, not of grammar",
+        "origin, not of use",
+        "degree, not of kind",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The book uses ethical/moral and ethics/morality interchangeably; the distinction is one of grammar, not of substance.",
+    },
+    {
+      id: "l3-q18",
+      kind: "multiple-choice",
+      prompt: "Doing the laundry is an example of which term?",
+      options: [
+        "An amoral matter",
+        "A moral dilemma",
+        "A moral issue",
+        "A normative prescription",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Cooking, reading, and doing the laundry are amoral matters — they lie outside ethics altogether.",
+    },
+    {
+      id: "l3-q19",
+      kind: "true-false",
+      prompt: "Descriptive ethics prescribes standards of right acting.",
+      correct: false,
+      explanation:
+        "Descriptive ethics reports how people make moral valuations without judging them. It is normative ethics that prescribes standards and commands what ought to be done.",
+    },
+    {
+      id: "l3-q20",
+      kind: "matching",
+      prompt: "Match each statement with the kind of study it belongs to.",
+      pairs: [
+        { left: "A social scientist notes that filial piety is pervasive in Chinese culture", right: "Descriptive ethics — reports without judging" },
+        { left: "Confucian ethics tells people that they ought to be filial", right: "Normative ethics — prescribes what ought to be done" },
+        { left: "The work of historians, sociologists, and anthropologists", right: "Descriptive ethics" },
+        { left: "It asks what should be considered the right way of acting", right: "Normative ethics" },
+      ],
+      explanation:
+        "Descriptive ethics reports how people actually make valuations without judging them; normative ethics asks what should be the right way of acting and prescribes standards.",
+    },
   ],
 };

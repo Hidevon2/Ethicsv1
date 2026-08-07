@@ -162,5 +162,186 @@ export const unit2Lesson03: Lesson = {
       explanation:
         "The lesson notes that Mill uses the eradication of disease and technology as examples of how utilitarianism maximizes total pleasure over displeasure.",
     },
+    {
+      id: "u2l3-q6",
+      kind: "true-false",
+      prompt:
+        "Utilitarianism does not constitute a moral good if we are the only ones satisfied by our actions.",
+      correct: true,
+      explanation:
+        "The lesson states that utilitarianism is not a moral good if we are the only ones satisfied by our actions — it cannot lead to selfish acts.",
+    },
+    {
+      id: "u2l3-q7",
+      kind: "multiple-choice",
+      prompt: "What does the lesson say utilitarianism is not separable from?",
+      options: ["Liberal social practices", "Religious faith", "Legal codes", "Traditional customs"],
+      correctIndex: 0,
+      explanation:
+        "The lesson says utilitarianism is the standard by which to evaluate what is moral, and that it is not separable from liberal social practices.",
+    },
+    {
+      id: "u2l3-q8",
+      kind: "multiple-choice",
+      prompt:
+        "\"He who saves a fellow creature from drowning does the right thing whether or not he is moved by a good motive.\" Which claim does this illustrate?",
+      options: [
+        "The moral irrelevance of motive",
+        "The principle of utility",
+        "The two sovereign masters",
+        "Higher and lower pleasures",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Utilitarianism cares about the best consequence for the greatest number, not the agent's intention — so the act is right whether or not the motive is good.",
+    },
+    {
+      id: "u2l3-q9",
+      kind: "true-false",
+      prompt:
+        "For Mill, moral value can be discerned in the agent's intention or motivation.",
+      correct: false,
+      explanation:
+        "Mill holds that moral value is based solely and exclusively on the difference the act makes to the world's total amount of pleasure and pain, not on intention.",
+    },
+    {
+      id: "u2l3-q10",
+      kind: "multiple-choice",
+      prompt: "How does Mill say the better pleasure is determined?",
+      options: [
+        "By a majority of people who have experienced both pleasures",
+        "By philosophers alone",
+        "By the state",
+        "By tradition",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Mill argues that the determination of the better pleasure depends on the decision of a majority of people who have experienced both pleasures.",
+    },
+    {
+      id: "u2l3-q11",
+      kind: "true-false",
+      prompt:
+        "The principle of the greatest number aims to improve the quality of life for all persons.",
+      correct: true,
+      explanation:
+        "The lesson says the principle aims to improve the quality of life for all persons — the greatest happiness of the greatest number.",
+    },
+    {
+      id: "u2l3-q12",
+      kind: "multiple-choice",
+      prompt:
+        "The moral irrelevance of motive leads the lesson to question which of utilitarianism's positions?",
+      options: [
+        "Its take on moral rights",
+        "Its definition of pleasure",
+        "Its view of the state",
+        "Its history",
+      ],
+      correctIndex: 0,
+      explanation:
+        "If rightness rests only on the greatest happiness of the greatest number, it becomes justifiable to let the consequences travel beyond the particular persons concerned — questioning utilitarianism's take on moral rights.",
+    },
+    {
+      id: "u2l3-q13",
+      kind: "multiple-choice",
+      prompt: "Utilitarian evaluation is concerned with the pleasure of:",
+      options: [
+        "the greatest number affected by the consequences of our actions",
+        "the agent alone",
+        "the wealthy only",
+        "the majority party",
+      ],
+      correctIndex: 0,
+      explanation:
+        "It is not only about our individual pleasures, but also about the pleasure of the greatest number affected by the consequences of our actions.",
+    },
+    {
+      id: "u2l3-q14",
+      kind: "true-false",
+      prompt:
+        "The lesson says the principle of the greatest number is dismissive of sacrifices that procure more happiness for others.",
+      correct: false,
+      explanation:
+        "The lesson says the opposite: the principle is not dismissive of sacrifices that procure more happiness for others.",
+    },
+    {
+      id: "u2l3-q15",
+      kind: "multiple-choice",
+      prompt: "The eradication of disease and technology are given as examples of:",
+      options: [
+        "utilitarian maximization",
+        "higher pleasures",
+        "the two sovereign masters",
+        "moral rights",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The lesson notes that Mill uses the eradication of disease and technology as examples of utilitarian maximization.",
+    },
+    {
+      id: "u2l3-q16",
+      kind: "multiple-choice",
+      prompt: "What is Mill's hierarchy of higher and lower pleasures?",
+      options: [
+        "Some pleasures are higher, or worth more, than others",
+        "All pleasures are of equal worth",
+        "Only bodily pleasures count",
+        "Pleasures cannot be compared",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Mill revises Benthamite utilitarianism and its common calculus by referring to a hierarchy in which some pleasures are higher, or worth more, than others.",
+    },
+    {
+      id: "u2l3-q17",
+      kind: "true-false",
+      prompt:
+        "Mill's hierarchy of pleasures revises Benthamite utilitarianism and its common calculus.",
+      correct: true,
+      explanation:
+        "The lesson states that Mill revises Benthamite utilitarianism and its common calculus by referring to a hierarchy of higher and lower pleasures.",
+    },
+    {
+      id: "u2l3-q18",
+      kind: "multiple-choice",
+      prompt: "Why does the lesson say utilitarianism cannot lead to selfish acts?",
+      options: [
+        "It is not a moral good if we are the only ones satisfied by our actions",
+        "It forbids all personal enjoyment",
+        "It requires constant self-denial",
+        "It ignores consequences",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Utilitarianism does not constitute a moral good if we are the only ones satisfied by our actions — so it cannot lead to selfish acts.",
+    },
+    {
+      id: "u2l3-q19",
+      kind: "multiple-choice",
+      prompt: "Equating happiness with pleasure does NOT aim to:",
+      options: [
+        "describe the utilitarian moral agent alone and independently from others",
+        "include the pleasure of the greatest number affected by the consequences of our actions",
+        "improve the quality of life for all persons",
+        "aim at the greatest happiness of the greatest number",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The lesson says equating happiness with pleasure does not aim to describe the utilitarian moral agent alone and independently from others — it is about the greatest number affected.",
+    },
+    {
+      id: "u2l3-q20",
+      kind: "matching",
+      prompt: "Match each claim with the principle it belongs to.",
+      pairs: [
+        { left: "Actions are right in proportion as they tend to promote happiness", right: "The greatest happiness principle" },
+        { left: "The better pleasure is settled by a majority who have experienced both", right: "Higher and lower pleasures" },
+        { left: "Rightness is judged by consequences, not the agent's intention", right: "The moral irrelevance of motive" },
+        { left: "Not your pleasure alone, but the greatest number affected by your action", right: "The principle of the greatest number" },
+      ],
+      explanation:
+        "The greatest happiness principle grounds rightness in happiness; the hierarchy of pleasures settles the better pleasure by a majority; motive is morally irrelevant; and evaluation extends to the greatest number affected.",
+    },
   ],
 };

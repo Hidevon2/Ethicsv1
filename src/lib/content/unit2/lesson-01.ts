@@ -179,5 +179,175 @@ export const unit2Lesson01: Lesson = {
       explanation:
         "The lesson names Jeremy Bentham and John Stuart Mill as the two foremost utilitarian thinkers whose principles the following lessons examine.",
     },
+    {
+      id: "u2l1-q6",
+      kind: "multiple-choice",
+      prompt: "When did the Mamasapano clash take place?",
+      options: ["January 25, 2015", "August 2007", "June 12, 2016", "December 30, 2014"],
+      correctIndex: 0,
+      explanation:
+        "The 84th Special Action Force conducted the operation at Tukanalipao, Mamasapano, Maguindanao on January 25, 2015.",
+    },
+    {
+      id: "u2l1-q7",
+      kind: "multiple-choice",
+      prompt: "What was the name of the police operation?",
+      options: ["Oplan Exodus", "Oplan Tokhang", "Oplan Shooter", "Oplan Catanduanes"],
+      correctIndex: 0,
+      explanation:
+        "The operation to serve the arrest warrant on Marwan was known as Oplan Exodus.",
+    },
+    {
+      id: "u2l1-q8",
+      kind: "multiple-choice",
+      prompt: "Where did the operation and the subsequent clash occur?",
+      options: [
+        "Tukanalipao, Mamasapano, Maguindanao",
+        "Marawi City, Lanao del Sur",
+        "Antipolo City, Rizal",
+        "Metro Manila",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The operation took place at Tukanalipao, Mamasapano, Maguindanao.",
+    },
+    {
+      id: "u2l1-q9",
+      kind: "multiple-choice",
+      prompt: "Who was Marwan?",
+      options: [
+        "Zulkifli bin Hir, a Malaysian terrorist and bomb-maker with a $5 million bounty",
+        "A MILF commander",
+        "A Philippine senator",
+        "A journalist covering the clash",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Marwan was Zulkifli bin Hir, a Malaysian terrorist and bomb-maker with a $5 million bounty, on whom the operation intended to serve an arrest warrant.",
+    },
+    {
+      id: "u2l1-q10",
+      kind: "multiple-choice",
+      prompt: "Which forces clashed at Mamasapano?",
+      options: [
+        "The PNP-SAF against the BIFF and the MILF",
+        "The AFP against the NPA",
+        "The police against civilians",
+        "Two rival fraternities",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The operation led to a clash between the PNP-SAF on one side and the BIFF and the MILF on the other.",
+    },
+    {
+      id: "u2l1-q11",
+      kind: "true-false",
+      prompt: "The operation was called \"successful\" because of Marwan's death.",
+      correct: true,
+      explanation:
+        "The lesson says the operation was \"successful\" because of Marwan's death, even though the firefight claimed sixty-seven lives.",
+    },
+    {
+      id: "u2l1-q12",
+      kind: "multiple-choice",
+      prompt: "Which branch of government investigated the clash afterward?",
+      options: ["Congress", "The Supreme Court", "The Ombudsman", "Local governments"],
+      correctIndex: 0,
+      explanation:
+        "The lesson describes the Congress investigations that followed, where senators debated the admissibility of an audio recording.",
+    },
+    {
+      id: "u2l1-q13",
+      kind: "multiple-choice",
+      prompt:
+        "Under which law did then Senate President Franklin Drilon question the audio recording?",
+      options: [
+        "The Anti-Wiretapping Law — Section 4 of RA 4200",
+        "RA 9372 only",
+        "The 1987 Constitution only",
+        "The Civil Code",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Drilon questioned the recording's admissibility under the Anti-Wiretapping Law, citing Section 4 of RA 4200.",
+    },
+    {
+      id: "u2l1-q14",
+      kind: "multiple-choice",
+      prompt:
+        "What did the Free Legal Assistance Group's brief, cited by Senator Escudero, argue?",
+      options: [
+        "That RA 4200 protects only the recording and interception of private communications",
+        "That the recording was fully admissible",
+        "That the police had acted lawfully",
+        "That the case should be dismissed",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Escudero cited the FLAG brief holding that the law protects only the recording and interception of private communications.",
+    },
+    {
+      id: "u2l1-q15",
+      kind: "true-false",
+      prompt:
+        "The 1987 Constitution protects the right to private communication without any exemption.",
+      correct: false,
+      explanation:
+        "The 1987 Constitution protects the right but provides exemptions — a lawful court order, and issues of public safety and order.",
+    },
+    {
+      id: "u2l1-q16",
+      kind: "multiple-choice",
+      prompt: "What is the root word of \"utilitarianism\"?",
+      options: ["Utility", "Utilize", "Ultimate", "Unity"],
+      correctIndex: 0,
+      explanation:
+        "The lesson states that utilitarianism's root word is \"utility\" — right behavior is determined by the usefulness of an action's consequences.",
+    },
+    {
+      id: "u2l1-q17",
+      kind: "multiple-choice",
+      prompt: "Which of the following is NOT an exemption allowing intrusion into private communications?",
+      options: [
+        "A lawful court order",
+        "Issues of public safety and order",
+        "Treason, espionage, rebellion, and sedition",
+        "An opinion poll",
+      ],
+      correctIndex: 3,
+      explanation:
+        "The exemptions named are a lawful court order, public safety and order, and — under RA 4200 and RA 9372 — treason, espionage, rebellion, and sedition. An opinion poll is not among them.",
+    },
+    {
+      id: "u2l1-q18",
+      kind: "true-false",
+      prompt:
+        "Utilitarianism argues for the goodness of pleasure and determines right behavior based on the usefulness of an action's consequences.",
+      correct: true,
+      explanation:
+        "That is the lesson's definition of utilitarianism — an ethical theory arguing for the goodness of pleasure and grounding rightness in the usefulness of consequences.",
+    },
+    {
+      id: "u2l1-q19",
+      kind: "multiple-choice",
+      prompt: "The lesson notes that not all consequentialist theories are:",
+      options: ["utilitarian", "ethical", "rational", "descriptive"],
+      correctIndex: 0,
+      explanation:
+        "Utilitarianism is a consequentialist theory, but the lesson explicitly notes that not all consequentialist theories are utilitarian.",
+    },
+    {
+      id: "u2l1-q20",
+      kind: "matching",
+      prompt: "Match each element of the Mamasapano case with its detail.",
+      pairs: [
+        { left: "January 25, 2015", right: "Date of the Mamasapano clash" },
+        { left: "Oplan Exodus", right: "The operation to serve the warrant on Marwan" },
+        { left: "Zulkifli bin Hir (Marwan)", right: "The Malaysian terrorist with a $5 million bounty" },
+        { left: "The BIFF and the MILF", right: "The groups the PNP-SAF clashed with" },
+      ],
+      explanation:
+        "The clash happened on January 25, 2015; Oplan Exodus was the operation against Marwan, who was the Malaysian terrorist with a bounty; and the SAF clashed with the BIFF and the MILF.",
+    },
   ],
 };

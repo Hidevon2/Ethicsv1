@@ -367,5 +367,79 @@ export const lesson04: Lesson = {
       explanation:
         "Divine command theory grounds right in God's command; the Euthyphro problem questions that ground; cultural relativism relativizes right to culture; natural law offers Aquinas's later link between faith and ethics.",
     },
+    {
+      id: "l4-q15",
+      kind: "multiple-choice",
+      prompt: "What does the lesson say law gives society?",
+      options: [
+        "A written standard of conduct, obedience to which keeps public life orderly",
+        "Freedom from all moral duties",
+        "A guarantee that no one will ever be harmed",
+        "A complete account of ethics",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Law gives society a written standard of conduct, and obedience to it keeps public life orderly — but a good act may go beyond mere obedience to law.",
+    },
+    {
+      id: "l4-q16",
+      kind: "multiple-choice",
+      prompt:
+        "Which thinker does the lesson say later takes the concept of law and uses it in a more ethically significant way?",
+      options: ["Immanuel Kant", "Thomas Aquinas", "Plato", "Aristotle"],
+      correctIndex: 0,
+      explanation:
+        "The lesson notes that Immanuel Kant's deontology uses law in a more ethically significant way — a moral law the agent gives to himself, not merely a statute enforced by the state.",
+    },
+    {
+      id: "l4-q17",
+      kind: "true-false",
+      prompt:
+        "Divine command theory provides a clear code of prohibitions and adds positive ideals such as forgiveness and charity.",
+      correct: true,
+      explanation:
+        "These are listed among divine command theory's strengths: a clear code of prohibitions that matches our moral intuitions, and positive ideals such as forgiveness and charity.",
+    },
+    {
+      id: "l4-q18",
+      kind: "multiple-choice",
+      prompt: "Which of the following is a strength of divine command theory?",
+      options: [
+        "It rests on a Supreme Authority that can compel absolute obedience",
+        "It eliminates all disagreement among believers",
+        "It needs no interpretation",
+        "It applies only to private life",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Divine command theory rests on a Supreme Authority — one that can compel absolute obedience in a way no human institution can.",
+    },
+    {
+      id: "l4-q19",
+      kind: "multiple-choice",
+      prompt: "Which example of cultural diversity does the lesson give?",
+      options: [
+        "Japanese and Indian art answer to different senses of beauty",
+        "Everyone agrees on dining practices",
+        "All societies share identical taboos",
+        "Relations between men and women are identical everywhere",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The lesson cites aesthetic standards that differ — Japanese and Indian art answer to different senses of beauty — among other cultural differences.",
+    },
+    {
+      id: "l4-q20",
+      kind: "matching",
+      prompt: "Match each item with the claim it illustrates.",
+      pairs: [
+        { left: "Rizal province, Antipolo City", right: "The levels to which the law binds Filipinos" },
+        { left: "Thou shall not kill, steal, or commit adultery", right: "Divine command theory's clear code of prohibitions" },
+        { left: "Japanese and Indian art answer to different senses of beauty", right: "Cultural diversity in aesthetics" },
+        { left: "Thomas Aquinas", right: "Natural law as a less problematic link between faith and ethics" },
+      ],
+      explanation:
+        "The law binds citizens down to the provincial and city level; the prohibitions illustrate divine command theory's clear code; differing art answers to cultural diversity; and Aquinas develops natural law.",
+    },
   ],
 };

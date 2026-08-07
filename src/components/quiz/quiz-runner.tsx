@@ -23,10 +23,12 @@ export function QuizRunner({
   lesson,
   best,
   onSubmitScore,
+  embedded = false,
 }: {
   lesson: Lesson;
   best: number | null;
   onSubmitScore: (score: number) => void;
+  embedded?: boolean;
 }) {
   const [attempt, setAttempt] = useState<RenderedQuizItem[]>(() =>
     buildAttempt(lesson.quiz, stableSeed(lesson.slug)),
@@ -99,22 +101,8 @@ export function QuizRunner({
     startAttempt(randomSeed(), "missed");
   }
 
-  return (
-    <section id="quiz" aria-labelledby="quiz-heading" className="mt-14">
-      <header className="mb-6">
-        <h2
-          id="quiz-heading"
-          className="text-balance font-serif text-2xl font-bold leading-snug text-foreground"
-        >
-          Check yourself
-        </h2>
-        <p className="mt-1 max-w-[68ch] font-serif text-sm italic leading-relaxed text-muted">
-          {scope === "missed"
-            ? `${total} missed question${total === 1 ? "" : "s"} to revisit — shuffled again.`
-            : `${fullTotal} questions, shuffled fresh each attempt. Answer to see the explanation immediately; matching questions are checked when you finish them.`}
-        </p>
-      </header>
-
+  const quizBody = (
+    <>
       {phase === "review" && (
         <div className="mb-6">
           <QuizResult
@@ -154,6 +142,27 @@ export function QuizRunner({
           </Button>
         </div>
       )}
+    </>
+  );
+
+  if (embedded) return quizBody;
+
+  return (
+    <section id="quiz" aria-labelledby="quiz-heading" className="mt-14">
+      <header className="mb-6">
+        <h2
+          id="quiz-heading"
+          className="text-balance font-serif text-2xl font-bold leading-snug text-foreground"
+        >
+          Check yourself
+        </h2>
+        <p className="mt-1 max-w-[68ch] font-serif text-sm italic leading-relaxed text-muted">
+          {scope === "missed"
+            ? `${total} missed question${total === 1 ? "" : "s"} to revisit — shuffled again.`
+            : `${fullTotal} questions, shuffled fresh each attempt. Answer to see the explanation immediately; matching questions are checked when you finish them.`}
+        </p>
+      </header>
+      {quizBody}
     </section>
   );
 }

@@ -211,5 +211,157 @@ export const unit2Lesson02: Lesson = {
       explanation:
         "His biography card records that he was homeschooled, studying Greek at three and Latin at eight, and writing a history of Roman Law at eleven.",
     },
+    {
+      id: "u2l2-q8",
+      kind: "multiple-choice",
+      prompt: "What does the principle of utility hold pleasure to be?",
+      options: [
+        "Good if and only if it produces more happiness than unhappiness",
+        "Always evil",
+        "The only thing that is bad",
+        "Irrelevant to ethics",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The principle has two sides: it describes our motivation and holds pleasure good if and only if it produces more happiness than unhappiness.",
+    },
+    {
+      id: "u2l2-q9",
+      kind: "true-false",
+      prompt: "Bentham was the teacher of James Mill.",
+      correct: true,
+      explanation:
+        "The biography card records that Bentham was the teacher of James Mill — who in turn was the father of John Stuart Mill.",
+    },
+    {
+      id: "u2l2-q10",
+      kind: "multiple-choice",
+      prompt: "Which penal-management system is Bentham known for?",
+      options: ["The panopticon", "The auto-icon", "The greatest happiness principle", "The two sovereign masters"],
+      correctIndex: 0,
+      explanation:
+        "Bentham is known for the penal-management system called the panopticon, among his other achievements.",
+    },
+    {
+      id: "u2l2-q11",
+      kind: "multiple-choice",
+      prompt: "Which of the following did Bentham NOT advocate?",
+      options: [
+        "Economic freedom",
+        "Women's rights",
+        "The abolition of slavery",
+        "An established state religion",
+      ],
+      correctIndex: 3,
+      explanation:
+        "Bentham advocated the separation of church and state, so an established state religion is the one thing on the list he did not advocate.",
+    },
+    {
+      id: "u2l2-q12",
+      kind: "true-false",
+      prompt: "Bentham denied individual legal rights and did not agree with natural law.",
+      correct: true,
+      explanation:
+        "The biography card records both: Bentham denied individual legal rights and did not agree with natural law.",
+    },
+    {
+      id: "u2l2-q13",
+      kind: "multiple-choice",
+      prompt: "What did Bentham do with his corpse on his death?",
+      options: [
+        "He donated it to University College London, where his auto-icon is still on public display",
+        "He was buried at sea",
+        "He was cremated",
+        "His body was returned to France",
+      ],
+      correctIndex: 0,
+      explanation:
+        "On his death, June 6, 1832, Bentham donated his corpse to University College London, where his auto-icon is still on public display.",
+    },
+    {
+      id: "u2l2-q14",
+      kind: "multiple-choice",
+      prompt: "Who was John Stuart Mill's father?",
+      options: [
+        "James Mill, a friend and disciple of Bentham",
+        "Jeremy Bentham",
+        "Thomas Carlyle",
+        "Harriet Taylor",
+      ],
+      correctIndex: 0,
+      explanation:
+        "John Stuart Mill was the son of James Mill, a friend and disciple of Bentham.",
+    },
+    {
+      id: "u2l2-q15",
+      kind: "true-false",
+      prompt: "John Stuart Mill suffered a nervous breakdown at twenty.",
+      correct: true,
+      explanation:
+        "His biography card records that Mill suffered a nervous breakdown at twenty.",
+    },
+    {
+      id: "u2l2-q16",
+      kind: "multiple-choice",
+      prompt: "Whom did Mill marry, and after how long a friendship?",
+      options: [
+        "Harriet Taylor, after 21 years of friendship",
+        "Harriet Taylor, after 5 years",
+        "Mary Wollstonecraft, after 10 years",
+        "He never married",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The biography card records that Mill married Harriet Taylor after 21 years of friendship.",
+    },
+    {
+      id: "u2l2-q17",
+      kind: "multiple-choice",
+      prompt: "In which work did Mill set out his ethical theory?",
+      options: [
+        "Utilitarianism (1861)",
+        "An Introduction to the Principles of Morals and Legislation (1789)",
+        "The Republic",
+        "On Liberty (1859)",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Mill's ethical theory is in the long essay Utilitarianism (1861). The 1789 work belongs to Bentham.",
+    },
+    {
+      id: "u2l2-q18",
+      kind: "true-false",
+      prompt: "Mill died in 1873 in Avignon, France, from erysipelas.",
+      correct: true,
+      explanation:
+        "The biography card records that Mill died May 8, 1873 in Avignon, France, from erysipelas.",
+    },
+    {
+      id: "u2l2-q19",
+      kind: "multiple-choice",
+      prompt: "Which of the following is one of the open questions the book raises about pleasure?",
+      options: [
+        "Is it morally acceptable to eat or exercise excessively?",
+        "Is it always wrong to break a promise?",
+        "Does the state have a duty to tax?",
+        "Are moral rules discovered by reason alone?",
+      ],
+      correctIndex: 0,
+      explanation:
+        "The book raises questions such as whether eating or exercising excessively is morally acceptable, and whether wanton intemperance is permissible if nobody is suffering.",
+    },
+    {
+      id: "u2l2-q20",
+      kind: "matching",
+      prompt: "Match each fact with the thinker it belongs to.",
+      pairs: [
+        { left: "Founded the penal-management system called the panopticon", right: "Jeremy Bentham" },
+        { left: "Wrote a history of Roman Law at eleven", right: "John Stuart Mill" },
+        { left: "Born February 15, 1748 in London", right: "Jeremy Bentham" },
+        { left: "Married Harriet Taylor after 21 years of friendship", right: "John Stuart Mill" },
+      ],
+      explanation:
+        "The panopticon and the 1748 London birth belong to Bentham; the Roman Law history at eleven and the marriage to Harriet Taylor belong to Mill.",
+    },
   ],
 };
