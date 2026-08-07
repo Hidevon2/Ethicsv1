@@ -9,6 +9,7 @@ export function MatchingQuestion({
   rightOptions,
   value,
   revealed,
+  hideCheck = false,
   onAnswer,
   onReveal,
 }: {
@@ -16,6 +17,7 @@ export function MatchingQuestion({
   rightOptions: string[];
   value: MatchingAnswer | undefined;
   revealed: boolean;
+  hideCheck?: boolean;
   onAnswer: (value: MatchingAnswer) => void;
   onReveal: (correct: boolean) => void;
 }) {
@@ -63,7 +65,7 @@ export function MatchingQuestion({
           );
         })}
       </div>
-      {!revealed && (
+      {!revealed && !hideCheck && (
         <button
           type="button"
           onClick={() => onReveal(isCorrect)}

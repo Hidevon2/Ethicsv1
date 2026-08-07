@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AppHeader } from "@/components/layout/app-header";
 import { SearchDialog } from "@/components/search/search-dialog";
 import { CalloutBlock } from "@/components/lesson/callout-block";
+import { ArrowRightIcon } from "@/components/ui/icons";
 import { findGlossaryTerm, getLesson } from "@/lib/content";
 import { unitOneWrapUp } from "@/lib/content/unit1-wrapup";
 
@@ -147,6 +148,26 @@ export default function UnitOneWrapUpPage() {
             </div>
           </CalloutBlock>
         </section>
+
+        <Link
+          href="/unit/1/exam"
+          className="mt-14 block overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)] transition-transform hover:-translate-y-0.5"
+        >
+          <div className="flex items-center justify-between gap-4 px-5 py-5">
+            <span className="min-w-0">
+              <span className="block font-sans text-[11px] font-bold uppercase tracking-[0.16em] text-primary">
+                Ready for Unit II?
+              </span>
+              <span className="mt-1 block font-serif text-2xl font-bold leading-snug text-foreground">
+                Take the Unit I Examination
+              </span>
+              <span className="mt-1 block font-serif text-sm italic leading-relaxed text-muted">
+                50 questions · all five lessons · pass with 20 or higher to unlock Unit II
+              </span>
+            </span>
+            <ArrowRightIcon className="h-6 w-6 shrink-0 text-primary" />
+          </div>
+        </Link>
 
         <Link
           href="/"

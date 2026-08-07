@@ -9,7 +9,9 @@ import type {
   LessonSlug,
   ReflectionAnswer,
   ReflectionGroup,
+  Unit1ExamState,
 } from "@/lib/types";
+import { UNIT1_EXAM_PASS_SCORE } from "@/lib/content/unit1-exam";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const DB_PATH = path.join(DATA_DIR, "ethics.db");
@@ -49,6 +51,14 @@ function openDatabase(): Database.Database {
       start_offset INTEGER NOT NULL,
       end_offset INTEGER NOT NULL,
       created_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS unit1_exam (
+      id TEXT PRIMARY KEY CHECK (id = 'unit1'),
+      passed INTEGER NOT NULL DEFAULT 0,
+      best INTEGER,
+      attempts INTEGER NOT NULL DEFAULT 0,
+      updated_at INTEGER NOT NULL
     );
 
     CREATE INDEX IF NOT EXISTS idx_reflections_lesson ON reflections (lesson_slug);
@@ -265,4 +275,42 @@ export function addAnnotation(input: Omit<Annotation, "id" | "createdAt">): Anno
 
 export function deleteAnnotation(id: string): void {
   getDb().prepare("DELETE FROM annotations WHERE id = ?").run(id);
+}
+
+export function getUnit1ExamState(): Unit1ExamState {
+  const row = getDb()
+    .prepare("SELECT * FROM unit1_exam WHERE id = 'unit1'")
+    .get() as
+    | { passed: number; best: number | null; attempts: number; updated_at: number }
+    | undefined;
+  return {
+    passed: (row?.passed ?? 0) === 1,
+    best: row?.best ?? null,
+    attempts: row?.attempts ?? 0,
+    updatedAt: row?.updated_at ?? 0,
+  };
+}
+
+export function recordUnit1ExamScore(score: number): Unit1ExamState {
+  const now = Date.now();
+  const existing = getDb()
+    .prepare("SELECT * FROM unit1_exam WHERE id = 'unit1'")
+    .get() as
+    | { passed: number; best: number | null; attempts: number }
+    | undefined;
+  const best = Math.max(existing?.best ?? 0, score);
+  const passed = (existing?.passed ?? 0) === 1 || score >= UNIT1_EXAM_PASS_SCORE;
+  const attempts = (existing?.attempts ?? 0) + 1;
+  getDb()
+    .prepare(
+      `INSERT INTO unit1_exam (id, passed, best, attempts, updated_at)
+       VALUES ('unit1', @passed, @best, @attempts, @updatedAt)
+       ON CONFLICT (id) DO UPDATE SET
+         passed = excluded.passed,
+         best = excluded.best,
+         attempts = excluded.attempts,
+         updated_at = excluded.updated_at`,
+    )
+    .run({ passed: passed ? 1 : 0, best, attempts, updatedAt: now });
+  return { passed, best, attempts, updatedAt: now };
 }

@@ -19,7 +19,8 @@ import { ReflectionSection } from "@/components/lesson/reflection-section";
 import { LessonNav } from "@/components/lesson/lesson-nav";
 import { SidebarToc } from "@/components/lesson/sidebar-toc";
 import { QuizDialog } from "@/components/quiz/quiz-dialog";
-import { useLessonProgress, useAnnotations, useReflections } from "@/lib/hooks";
+import { Button } from "@/components/ui/button";
+import { useLessonProgress, useAnnotations, useReflections, useUnit1Exam } from "@/lib/hooks";
 
 function PageFrame({ children }: { children: React.ReactNode }) {
   return (
@@ -37,6 +38,7 @@ function LessonView({ slug }: { slug: LessonSlug }) {
   const lesson = getLesson(slug);
 
   const { getProgress, toggleComplete, submitScore } = useLessonProgress();
+  const { state: examState, loading: examLoading } = useUnit1Exam();
   const { annotations, add, remove } = useAnnotations(slug);
   const { reflections, upsert, remove: removeReflection } = useReflections(slug);
 
@@ -77,6 +79,34 @@ function LessonView({ slug }: { slug: LessonSlug }) {
         >
           Back to the cover
         </Link>
+      </main>
+    );
+  }
+
+  if (lesson.unit === 2 && !examLoading && !examState.passed) {
+    return (
+      <main className="mx-auto w-full max-w-2xl flex-1 px-4 pb-24 pt-16 sm:px-6">
+        <p className="font-sans text-[11px] font-bold uppercase tracking-[0.28em] text-primary">
+          Unit II · Locked
+        </p>
+        <h1 className="mt-3 text-balance font-serif text-3xl font-bold leading-snug text-foreground">
+          Complete the Unit I examination first
+        </h1>
+        <p className="mt-4 font-serif text-muted">
+          Score 20 of 50 on the Unit I examination to unlock Unit II. Below that, you will need to
+          take the examination again.
+        </p>
+        <div className="mt-6 flex flex-col items-start gap-4">
+          <Button asChild>
+            <Link href="/unit/1/exam">Take the Unit I examination</Link>
+          </Button>
+          <Link
+            href="/lesson?slug=senses-of-the-self"
+            className="font-sans text-xs font-bold uppercase tracking-[0.12em] text-primary underline-offset-4 hover:underline"
+          >
+            Back to Lesson 5 · Senses of the Self
+          </Link>
+        </div>
       </main>
     );
   }

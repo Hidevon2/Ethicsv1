@@ -149,3 +149,10 @@ export interface ReflectionAnswer {
   answer: string;
   updatedAt: number;
 }
+
+export interface Unit1ExamState {
+  passed: boolean;
+  best: number | null;
+  attempts: number;
+  updatedAt: number;
+}

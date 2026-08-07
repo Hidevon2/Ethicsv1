@@ -4,6 +4,7 @@ import type {
   LessonSlug,
   ReflectionAnswer,
   ReflectionGroup,
+  Unit1ExamState,
 } from "@/lib/types";
 
 async function request<T>(
@@ -89,5 +90,16 @@ export function saveAnnotation(input: {
 export function deleteAnnotation(id: string): Promise<{ ok: true }> {
   return request<{ ok: true }>(`/api/annotations?id=${encodeURIComponent(id)}`, {
     method: "DELETE",
+  });
+}
+
+export function fetchUnit1ExamState(): Promise<Unit1ExamState> {
+  return request<Unit1ExamState>("/api/exam");
+}
+
+export function recordUnit1Exam(score: number): Promise<Unit1ExamState> {
+  return request<Unit1ExamState>("/api/exam", {
+    method: "PUT",
+    body: JSON.stringify({ score }),
   });
 }

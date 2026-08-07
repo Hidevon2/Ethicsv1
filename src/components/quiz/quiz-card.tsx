@@ -14,6 +14,7 @@ export interface QuizCardProps {
   value: AnswerValue;
   revealed: boolean;
   correct: boolean | undefined;
+  exam?: boolean;
   onAnswer: (item: RenderedQuizItem["item"], value: AnswerValue) => void;
   onMatchingReveal: (correct: boolean) => void;
 }
@@ -138,6 +139,7 @@ export function QuizCard({
   value,
   revealed,
   correct,
+  exam = false,
   onAnswer,
   onMatchingReveal,
 }: QuizCardProps) {
@@ -203,6 +205,7 @@ export function QuizCard({
             rightOptions={rendered.rightOptions ?? []}
             value={typeof value === "object" && value !== null ? (value as MatchingAnswer) : undefined}
             revealed={revealed}
+            hideCheck={exam}
             onAnswer={(answer) => onAnswer(item, answer)}
             onReveal={onMatchingReveal}
           />

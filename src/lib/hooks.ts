@@ -6,6 +6,7 @@ import type {
   LessonProgress,
   LessonSlug,
   ReflectionAnswer,
+  Unit1ExamState,
 } from "@/lib/types";
 import {
   deleteAnnotation as apiDeleteAnnotation,
@@ -13,12 +14,47 @@ import {
   fetchAnnotations,
   fetchProgress,
   fetchReflections,
+  fetchUnit1ExamState,
   recordQuizScore,
+  recordUnit1Exam,
   saveAnnotation,
   saveReflection,
   setCompleted,
 } from "@/lib/api";
 import type { ReflectionGroup } from "@/lib/types";
+
+export function useUnit1Exam() {
+  const [state, setState] = useState<Unit1ExamState>({
+    passed: false,
+    best: null,
+    attempts: 0,
+    updatedAt: 0,
+  });
+  const [loading, setLoading] = useState(true);
+
+  const refresh = useCallback(async () => {
+    try {
+      const data = await fetchUnit1ExamState();
+      setState(data);
+    } catch {
+      // keep whatever we have
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void refresh();
+  }, [refresh]);
+
+  const submit = useCallback(async (score: number) => {
+    const data = await recordUnit1Exam(score);
+    setState(data);
+  }, []);
+
+  return { state, loading, refresh, submit };
+}
 
 export function useLessonProgress() {
   const [progress, setProgress] = useState<LessonProgress[]>([]);

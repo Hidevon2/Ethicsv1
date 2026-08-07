@@ -1,11 +1,14 @@
 import Link from "next/link";
-import { getAdjacentLesson } from "@/lib/content";
+import { getAdjacentLesson, getLessonsByUnit } from "@/lib/content";
 import { ArrowLeftIcon, ArrowRightIcon } from "@/components/ui/icons";
 import type { LessonSlug } from "@/lib/types";
 
 export function LessonNav({ slug }: { slug: LessonSlug }) {
   const prev = getAdjacentLesson(slug, -1);
   const next = getAdjacentLesson(slug, 1);
+  const unitOneLessons = getLessonsByUnit(1);
+  const lastUnitOne = unitOneLessons[unitOneLessons.length - 1];
+  const isLastUnitOne = lastUnitOne?.slug === slug;
 
   return (
     <nav
@@ -31,7 +34,22 @@ export function LessonNav({ slug }: { slug: LessonSlug }) {
         <span aria-hidden="true" />
       )}
 
-      {next ? (
+      {isLastUnitOne ? (
+        <Link
+          href="/unit/1/exam"
+          className="group flex items-center justify-end gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 text-right shadow-[3px_3px_0_var(--border)] transition-transform hover:-translate-y-0.5"
+        >
+          <span className="min-w-0">
+            <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.16em] text-muted">
+              Next — the gate to Unit II
+            </span>
+            <span className="block truncate font-serif text-sm font-semibold text-foreground">
+              Unit I Examination
+            </span>
+          </span>
+          <ArrowRightIcon className="h-4 w-4 shrink-0 text-primary" />
+        </Link>
+      ) : next ? (
         <Link
           href={`/lesson?slug=${next.slug}`}
           className="group flex items-center justify-end gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 text-right shadow-[3px_3px_0_var(--border)] transition-transform hover:-translate-y-0.5"
