@@ -4,20 +4,20 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius)] font-sans text-sm font-semibold uppercase tracking-[0.08em] transition-all focus-visible:outline-2 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-mono text-xs font-semibold uppercase tracking-[0.12em] transition-colors focus-visible:outline-2 focus-visible:outline-amber disabled:pointer-events-none disabled:opacity-40",
   {
     variants: {
       variant: {
         primary:
-          "bg-primary text-primary-contrast border-2 border-foreground shadow-[3px_3px_0_var(--border)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_var(--border)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:hover:translate-x-0 motion-reduce:hover:translate-y-0 motion-reduce:active:translate-x-0 motion-reduce:active:translate-y-0",
+          "bg-primary text-primary-contrast hover:bg-amber-bright",
         secondary:
-          "bg-panel text-foreground border-2 border-foreground shadow-[3px_3px_0_var(--border)] hover:bg-panel-muted hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_var(--border)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:hover:translate-x-0 motion-reduce:hover:translate-y-0 motion-reduce:active:translate-x-0 motion-reduce:active:translate-y-0",
-        ghost: "text-foreground hover:bg-panel-muted",
+          "border border-border bg-panel text-foreground hover:border-primary/60 hover:text-primary",
+        ghost: "text-muted hover:text-foreground",
       },
       size: {
         default: "h-9 px-4 py-2",
-        sm: "h-8 px-3 text-xs",
-        lg: "h-11 px-6 text-[15px]",
+        sm: "h-8 px-3 text-[11px]",
+        lg: "h-11 px-6 text-[13px]",
         icon: "h-9 w-9",
       },
     },

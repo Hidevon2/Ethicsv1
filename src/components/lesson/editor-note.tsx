@@ -11,12 +11,12 @@ function Block({ block }: { block: EditorNote["blocks"][number] }) {
   }
   if (block.type === "quote") {
     return (
-      <blockquote className="mb-4 mt-4 rounded-[var(--radius)] border-2 border-foreground bg-background px-4 py-3">
+      <blockquote className="mb-4 mt-4 rounded-[var(--radius)] border border-border bg-background px-4 py-3">
         <p className="font-serif text-base italic leading-relaxed text-foreground">
           &ldquo;{block.text}&rdquo;
         </p>
         {block.source && (
-          <cite className="mt-1 block font-sans text-[10px] font-semibold uppercase tracking-[0.14em] not-italic text-muted">
+          <cite className="mt-1 block font-mono text-[10px] font-semibold uppercase tracking-[0.14em] not-italic text-muted">
             — {block.source}
           </cite>
         )}
@@ -42,7 +42,7 @@ export function EditorNotes({ notes }: { notes: EditorNote[] }) {
       </h2>
       {notes.map((note) => (
         <CalloutBlock key={note.id} variant="note" title={note.label}>
-          <p className="mb-4 font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
+          <p className="mb-4 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
             {note.note}
           </p>
           <div>

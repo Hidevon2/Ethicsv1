@@ -11,10 +11,12 @@ export function MarkComplete({
   onToggle: () => void;
 }) {
   return (
-    <div className="mb-10 flex flex-wrap items-center gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 shadow-[4px_4px_0_var(--border)]">
+    <div className="mb-10 flex flex-wrap items-center gap-3 rounded-[var(--radius)] border border-border bg-panel px-4 py-3">
       <span
-        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-sm border-2 border-foreground ${
-          completed ? "bg-primary text-primary-contrast" : "bg-background text-muted"
+        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-sm border ${
+          completed
+            ? "border-primary bg-primary text-primary-contrast"
+            : "border-border bg-background text-muted"
         }`}
       >
         {completed ? (
@@ -24,7 +26,7 @@ export function MarkComplete({
         )}
       </span>
       <div className="min-w-0 flex-1">
-        <p className="font-sans text-xs font-bold uppercase tracking-[0.12em] text-foreground">
+        <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground">
           {completed ? "Lesson marked complete" : "Lesson not yet complete"}
         </p>
         <p className="mt-0.5 text-pretty font-serif text-sm leading-relaxed text-muted">

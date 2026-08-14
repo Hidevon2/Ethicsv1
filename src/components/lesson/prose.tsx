@@ -21,10 +21,12 @@ interface HighlightTooltipState {
   endOffset: number;
 }
 
+const INK_WASH = "#d98f3f";
+
 const HIGHLIGHT_BG: Record<HighlightColor, string> = {
-  red: "#a62a1e",
-  teal: "#0f6b5c",
-  amber: "#a35f00",
+  red: INK_WASH,
+  teal: INK_WASH,
+  amber: INK_WASH,
 };
 
 export function Prose({
@@ -140,13 +142,13 @@ export function Prose({
               return (
                 <blockquote
                   key={blockIndex}
-                  className="mb-8 mt-8 rounded-[var(--radius)] border-2 border-foreground bg-panel px-5 py-4 shadow-[4px_4px_0_var(--border)]"
+                  className="mb-8 mt-8 rounded-[var(--radius)] border border-border bg-panel px-5 py-4"
                 >
                   <p className="font-serif text-lg italic leading-relaxed text-foreground">
                     &ldquo;{block.text}&rdquo;
                   </p>
                   {block.source && (
-                    <cite className="mt-2 block font-sans text-[11px] font-semibold uppercase tracking-[0.14em] not-italic text-muted">
+                    <cite className="mt-2 block font-mono text-[11px] font-semibold uppercase tracking-[0.14em] not-italic text-muted">
                       — {block.source}
                     </cite>
                   )}
@@ -189,7 +191,7 @@ export function Prose({
                         <button
                           type="button"
                           onClick={() => onRemoveAnnotation(node.annotation!.id)}
-                          className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full border-2 border-foreground bg-background text-foreground opacity-0 transition-opacity group-hover:opacity-100 focus:opacity-100"
+                          className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full border border-border bg-panel text-muted opacity-0 transition-opacity group-hover:opacity-100 focus:opacity-100"
                           aria-label={`Remove highlight: ${node.text}`}
                         >
                           <XIcon className="h-2.5 w-2.5" />

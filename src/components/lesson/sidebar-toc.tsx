@@ -21,14 +21,14 @@ export function SidebarToc({
 
   return (
     <nav aria-label="Lesson contents" className={cn("space-y-1", className)}>
-      <p className="mb-2 font-sans text-[11px] font-bold uppercase tracking-[0.16em] text-muted">
+      <p className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
         Lesson {lesson.number} contents
       </p>
       {items.map((item) => (
         <a
           key={item.href}
           href={item.href}
-          className="block rounded-[var(--radius)] px-2 py-1.5 font-serif text-sm leading-snug text-muted transition-colors hover:bg-panel-muted hover:text-foreground"
+          className="block rounded-[var(--radius)] border-l border-transparent px-2 py-1.5 font-sans text-sm leading-snug text-muted transition-colors hover:border-primary/40 hover:bg-panel-muted hover:text-foreground"
         >
           {item.label}
         </a>

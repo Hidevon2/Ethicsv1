@@ -14,9 +14,9 @@ const GROUP_LABEL: Record<ReflectionGroup, string> = {
 };
 
 const GROUP_CLASS: Record<ReflectionGroup, string> = {
-  experience: "bg-accent text-primary-contrast",
-  assess: "bg-foreground text-background",
-  challenge: "bg-primary text-primary-contrast",
+  experience: "text-primary",
+  assess: "text-foreground",
+  challenge: "text-primary",
 };
 
 function formatDate(timestamp: number): string {
@@ -37,13 +37,13 @@ export function ReflectionsPage() {
   return (
     <div>
       <header className="mb-10">
-        <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
+        <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
           Your voice
         </p>
         <h1 className="mt-3 text-balance font-serif text-4xl font-bold leading-tight text-foreground sm:text-5xl">
           Reflections
         </h1>
-        <p className="mt-4 max-w-[68ch] text-balance font-serif text-lg italic leading-relaxed text-muted">
+        <p className="mt-4 max-w-[68ch] text-balance font-serif text-lg italic leading-relaxed text-ink-body">
           The challenge prompts you answered inside each lesson, saved to the
           database and gathered here for exam-week review.
         </p>
@@ -54,7 +54,7 @@ export function ReflectionsPage() {
       )}
 
       {!loading && reflections.length === 0 && (
-        <div className="rounded-[var(--radius)] border-2 border-foreground bg-panel px-6 py-10 text-center shadow-[4px_4px_0_var(--border)]">
+        <div className="rounded-[var(--radius)] border border-border bg-panel px-6 py-10 text-center">
           <p className="font-serif text-lg text-foreground">No reflections saved yet.</p>
           <p className="mt-1 font-serif text-sm text-muted">
             Open a lesson and answer a Challenge prompt — your words will land here.
@@ -73,10 +73,10 @@ export function ReflectionsPage() {
             <section
               key={lesson.slug}
               aria-labelledby={`reflections-${lesson.slug}`}
-              className="overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]"
+              className="overflow-hidden rounded-[var(--radius)] border border-border bg-panel"
             >
-              <header className="flex flex-wrap items-center gap-3 border-b-2 border-foreground bg-panel-muted px-4 py-3">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-sm border-2 border-foreground bg-background font-sans text-xs font-bold text-primary">
+              <header className="flex flex-wrap items-center gap-3 border-b border-border bg-panel-muted px-4 py-3">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-sm border border-border bg-primary/10 font-mono text-xs font-semibold text-primary">
                   {lesson.number}
                 </span>
                 <h2
@@ -87,31 +87,31 @@ export function ReflectionsPage() {
                 </h2>
                 <Link
                   href={`/lesson?slug=${lesson.slug}`}
-                  className="ml-auto font-sans text-[11px] font-bold uppercase tracking-[0.12em] text-primary underline-offset-4 hover:underline"
+                  className="ml-auto font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-primary underline-offset-4 hover:underline"
                 >
                   Open lesson
                 </Link>
               </header>
 
-              <ul className="divide-y-2 divide-foreground/15">
+              <ul className="divide-y divide-border">
                 {answers.map((answer) => (
                   <li key={answer.id} className="px-4 py-4">
                     <div className="mb-2 flex flex-wrap items-center gap-2">
                       <span
                         className={cn(
-                          "rounded-sm border-2 border-foreground px-1.5 py-0.5 font-sans text-[10px] font-bold uppercase tracking-[0.12em]",
+                          "rounded-sm border border-border bg-primary/10 px-1.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.12em]",
                           GROUP_CLASS[answer.group],
                         )}
                       >
                         {GROUP_LABEL[answer.group]}
                       </span>
-                      <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">
+                      <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">
                         {formatDate(answer.updatedAt)}
                       </span>
                       <button
                         type="button"
                         onClick={() => void remove(answer.id)}
-                        className="ml-auto flex items-center gap-1 rounded-sm px-2 py-1 font-sans text-[11px] font-semibold uppercase tracking-[0.1em] text-muted hover:text-primary"
+                        className="ml-auto flex items-center gap-1 rounded-sm px-2 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-muted hover:text-primary"
                         aria-label={`Delete answer to ${answer.prompt}`}
                       >
                         <XIcon className="h-3 w-3" />

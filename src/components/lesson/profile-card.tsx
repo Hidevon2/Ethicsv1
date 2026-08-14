@@ -2,17 +2,17 @@ import type { Profile } from "@/lib/types";
 
 export function ProfileCard({ profile }: { profile: Profile }) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]">
-      <header className="border-b-2 border-foreground bg-panel-muted px-4 py-3">
+    <article className="flex flex-col overflow-hidden rounded-[var(--radius)] border border-border bg-panel">
+      <header className="border-b border-border bg-panel-muted px-4 py-3">
         <div className="flex items-baseline gap-2">
           <h3 className="font-serif text-lg font-bold leading-tight text-foreground">
             {profile.name}
           </h3>
-          <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">
+          <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">
             {profile.lifespan}
           </span>
         </div>
-        <p className="mt-0.5 font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-primary">
+        <p className="mt-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
           {profile.role}
         </p>
       </header>

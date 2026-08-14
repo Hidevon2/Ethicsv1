@@ -1,33 +1,30 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
-  --background: #f4efe2;
-  --foreground: #211d16;
-  --primary: #a62a1e;
-  --primary-contrast: #fbf6ea;
-  --muted: #6d6350;
-  --accent: #0f6b5c;
-  --border: #d6c9ac;
-  --panel: #fbf6ea;
-  --panel-muted: #ede4cd;
-  --radius: 6px;
-}
+  --bg-void: #0d0b08;
+  --bg-panel: #16130c;
+  --accent-amber: #d98f3f;
+  --accent-amber-bright: #f2c179;
+  --accent-oxblood: #7a2e2e;
+  --accent-oxblood-soft: #c96b5a;
+  --ink-parchment: #ece4d3;
+  --ink-body: #b8b0a0;
+  --ink-muted: #8a8478;
 
-.dark {
-  --background: #16130c;
-  --foreground: #ece4d2;
-  --primary: #e06857;
-  --primary-contrast: #16130c;
-  --muted: #a99e88;
-  --accent: #58b8a0;
-  --border: #3a3326;
-  --panel: #201b12;
-  --panel-muted: #2a2419;
+  --background: var(--bg-void);
+  --foreground: var(--ink-parchment);
+  --primary: var(--accent-amber);
+  --primary-contrast: var(--bg-void);
+  --muted: var(--ink-muted);
+  --accent: var(--accent-amber-bright);
+  --border: rgba(236, 228, 211, 0.14);
+  --panel: var(--bg-panel);
+  --panel-muted: #1d1810;
+  --radius: 4px;
 }
 
 @theme inline {
+  --color-void: var(--bg-void);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -37,14 +34,20 @@
   --color-border: var(--border);
   --color-panel: var(--panel);
   --color-panel-muted: var(--panel-muted);
-  --font-serif: var(--font-spectral), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --color-ink-body: var(--ink-body);
+  --color-amber: var(--accent-amber);
+  --color-amber-bright: var(--accent-amber-bright);
+  --color-oxblood: var(--accent-oxblood);
+  --color-oxblood-soft: var(--accent-oxblood-soft);
+  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-work-sans), "Segoe UI", Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
 }
 
 ::selection {
@@ -53,14 +56,14 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--accent-amber);
   outline-offset: 2px;
   border-radius: 2px;
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
+  scrollbar-color: #2b261c transparent;
 }
 
 *::-webkit-scrollbar {
@@ -70,85 +73,55 @@ body {
   background: transparent;
 }
 *::-webkit-scrollbar-thumb {
-  background-color: var(--border);
+  background-color: #2b261c;
   border-radius: 3px;
 }
 
-/* Komiks halftone dot texture — flat SVG dot pattern, no gradient. */
-.halftone {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'><circle cx='2' cy='2' r='1.1' fill='%23211d16' fill-opacity='0.07'/></svg>");
+/* The wick — illumination as progress. A single amber fill growing left to
+   right along a hairline track. Nothing pulses or loops; the light only
+   travels once, tied to the reader's progress. */
+.wick-track {
+  position: relative;
+  height: 3px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 999px;
+  background-color: rgba(236, 228, 211, 0.08);
 }
-.dark .halftone {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'><circle cx='2' cy='2' r='1.1' fill='%23ece4d2' fill-opacity='0.08'/></svg>");
-}
-
-/* Komiks panel rule — the ink line that fences a panel. */
-.panel-rule {
-  border: 2px solid var(--foreground);
-  box-shadow: 4px 4px 0 var(--border);
-}
-
-/* Starburst stamp used for quiz verdicts. */
-.starburst {
-  clip-path: polygon(
-    50% 0%, 58% 18%, 79% 6%, 86% 27%, 100% 24%,
-    96% 46%, 100% 62%, 83% 71%, 86% 92%, 66% 84%,
-    57% 100%, 44% 86%, 24% 94%, 17% 74%, 0% 76%,
-    5% 55%, 0% 37%, 15% 29%, 10% 7%, 31% 14%
-  );
+.wick-fill {
+  height: 100%;
+  border-radius: inherit;
+  background-color: var(--accent-amber);
+  transform-origin: left center;
 }
 
-/* Speech-bubble tail pointing up from a panel. */
-.bubble-up::before,
-.bubble-up::after {
-  content: "";
-  position: absolute;
-  left: 20px;
-  width: 0;
-  height: 0;
+/* Reveal — a definition card, a verdict, a score panel arrives with a short
+   rise and a fade. 220ms, ease-out, never a slide from the side, never a
+   bounce. State-driven only, so it survives reduced motion. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.bubble-up::before {
-  top: -11px;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-bottom: 9px solid var(--foreground);
-}
-.bubble-up::after {
-  top: -8px;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 7px solid var(--panel);
+.rise-in {
+  animation: rise-in 220ms ease-out both;
 }
 
-/* Speech-bubble tail pointing down from a panel. */
-.bubble-down::before,
-.bubble-down::after {
-  content: "";
-  position: absolute;
-  left: 20px;
-  width: 0;
-  height: 0;
-}
-.bubble-down::before {
-  bottom: -11px;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-top: 9px solid var(--foreground);
-}
-.bubble-down::after {
-  bottom: -8px;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid var(--panel);
+/* Quiet divider hairline used across patterns. */
+.rule {
+  border-color: var(--border);
 }
 
-/* Motion — comic-book reactions, nothing ambient. Every entrance is one
-   authored snap: a bubble rising into place, a verdict fading in, a stamp
-   landing flat. No idle, loop, or drift. */
+/* Term popover — appears with the same short rise and fade as everything else. */
 @keyframes bubble-in {
   from {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -162,39 +135,14 @@ body {
   }
   to {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(6px);
   }
 }
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes stamp-in {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 .bubble-in {
-  animation: bubble-in 130ms ease-out both;
+  animation: bubble-in 220ms ease-out both;
 }
 .bubble-out {
   animation: bubble-out 100ms ease-in both;
-}
-.fade-in {
-  animation: fade-in 150ms ease-out both;
-}
-.stamp-in {
-  animation: stamp-in 150ms ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -202,7 +150,7 @@ body {
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
-    animation-duration: 50ms !important;
+    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
   }

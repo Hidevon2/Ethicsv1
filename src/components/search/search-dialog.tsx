@@ -79,7 +79,7 @@ export function SearchDialog() {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-foreground/40 p-4 pt-[12vh]"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 p-4 pt-[12vh]"
       role="dialog"
       aria-modal="true"
       aria-label="Search lessons and key terms"
@@ -87,8 +87,8 @@ export function SearchDialog() {
         if (e.target === e.currentTarget) setOpen(false);
       }}
     >
-      <div className="w-full max-w-xl overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]">
-        <div className="flex items-center gap-2 border-b-2 border-foreground px-3 focus-within:border-primary">
+      <div className="w-full max-w-xl overflow-hidden rounded-[var(--radius)] border border-border bg-panel shadow-[0_24px_64px_rgba(0,0,0,0.6)]">
+        <div className="flex items-center gap-2 border-b border-border px-3 focus-within:border-primary">
           <SearchIcon className="h-4 w-4 shrink-0 text-muted" />
           <label htmlFor="search-input" className="sr-only">
             Search all lessons
@@ -117,10 +117,12 @@ export function SearchDialog() {
 
         <div className="max-h-[60vh] overflow-y-auto">
           {query.trim().length < 2 ? (
-            <p className="px-4 py-8 text-center font-sans text-xs uppercase tracking-[0.14em] text-muted">
+            <p className="px-4 py-8 text-center font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
               Type at least two letters. Press{" "}
-              <kbd className="text-foreground">/</kbd> to open,{" "}
-              <kbd className="text-foreground">Esc</kbd> to close.
+              <kbd className="rounded-sm border border-border bg-void px-1 text-foreground">/</kbd>{" "}
+              to open,{" "}
+              <kbd className="rounded-sm border border-border bg-void px-1 text-foreground">Esc</kbd>{" "}
+              to close.
             </p>
           ) : results.length === 0 ? (
             <p className="px-4 py-8 text-center text-sm text-muted">
@@ -144,11 +146,11 @@ export function SearchDialog() {
                       index === activeIndex ? "bg-panel-muted" : "hover:bg-panel-muted",
                     )}
                   >
-                    <span className="mt-0.5 shrink-0 rounded-sm border border-foreground bg-background px-1.5 py-0.5 font-sans text-[10px] font-semibold uppercase tracking-[0.1em]">
+                    <span className="mt-0.5 shrink-0 rounded-sm border border-border bg-primary/10 px-1.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-primary">
                       {KIND_LABEL[result.kind]}
                     </span>
                     <span className="min-w-0">
-                      <span className="block font-sans text-xs font-semibold uppercase tracking-[0.08em] text-primary">
+                      <span className="block font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-primary">
                         {result.lesson.number}. {result.lesson.title}
                       </span>
                       <span className="mt-0.5 block text-sm leading-relaxed text-foreground">

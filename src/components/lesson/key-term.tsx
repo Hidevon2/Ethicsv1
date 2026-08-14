@@ -66,9 +66,9 @@ export function KeyTerm({ term }: { term: KeyTerm }) {
         onClick={toggle}
         aria-expanded={mounted}
         className={cn(
-          "inline-block rounded-sm border-2 border-foreground bg-background px-1 font-medium text-primary",
-          "transition-transform hover:-translate-y-px motion-reduce:hover:translate-y-0",
-          mounted && "bg-accent text-primary-contrast",
+          "inline-block rounded-sm px-0.5 font-medium text-primary underline decoration-primary/40 decoration-[1.5px] underline-offset-4",
+          "transition-colors hover:bg-primary/10 hover:decoration-primary",
+          mounted && "bg-primary/15 decoration-primary",
         )}
       >
         {term.term}
@@ -78,14 +78,14 @@ export function KeyTerm({ term }: { term: KeyTerm }) {
           role="region"
           aria-label={`Definition of ${term.term}`}
           className={cn(
-            "bubble-up absolute left-0 top-full z-30 mt-3 block max-w-[280px] rounded-[var(--radius)] border-2 border-foreground bg-panel px-3 py-2 shadow-[4px_4px_0_var(--border)]",
+            "absolute left-0 top-full z-30 mt-2 block max-w-[280px] rounded-[var(--radius)] border border-border bg-panel px-3 py-2.5 shadow-[0_12px_32px_rgba(0,0,0,0.5)]",
             leaving ? "bubble-out" : "bubble-in",
           )}
         >
-          <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-primary">
+          <span className="block font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
             {term.term}
           </span>
-          <span className="mt-0.5 block text-sm leading-relaxed text-foreground">
+          <span className="mt-1 block text-sm leading-relaxed text-ink-body">
             {term.definition}
           </span>
         </span>

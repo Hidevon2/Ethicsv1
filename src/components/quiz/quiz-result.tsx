@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { CheckCircleIcon, StampIcon } from "@/components/ui/icons";
+import { CheckIcon } from "@/components/ui/icons";
 
 export function QuizResult({
   score,
@@ -25,32 +25,30 @@ export function QuizResult({
       : `Full quiz: ${fullTotal} questions`;
   return (
     <div
-      className="stamp-in overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]"
+      className="rise-in overflow-hidden rounded-[var(--radius)] border border-border bg-panel"
       role="status"
       aria-live="polite"
     >
-      <div className="flex items-center gap-3 border-b-2 border-foreground bg-primary px-4 py-3 text-primary-contrast">
-        <span className={perfect ? "starburst flex h-9 w-9 items-center justify-center bg-primary-contrast text-primary" : "flex h-9 w-9 items-center justify-center rounded-sm border-2 border-foreground bg-background text-primary"}>
-          {perfect ? (
-            <StampIcon className="h-4 w-4" />
-          ) : (
-            <CheckCircleIcon className="h-5 w-5" />
-          )}
+      <div className="flex items-center gap-3 border-b border-border bg-primary/10 px-4 py-3">
+        <span className="flex h-9 w-9 items-center justify-center rounded-sm border border-primary bg-primary/10 text-primary">
+          <CheckIcon className="h-4 w-4" />
         </span>
         <div>
-          <p className="font-sans text-sm font-bold uppercase tracking-[0.12em]">
-            {perfect ? "Sagot! Perfect score" : "Quiz finished"}
+          <p className="font-mono text-sm font-semibold uppercase tracking-[0.12em] text-foreground">
+            {perfect ? "Sagot — perfect score" : "Quiz finished"}
           </p>
-          <p className="font-serif text-sm text-primary-contrast/80">
+          <p className="font-serif text-sm text-ink-body">
             {score} of {total} correct
           </p>
         </div>
       </div>
       <div className="px-4 py-4">
-        <div className="mb-4 flex h-6 w-full overflow-hidden rounded-sm border-2 border-foreground bg-background">
+        <div className="wick-track mb-4" role="presentation">
           <div
-            className="h-full bg-primary transition-all"
-            style={{ width: `${total === 0 ? 0 : (score / total) * 100}%` }}
+            className="wick-fill"
+            style={{
+              transform: `scaleX(${total === 0 ? 0 : score / total})`,
+            }}
           />
         </div>
         <div className="flex flex-wrap items-center gap-4">
@@ -62,7 +60,7 @@ export function QuizResult({
               Retry the {missed} missed
             </Button>
           )}
-          <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">
+          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
             {bestLabel}
           </p>
         </div>

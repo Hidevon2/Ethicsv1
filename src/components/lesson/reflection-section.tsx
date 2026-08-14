@@ -81,7 +81,7 @@ function ChallengePrompt({
         defaultValue={saved?.answer ?? ""}
         rows={4}
         placeholder="I-type ang iyong sagot dito… (Write your answer here)"
-        className="w-full resize-y rounded-[var(--radius)] border-2 border-foreground bg-background px-3 py-2 font-serif text-sm leading-relaxed text-foreground placeholder:text-muted"
+        className="w-full resize-y rounded-[var(--radius)] border border-border bg-background px-3 py-2 font-serif text-sm leading-relaxed text-foreground placeholder:text-muted focus:border-primary/60"
       />
       <div className="mt-2 flex items-center gap-3">
         <Button
@@ -95,7 +95,7 @@ function ChallengePrompt({
         </Button>
         {saved && (
           <>
-            <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.1em] text-accent">
+            <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
               On file
             </span>
             <button
@@ -157,7 +157,7 @@ export function ReflectionSection({
                     key={prompt.id}
                     className="flex gap-3 border-b border-border py-3 last:border-b-0"
                   >
-                    <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm border-2 border-foreground bg-background font-sans text-xs font-bold text-accent">
+                    <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm border border-border bg-primary/10 font-mono text-xs font-semibold text-primary">
                       ?
                     </span>
                     <p className="text-pretty font-serif text-base leading-relaxed text-foreground">

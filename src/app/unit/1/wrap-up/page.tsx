@@ -1,12 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import { AppHeader } from "@/components/layout/app-header";
 import { SearchDialog } from "@/components/search/search-dialog";
 import { CalloutBlock } from "@/components/lesson/callout-block";
 import { ArrowRightIcon } from "@/components/ui/icons";
-import { findGlossaryTerm, getLesson } from "@/lib/content";
+import { findGlossaryTerm, getLesson, getLessonsByUnit } from "@/lib/content";
 import { unitOneWrapUp } from "@/lib/content/unit1-wrapup";
+import { useLessonProgress } from "@/lib/hooks";
+import { cn } from "@/lib/utils";
 
 export default function UnitOneWrapUpPage() {
+  const { progress } = useLessonProgress();
+  const lessons = getLessonsByUnit(1);
+
   return (
     <div className="flex min-h-dvh flex-col bg-background font-serif text-foreground">
       <AppHeader />
@@ -14,16 +21,62 @@ export default function UnitOneWrapUpPage() {
 
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-24 pt-10 sm:px-6">
         <header className="mb-10">
-          <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
             Unit I · Wrap-up
           </p>
           <h1 className="mt-3 text-balance font-serif text-4xl font-bold leading-tight text-foreground sm:text-5xl">
             HARNESS · SUMMARY · KEY WORDS
           </h1>
-          <p className="mt-4 max-w-[68ch] text-balance font-serif text-lg italic leading-relaxed text-muted">
+          <p className="mt-4 max-w-[68ch] text-balance font-serif text-lg italic leading-relaxed text-ink-body">
             Where the unit leaves you: one capstone discussion, the unit in four
             bullets, and the words that carried it.
           </p>
+
+          <div className="mt-8" role="presentation">
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
+              The unit&rsquo;s five lessons
+            </p>
+            <ol className="mt-3 flex items-center">
+              {lessons.map((lesson, index) => {
+                const done = progress.some(
+                  (p) => p.lessonSlug === lesson.slug && p.completed,
+                );
+                return (
+                  <li key={lesson.slug} className="flex flex-1 items-center last:flex-none">
+                    {index > 0 && (
+                      <span
+                        aria-hidden="true"
+                        className="h-px flex-1 bg-border"
+                      />
+                    )}
+                    <Link
+                      href={`/lesson?slug=${lesson.slug}`}
+                      aria-label={`Lesson ${lesson.number}: ${lesson.title} — ${done ? "complete" : "incomplete"}`}
+                      className={cn(
+                        "flex h-4 w-4 shrink-0 items-center justify-center rounded-full border transition-colors",
+                        done
+                          ? "border-primary bg-primary"
+                          : "border-border bg-panel",
+                      )}
+                    >
+                      {done && (
+                        <span
+                          aria-hidden="true"
+                          className="h-1 w-1 rounded-full bg-primary-contrast"
+                        />
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ol>
+            <p className="mt-2 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
+              {lessons.filter((lesson) =>
+                progress.some((p) => p.lessonSlug === lesson.slug && p.completed),
+              ).length}{" "}
+              of {lessons.length} lit
+            </p>
+          </div>
         </header>
 
         <CalloutBlock variant="challenge" title={unitOneWrapUp.harness.title}>
@@ -42,14 +95,14 @@ export default function UnitOneWrapUpPage() {
           <p className="mb-4 max-w-[68ch] font-serif text-sm italic leading-relaxed text-muted">
             The book&rsquo;s own four-part recap of Unit I.
           </p>
-          <div className="overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]">
-            <ol className="px-5 py-4">
+          <div className="overflow-hidden rounded-[var(--radius)] border border-border bg-panel">
+            <ol className="px-5 py-2">
               {unitOneWrapUp.summary.map((bullet, index) => (
                 <li
                   key={index}
                   className="flex gap-3 border-b border-border py-3 last:border-b-0"
                 >
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm border-2 border-foreground bg-background font-sans text-xs font-bold text-primary">
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm border border-border bg-primary/10 font-mono text-xs font-semibold text-primary">
                     {index + 1}
                   </span>
                   <span className="text-pretty font-serif text-base leading-relaxed text-foreground">
@@ -69,14 +122,14 @@ export default function UnitOneWrapUpPage() {
             >
               Key words
             </h2>
-            <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">
+            <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">
               {unitOneWrapUp.keyWords.length} to know
             </span>
           </header>
           <p className="mb-4 max-w-[68ch] font-serif text-sm italic leading-relaxed text-muted">
             Each term links back to the lesson where it is defined.
           </p>
-          <dl className="divide-y-2 divide-foreground/25 border-y-2 border-foreground">
+          <dl className="divide-y divide-border border-y border-border">
             {unitOneWrapUp.keyWords.map((keyword) => {
               const entry = keyword.termSlug
                 ? findGlossaryTerm(keyword.termSlug)
@@ -95,12 +148,12 @@ export default function UnitOneWrapUpPage() {
                   <dt>
                     <Link
                       href={href}
-                      className="font-sans text-sm font-bold uppercase tracking-[0.08em] text-primary underline-offset-4 hover:underline"
+                      className="font-serif text-sm font-semibold uppercase tracking-[0.04em] text-primary underline-offset-4 hover:underline"
                     >
                       {keyword.label}
                     </Link>
                     {lesson && (
-                      <span className="mt-0.5 block font-sans text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
+                      <span className="mt-0.5 block font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
                         {lesson.number}. {lesson.title}
                       </span>
                     )}
@@ -122,13 +175,13 @@ export default function UnitOneWrapUpPage() {
             Further reading
           </h2>
           <CalloutBlock variant="note" title="Further reading">
-            <p className="mb-4 font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
+            <p className="mb-4 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
               {unitOneWrapUp.furtherReading.note}
             </p>
             <p className="text-pretty font-serif text-[15px] leading-relaxed text-foreground">
               {unitOneWrapUp.furtherReading.text}
             </p>
-            <p className="mb-2 mt-5 font-sans text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
+            <p className="mb-2 mt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
               Read further into this site&rsquo;s key terms
             </p>
             <div className="flex flex-wrap gap-2">
@@ -139,7 +192,7 @@ export default function UnitOneWrapUpPage() {
                   <Link
                     key={topicSlug}
                     href={`/lesson?slug=${entry.lesson.slug}#term-${topicSlug}`}
-                    className="rounded-[var(--radius)] border-2 border-foreground bg-background px-2.5 py-1 font-sans text-[11px] font-semibold uppercase tracking-[0.08em] text-primary transition-colors hover:bg-panel-muted"
+                    className="rounded-[var(--radius)] border border-border bg-background px-2.5 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-primary transition-colors hover:border-primary/50 hover:bg-panel-muted"
                   >
                     {entry.term}
                   </Link>
@@ -151,11 +204,11 @@ export default function UnitOneWrapUpPage() {
 
         <Link
           href="/unit/1/exam"
-          className="mt-14 block overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)] transition-all hover:-translate-y-0.5 hover:shadow-[3px_3px_0_var(--border)] motion-reduce:hover:translate-y-0"
+          className="group mt-14 block overflow-hidden rounded-[var(--radius)] border border-border bg-panel transition-colors hover:border-primary/50"
         >
           <div className="flex items-center justify-between gap-4 px-5 py-5">
             <span className="min-w-0">
-              <span className="block font-sans text-[11px] font-bold uppercase tracking-[0.16em] text-primary">
+              <span className="block font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
                 Ready for Unit II?
               </span>
               <span className="mt-1 block font-serif text-2xl font-bold leading-snug text-foreground">
@@ -165,13 +218,13 @@ export default function UnitOneWrapUpPage() {
                 50 questions · all five lessons · pass with 20 or higher to unlock Unit II
               </span>
             </span>
-            <ArrowRightIcon className="h-6 w-6 shrink-0 text-primary" />
+            <ArrowRightIcon className="h-6 w-6 shrink-0 text-primary transition-transform group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
           </div>
         </Link>
 
         <Link
           href="/"
-          className="mt-10 inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-[0.12em] text-primary underline-offset-4 hover:underline"
+          className="mt-10 inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-primary underline-offset-4 hover:underline"
         >
           Back to the Unit I cover
         </Link>

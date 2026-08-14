@@ -11,16 +11,16 @@ const ICONS: Record<string, ReactNode> = {
 
 function SourceCard({ source }: { source: SourceComparison }) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]">
-      <header className="flex items-center gap-3 border-b-2 border-foreground bg-panel-muted px-4 py-3">
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm border-2 border-foreground bg-background text-primary">
+    <article className="flex flex-col overflow-hidden rounded-[var(--radius)] border border-border bg-panel">
+      <header className="flex items-center gap-3 border-b border-border bg-panel-muted px-4 py-3">
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm border border-border bg-primary/10 text-primary">
           {ICONS[source.id]}
         </span>
         <div className="min-w-0">
           <h3 className="font-serif text-lg font-bold leading-tight text-foreground">
             {source.name}
           </h3>
-          <p className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-muted">
+          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
             {source.tagline}
           </p>
         </div>
@@ -32,13 +32,13 @@ function SourceCard({ source }: { source: SourceComparison }) {
         </p>
 
         <div>
-          <p className="mb-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.14em] text-accent">
+          <p className="mb-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
             Where it helps
           </p>
           <ul className="space-y-1.5">
             {source.strengths.map((strength, index) => (
               <li key={index} className="flex items-start gap-2">
-                <CheckIcon className="mt-1 h-3.5 w-3.5 shrink-0 text-accent" />
+                <CheckIcon className="mt-1 h-3.5 w-3.5 shrink-0 text-primary" />
                 <span className="text-pretty font-serif text-sm leading-relaxed text-foreground">
                   {strength}
                 </span>
@@ -48,14 +48,14 @@ function SourceCard({ source }: { source: SourceComparison }) {
         </div>
 
         <div>
-          <p className="mb-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.14em] text-primary">
+          <p className="mb-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">
             Where it falls short
           </p>
           <ul className="space-y-1.5">
             {source.limitations.map((limitation, index) => (
               <li key={index} className="flex items-start gap-2">
-                <XIcon className="mt-1 h-3.5 w-3.5 shrink-0 text-primary" />
-                <span className="text-pretty font-serif text-sm leading-relaxed text-foreground">
+                <XIcon className="mt-1 h-3.5 w-3.5 shrink-0 text-muted" />
+                <span className="text-pretty font-serif text-sm leading-relaxed text-muted">
                   {limitation}
                 </span>
               </li>
@@ -71,13 +71,13 @@ export function SourcesView() {
   return (
     <div>
       <header className="mb-10">
-        <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
+        <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
           Lesson 4 · Sources of Authority
         </p>
         <h1 className="mt-3 text-balance font-serif text-4xl font-bold leading-tight text-foreground sm:text-5xl">
           Where do the commands come from?
         </h1>
-        <p className="mt-4 max-w-[68ch] text-balance font-serif text-lg italic leading-relaxed text-muted">
+        <p className="mt-4 max-w-[68ch] text-balance font-serif text-lg italic leading-relaxed text-ink-body">
           Three authorities claim our obedience — the state, the divine, and
           the community. Compare their strengths and their limits, then judge.
         </p>

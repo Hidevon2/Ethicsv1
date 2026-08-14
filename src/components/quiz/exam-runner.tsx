@@ -83,12 +83,12 @@ export function ExamRunner({
       {submitted ? (
         <div>
           <div
-            className="stamp-in overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]"
+            className="rise-in overflow-hidden rounded-[var(--radius)] border border-border bg-panel"
             role="status"
             aria-live="polite"
           >
-            <div className="border-b-2 border-foreground bg-panel-muted px-4 py-3">
-              <p className="font-sans text-xs font-bold uppercase tracking-[0.14em] text-foreground">
+            <div className="border-b border-border bg-primary/10 px-4 py-3">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-foreground">
                 Examination result
               </p>
             </div>
@@ -96,6 +96,12 @@ export function ExamRunner({
               <p className="font-serif text-4xl font-bold text-foreground">
                 {score} <span className="text-2xl text-muted">of {attempt.length}</span>
               </p>
+              <div className="wick-track my-4" role="presentation">
+                <div
+                  className="wick-fill"
+                  style={{ transform: `scaleX(${attempt.length === 0 ? 0 : score / attempt.length})` }}
+                />
+              </div>
               <p className="mt-2 font-serif text-base italic leading-relaxed text-foreground">
                 {passed
                   ? "Passed — you are ready to continue to Unit II."
@@ -105,7 +111,7 @@ export function ExamRunner({
                 <Button variant="primary" size="sm" onClick={retake}>
                   Take the examination again
                 </Button>
-                <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
                   Questions reshuffle on each attempt
                 </p>
               </div>

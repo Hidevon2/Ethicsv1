@@ -13,16 +13,16 @@ export function LessonNav({ slug }: { slug: LessonSlug }) {
   return (
     <nav
       aria-label="Lesson navigation"
-      className="mt-16 grid gap-4 border-t-2 border-foreground pt-6 sm:grid-cols-2"
+      className="mt-16 grid gap-4 border-t border-border pt-6 sm:grid-cols-2"
     >
       {prev ? (
         <Link
           href={`/lesson?slug=${prev.slug}`}
-          className="group flex items-center gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 shadow-[3px_3px_0_var(--border)] transition-all hover:-translate-y-0.5 hover:shadow-[2px_2px_0_var(--border)] motion-reduce:hover:translate-y-0"
+          className="group flex items-center gap-3 rounded-[var(--radius)] border border-border bg-panel px-4 py-3 transition-colors hover:border-primary/50"
         >
           <ArrowLeftIcon className="h-4 w-4 shrink-0 text-primary" />
           <span className="min-w-0">
-            <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.16em] text-muted">
+            <span className="block font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
               Previous lesson
             </span>
             <span className="block truncate font-serif text-sm font-semibold text-foreground">
@@ -37,10 +37,10 @@ export function LessonNav({ slug }: { slug: LessonSlug }) {
       {isLastUnitOne ? (
         <Link
           href="/unit/1/exam"
-          className="group flex items-center justify-end gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 text-right shadow-[3px_3px_0_var(--border)] transition-all hover:-translate-y-0.5 hover:shadow-[2px_2px_0_var(--border)] motion-reduce:hover:translate-y-0"
+          className="group flex items-center justify-end gap-3 rounded-[var(--radius)] border border-border bg-panel px-4 py-3 text-right transition-colors hover:border-primary/50"
         >
           <span className="min-w-0">
-            <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.16em] text-muted">
+            <span className="block font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
               Next — the gate to Unit II
             </span>
             <span className="block truncate font-serif text-sm font-semibold text-foreground">
@@ -52,10 +52,10 @@ export function LessonNav({ slug }: { slug: LessonSlug }) {
       ) : next ? (
         <Link
           href={`/lesson?slug=${next.slug}`}
-          className="group flex items-center justify-end gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 text-right shadow-[3px_3px_0_var(--border)] transition-all hover:-translate-y-0.5 hover:shadow-[2px_2px_0_var(--border)] motion-reduce:hover:translate-y-0"
+          className="group flex items-center justify-end gap-3 rounded-[var(--radius)] border border-border bg-panel px-4 py-3 text-right transition-colors hover:border-primary/50"
         >
           <span className="min-w-0">
-            <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.16em] text-muted">
+            <span className="block font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
               Next lesson
             </span>
             <span className="block truncate font-serif text-sm font-semibold text-foreground">

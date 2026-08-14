@@ -11,27 +11,27 @@ const VARIANTS: Record<
   think: {
     label: "Think",
     icon: <SparkIcon className="h-3.5 w-3.5" />,
-    tagClass: "bg-primary text-primary-contrast",
+    tagClass: "text-primary",
   },
   experience: {
     label: "Experience",
     icon: <EyeIcon className="h-3.5 w-3.5" />,
-    tagClass: "bg-accent text-primary-contrast",
+    tagClass: "text-primary",
   },
   assess: {
     label: "Assess",
     icon: <ListCheckIcon className="h-3.5 w-3.5" />,
-    tagClass: "bg-foreground text-background",
+    tagClass: "text-primary",
   },
   challenge: {
     label: "Challenge",
     icon: <BoltIcon className="h-3.5 w-3.5" />,
-    tagClass: "bg-primary text-primary-contrast",
+    tagClass: "text-primary",
   },
   note: {
     label: "Note",
     icon: <PenIcon className="h-3.5 w-3.5" />,
-    tagClass: "bg-muted text-background",
+    tagClass: "text-primary",
   },
 };
 
@@ -50,18 +50,18 @@ export function CalloutBlock({
   return (
     <section
       className={cn(
-        "overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]",
+        "overflow-hidden rounded-[var(--radius)] border border-border bg-panel",
         className,
       )}
     >
-      <header className="flex items-center gap-2 border-b-2 border-foreground bg-panel-muted px-4 py-2.5">
-        <span className={cn("flex h-6 w-6 items-center justify-center rounded-sm border-2 border-foreground", config.tagClass)}>
+      <header className="flex items-center gap-2.5 border-b border-border bg-panel-muted px-4 py-2.5">
+        <span className={cn("flex h-6 w-6 items-center justify-center rounded-sm border border-border bg-primary/10", config.tagClass)}>
           {config.icon}
         </span>
-        <h3 className="font-sans text-xs font-bold uppercase tracking-[0.14em] text-foreground">
+        <h3 className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground">
           {title}
         </h3>
-        <span className="ml-auto hidden font-sans text-[10px] font-semibold uppercase tracking-[0.14em] text-muted sm:block">
+        <span className="ml-auto hidden font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted sm:block">
           {config.label}
         </span>
       </header>
