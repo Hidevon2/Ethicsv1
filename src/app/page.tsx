@@ -80,7 +80,7 @@ export default function Home() {
         </div>
 
         <div className="mx-auto max-w-3xl px-4 pb-24 pt-10 sm:px-6">
-          <div className="relative overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[5px_5px_0_var(--border)]">
+          <div className="relative overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]">
             <ol ref={tocRef} role="list" onKeyDown={onTocKeyDown} className="divide-y-2 divide-foreground/15">
               {unitLessons.map((lesson) => {
                 const p = progress.find((item) => item.lessonSlug === lesson.slug);
@@ -118,7 +118,7 @@ export default function Home() {
                           {p?.completed ? " · complete" : ""}
                         </span>
                       </span>
-                      <ArrowRightIcon className="h-5 w-5 shrink-0 text-muted transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                      <ArrowRightIcon className="h-5 w-5 shrink-0 text-muted transition-transform group-hover:translate-x-1 group-hover:text-primary motion-reduce:group-hover:translate-x-0" />
                     </Link>
                   </li>
                 );
@@ -152,7 +152,7 @@ export default function Home() {
               aria-valuemax={unitLessons.length}
             >
               <div
-                className="h-full bg-primary transition-all duration-300"
+                className="h-full bg-primary transition-all duration-150"
                 style={{
                   width: `${unitLessons.length === 0 ? 0 : (completedCount / unitLessons.length) * 100}%`,
                 }}
@@ -168,7 +168,7 @@ export default function Home() {
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <Link
               href="/unit/1/wrap-up"
-              className="group flex items-center justify-between gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 shadow-[3px_3px_0_var(--border)] transition-transform hover:-translate-y-0.5"
+              className="group flex items-center justify-between gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 shadow-[3px_3px_0_var(--border)] transition-all hover:-translate-y-0.5 hover:shadow-[2px_2px_0_var(--border)] motion-reduce:hover:translate-y-0"
             >
               <span className="min-w-0">
                 <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.16em] text-muted">
@@ -178,11 +178,11 @@ export default function Home() {
                   HARNESS · SUMMARY · KEY WORDS
                 </span>
               </span>
-              <ArrowRightIcon className="h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-1" />
+              <ArrowRightIcon className="h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Link>
             <Link
               href="/unit/2"
-              className="group flex items-center justify-between gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 shadow-[3px_3px_0_var(--border)] transition-transform hover:-translate-y-0.5"
+              className="group flex items-center justify-between gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 shadow-[3px_3px_0_var(--border)] transition-all hover:-translate-y-0.5 hover:shadow-[2px_2px_0_var(--border)] motion-reduce:hover:translate-y-0"
             >
               <span className="min-w-0">
                 <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.16em] text-muted">
@@ -192,7 +192,7 @@ export default function Home() {
                   Unit II · Utilitarianism
                 </span>
               </span>
-              <ArrowRightIcon className="h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-1" />
+              <ArrowRightIcon className="h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" />
             </Link>
           </div>
         </div>

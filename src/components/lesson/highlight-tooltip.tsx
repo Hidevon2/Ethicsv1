@@ -31,7 +31,7 @@ export function HighlightTooltip({
                 key={key}
                 type="button"
                 onClick={() => onPick(key)}
-                className="h-6 w-6 rounded-sm border-2 border-foreground transition-transform hover:-translate-y-px"
+                className="h-6 w-6 rounded-sm border-2 border-foreground transition-transform hover:-translate-y-px motion-reduce:hover:translate-y-0"
                 style={{ backgroundColor: value.hex }}
                 title={value.label}
                 aria-label={`Highlight with ${value.label}`}

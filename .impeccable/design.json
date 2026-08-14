@@ -100,7 +100,11 @@
       "scrollbar": { "role": "control", "displayName": "Scrollbar", "canonical": "3px", "purpose": "The thin scrollbar thumb corner." }
     },
     "motion": [
-      { "name": "press", "value": "transform 120ms ease-out, box-shadow 120ms ease-out", "purpose": "Comic-book press on buttons and interactive panels." }
+      { "name": "press", "value": "transform 120ms ease-out, box-shadow 120ms ease-out", "purpose": "Comic-book press on buttons and interactive panels." },
+      { "name": "bubble-up", "value": "translate + fade in ~130ms, reverse ~100ms", "purpose": "Key term speech-bubble definition: pop entrance, no spring or overshoot." },
+      { "name": "verdict-fade", "value": "fade in ~150ms", "purpose": "Quiz Correct!/Not quite. feedback with aria-live — never slides or bounces." },
+      { "name": "stamp-in", "value": "scale 0.9 -> 1 ~150ms, plays once", "purpose": "Completion starburst / score panel landing like a stamp punched down." },
+      { "name": "ribbon", "value": "direct scroll tracking, no easing lag", "purpose": "The only continuous motion: the 3px reading-progress fill." }
     ],
     "breakpoints": [
       { "name": "sm", "value": "640px" },
@@ -171,7 +175,9 @@
     "rules": [
       { "name": "The One-Stamp Rule", "body": "Komiks red is used on a small minority of any given screen. Its rarity is what makes the stamp read as a stamp; when red appears everywhere, nothing is approved.", "section": "colors" },
       { "name": "The Print-Measure Rule", "body": "Narration paragraphs never exceed ~68ch, so the reader returns to the same comfortable line length on every lesson page and never reads a full-width wall of ink.", "section": "typography" },
-      { "name": "The No-Glow Rule", "body": "Depth comes only from offset ink shadows. Any blurred, colored, or zero-offset shadow is decoration and is banned.", "section": "elevation" }
+      { "name": "The No-Glow Rule", "body": "Depth comes only from offset ink shadows. Any blurred, colored, or zero-offset shadow is decoration and is banned.", "section": "elevation" },
+      { "name": "The Authored Moment Rule", "body": "If a transition is not a stamp, a pop, or a press tied to reader action, it does not happen. No scroll-triggered reveals, word-by-word text animation, parallax, glow pulses, decorative spinners, or transitions longer than ~200ms.", "section": "motion" },
+      { "name": "The Reduced-Motion Rule", "body": "Under prefers-reduced-motion, hover/press translates drop to zero (shadow and color only, instant), information-carrying fades stay but shorten to ~50ms, and no state — correct/incorrect, saved, completed — is ever stripped.", "section": "motion" }
     ],
     "dos": [
       "Do set every block inside a 2px ink-outlined panel with a hard offset shadow — that is the komiks container grammar.",
@@ -179,14 +185,16 @@
       "Do use Komiks Red only for stamps, verdicts, and first-class actions; confirm correct answers and saved work in Komiks Teal.",
       "Do texture surfaces with halftone dot fields only where the printed world lives (the cover band), never content areas.",
       "Do keep one pressed-panel motion per interactive element — press in, shadow tightens, done.",
-      "Do ship both newsprint light and night-press dark themes from the same ink token set."
+      "Do ship both newsprint light and night-press dark themes from the same ink token set.",
+      "Do respect prefers-reduced-motion: kill hover/press movement, keep information-carrying fades at ~50ms, and never strip state."
     ],
     "donts": [
       "Don't use gradients, glow, blur, or soft-rounded elevation — depth is hard offset ink shadows only.",
       "Don't reach for purple/violet or any accent beyond the red stamp and teal confirmation.",
       "Don't use raw bg-white/text-black — all surfaces and text come from the newsprint/ink tokens.",
       "Don't break the reading column to card grids on the lesson page — it is an article, not a dashboard.",
-      "Don't let the rounded corners soften past a stamp's crisp 6px or become pills."
+      "Don't let the rounded corners soften past a stamp's crisp 6px or become pills.",
+      "Don't animate without an authored moment — no scroll-triggered reveals, word-by-word text animation, parallax, glow pulses, decorative spinners, or transitions past ~200ms."
     ]
   }
 }

@@ -83,7 +83,7 @@ export function ExamRunner({
       {submitted ? (
         <div>
           <div
-            className="overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]"
+            className="stamp-in overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]"
             role="status"
             aria-live="polite"
           >

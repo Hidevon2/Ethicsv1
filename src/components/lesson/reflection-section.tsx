@@ -81,7 +81,7 @@ function ChallengePrompt({
         defaultValue={saved?.answer ?? ""}
         rows={4}
         placeholder="I-type ang iyong sagot dito… (Write your answer here)"
-        className="w-full resize-y rounded-[var(--radius)] border-2 border-foreground bg-background px-3 py-2 font-serif text-sm leading-relaxed text-foreground placeholder:text-muted focus:outline-none"
+        className="w-full resize-y rounded-[var(--radius)] border-2 border-foreground bg-background px-3 py-2 font-serif text-sm leading-relaxed text-foreground placeholder:text-muted"
       />
       <div className="mt-2 flex items-center gap-3">
         <Button

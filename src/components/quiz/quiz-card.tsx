@@ -213,7 +213,7 @@ export function QuizCard({
 
         <div aria-live="polite">
           {verdict && (
-            <div className="mt-4 rounded-[var(--radius)] border-2 border-foreground bg-background px-3 py-2.5">
+            <div className="fade-in mt-4 rounded-[var(--radius)] border-2 border-foreground bg-background px-3 py-2.5">
               <p className="font-sans text-xs font-bold uppercase tracking-[0.12em]">
                 {verdict === "Correct!" ? (
                   <span className="text-accent">Correct!</span>

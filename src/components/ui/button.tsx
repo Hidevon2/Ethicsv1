@@ -9,9 +9,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-primary text-primary-contrast border-2 border-foreground shadow-[3px_3px_0_var(--border)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_var(--border)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none",
+          "bg-primary text-primary-contrast border-2 border-foreground shadow-[3px_3px_0_var(--border)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_var(--border)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:hover:translate-x-0 motion-reduce:hover:translate-y-0 motion-reduce:active:translate-x-0 motion-reduce:active:translate-y-0",
         secondary:
-          "bg-panel text-foreground border-2 border-foreground shadow-[3px_3px_0_var(--border)] hover:bg-panel-muted hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_var(--border)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none",
+          "bg-panel text-foreground border-2 border-foreground shadow-[3px_3px_0_var(--border)] hover:bg-panel-muted hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_var(--border)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:hover:translate-x-0 motion-reduce:hover:translate-y-0 motion-reduce:active:translate-x-0 motion-reduce:active:translate-y-0",
         ghost: "text-foreground hover:bg-panel-muted",
       },
       size: {

@@ -151,7 +151,7 @@ export default function UnitOneWrapUpPage() {
 
         <Link
           href="/unit/1/exam"
-          className="mt-14 block overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)] transition-transform hover:-translate-y-0.5"
+          className="mt-14 block overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)] transition-all hover:-translate-y-0.5 hover:shadow-[3px_3px_0_var(--border)] motion-reduce:hover:translate-y-0"
         >
           <div className="flex items-center justify-between gap-4 px-5 py-5">
             <span className="min-w-0">

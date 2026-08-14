@@ -87,8 +87,8 @@ export function SearchDialog() {
         if (e.target === e.currentTarget) setOpen(false);
       }}
     >
-      <div className="w-full max-w-xl overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[6px_6px_0_var(--border)]">
-        <div className="flex items-center gap-2 border-b-2 border-foreground px-3">
+      <div className="w-full max-w-xl overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]">
+        <div className="flex items-center gap-2 border-b-2 border-foreground px-3 focus-within:border-primary">
           <SearchIcon className="h-4 w-4 shrink-0 text-muted" />
           <label htmlFor="search-input" className="sr-only">
             Search all lessons

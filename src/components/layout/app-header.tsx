@@ -25,7 +25,7 @@ export function AppHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b-2 border-foreground bg-background">
+    <header className="sticky top-0 z-40 border-b-2 border-foreground bg-panel">
       <div className="mx-auto flex h-14 max-w-6xl items-center gap-3 px-4 sm:px-6">
         <Link
           href="/"
@@ -85,7 +85,7 @@ export function AppHeader() {
           <button
             type="button"
             onClick={openSearch}
-            className="ml-1 flex h-9 items-center gap-2 rounded-[var(--radius)] border-2 border-foreground bg-panel px-3 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-muted transition-colors hover:bg-panel-muted hover:text-foreground"
+            className="ml-1 flex h-9 items-center gap-2 rounded-[var(--radius)] border-2 border-foreground bg-background px-3 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-muted transition-colors hover:bg-panel-muted hover:text-foreground"
             aria-label="Open search"
           >
             <SearchIcon className="h-4 w-4" />

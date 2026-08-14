@@ -73,7 +73,7 @@ export default function UnitTwoPage() {
             </p>
           ) : exam.passed ? (
             <>
-          <div className="relative overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[5px_5px_0_var(--border)]">
+          <div className="relative overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]">
             <ol role="list" className="divide-y-2 divide-foreground/15">
               {unitLessons.map((lesson) => {
                 const p = progress.find((item) => item.lessonSlug === lesson.slug);
@@ -110,7 +110,7 @@ export default function UnitTwoPage() {
                           {p?.completed ? " · complete" : ""}
                         </span>
                       </span>
-                      <ArrowRightIcon className="h-5 w-5 shrink-0 text-muted transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                      <ArrowRightIcon className="h-5 w-5 shrink-0 text-muted transition-transform group-hover:translate-x-1 group-hover:text-primary motion-reduce:group-hover:translate-x-0" />
                     </Link>
                   </li>
                 );
@@ -144,7 +144,7 @@ export default function UnitTwoPage() {
               aria-valuemax={unitLessons.length}
             >
               <div
-                className="h-full bg-primary transition-all duration-300"
+                className="h-full bg-primary transition-all duration-150"
                 style={{
                   width: `${unitLessons.length === 0 ? 0 : (completedCount / unitLessons.length) * 100}%`,
                 }}
@@ -158,7 +158,7 @@ export default function UnitTwoPage() {
           </div>
             </>
           ) : (
-            <div className="overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[5px_5px_0_var(--border)]">
+            <div className="overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]">
               <div className="flex items-center gap-3 border-b-2 border-foreground bg-primary px-4 py-3 text-primary-contrast">
                 <span className="flex h-9 w-9 items-center justify-center rounded-sm border-2 border-foreground bg-background font-sans text-xs font-bold text-primary">
                   {UNIT1_EXAM_PASS_SCORE}

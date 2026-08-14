@@ -52,7 +52,7 @@ export function MatchingQuestion({
                 }}
                 disabled={revealed}
                 aria-label={`Match ${pair.left}`}
-                className="h-9 w-full rounded-[var(--radius)] border-2 border-foreground bg-background px-2 font-sans text-sm text-foreground focus:outline-none sm:w-[300px]"
+                className="h-9 w-full rounded-[var(--radius)] border-2 border-foreground bg-background px-2 font-sans text-sm text-foreground sm:w-[300px]"
               >
                 <option value="">Choose…</option>
                 {rightOptions.map((right, rightIndex) => (
@@ -70,7 +70,7 @@ export function MatchingQuestion({
           type="button"
           onClick={() => onReveal(isCorrect)}
           disabled={!allPicked}
-          className="mt-4 inline-flex h-9 items-center gap-2 rounded-[var(--radius)] border-2 border-foreground bg-primary px-4 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-primary-contrast shadow-[3px_3px_0_var(--border)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_var(--border)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none disabled:cursor-not-allowed disabled:opacity-50"
+          className="mt-4 inline-flex h-9 items-center gap-2 rounded-[var(--radius)] border-2 border-foreground bg-primary px-4 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-primary-contrast shadow-[3px_3px_0_var(--border)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_var(--border)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:hover:translate-x-0 motion-reduce:hover:translate-y-0 motion-reduce:active:translate-x-0 motion-reduce:active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50"
         >
           Check matching
         </button>

@@ -174,6 +174,34 @@ Depth is printed, not ambient. Panels sit forward of the page via a hard offset 
 ### Named Rules
 **The No-Glow Rule.** Depth comes only from offset ink shadows. Any blurred, colored, or zero-offset shadow is decoration and is banned.
 
+## Motion
+
+Motion is comic-book energy on interaction and nothing else. Every animation is a single authored moment tied to a reader action — a stamp, a pop, or a press. Nothing plays on load, scroll, or a timer; nothing idles, loops, or drifts. The one exception is the reading-progress ribbon, the module's single continuously animated element.
+
+### Vocabulary
+- **Pressed** (hover/active: shadow shrinks to `2px 2px 0` then `none`, element translates +1/+3px): the comic-book press of pushing a printed button. Applies to buttons, nav pills, and other controls.
+- **Emergent** (hover/focus: shadow re-draws to `3px 3px 0`, element translates -2px up): the comic-book tension of a panel picked up from the table. Applies to lesson cards and TOC/nav panels that lift. Static reading panels never move — the narration must not shift under the reader.
+- **Reserved**: continuous motion appears in exactly one place — the 3px reading-progress ribbon that tracks scroll position directly, with no easing lag.
+
+### Interaction Choreography
+- **Key term chips:** the speech-bubble definition pops with a `bubble-up` entrance — translate + fade over ~130ms, no spring or overshoot. Dismiss is the reverse, ~100ms. The bubble is a first-class printed panel, not a gray tooltip.
+- **Quiz options:** the chosen option locks instantly — no animation on the choice itself. The teal "Correct!" / red "Not quite." verdict fades in over ~150ms (never slides or bounces) and is announced via `aria-live`.
+- **Completion stamp:** the starburst "Sagot! Perfect score" or the score panel lands once with a scale-in (0.9 → 1, ~150ms) — a stamp punched down, never spinning or bouncing.
+- **Focus rings** appear instantly; only the underlying surface may ease.
+
+### Page & Scroll Motion
+- **Lesson navigation** is an instant content swap — a page turn, never a crossfade or slide.
+- **The TOC/sidebar** has no entrance animation: it is present, sticky, and static.
+- **The reading-progress ribbon** tracks scroll directly with no easing lag.
+
+### Reduced Motion (`prefers-reduced-motion: reduce`)
+- Hover/press translates drop to zero — only shadow and color change, instantly, with no movement.
+- Information-carrying fades stay but shorten to ~50ms: definition cards, quiz verdicts, and the completion stamp. They are never removed, because they carry state.
+- Every state — correct/incorrect, saved, completed — must still be conveyed visually and programmatically without relying on motion.
+
+### Named Rules
+**The Authored Moment Rule.** If a transition is not a stamp, a pop, or a press tied to reader action, it does not happen. No scroll-triggered reveals, no word-by-word text animation, no parallax layers, no glow pulses, no decorative spinner loaders, and no transition longer than ~200ms.
+
 ## Shapes
 
 Print geometry with a stamp's crispness. Radius is a firm 6px (`--radius`) — the corner of a comic panel, not a pill and not a soft blob. Two smaller radii exist for printed chrome only: 2px on focus rings and 3px on the scrollbar thumb. Every panel, button, input, and chip carries a 2px ink rule (`border-2 border-foreground`). Halftone dot fields (`--halftone` pattern) texture only surfaces that belong to the printed world — the cover band — never content areas. The starburst (`clip-path` polygon) is the stamp's punch-out used for the Lesson 1 mark and the perfect-score verdict; speech-bubble tails (pure CSS triangles) point definition chips and tooltips at the text they explain.

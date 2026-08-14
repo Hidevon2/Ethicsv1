@@ -18,7 +18,7 @@ export function LessonNav({ slug }: { slug: LessonSlug }) {
       {prev ? (
         <Link
           href={`/lesson?slug=${prev.slug}`}
-          className="group flex items-center gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 shadow-[3px_3px_0_var(--border)] transition-transform hover:-translate-y-0.5"
+          className="group flex items-center gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 shadow-[3px_3px_0_var(--border)] transition-all hover:-translate-y-0.5 hover:shadow-[2px_2px_0_var(--border)] motion-reduce:hover:translate-y-0"
         >
           <ArrowLeftIcon className="h-4 w-4 shrink-0 text-primary" />
           <span className="min-w-0">
@@ -37,7 +37,7 @@ export function LessonNav({ slug }: { slug: LessonSlug }) {
       {isLastUnitOne ? (
         <Link
           href="/unit/1/exam"
-          className="group flex items-center justify-end gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 text-right shadow-[3px_3px_0_var(--border)] transition-transform hover:-translate-y-0.5"
+          className="group flex items-center justify-end gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 text-right shadow-[3px_3px_0_var(--border)] transition-all hover:-translate-y-0.5 hover:shadow-[2px_2px_0_var(--border)] motion-reduce:hover:translate-y-0"
         >
           <span className="min-w-0">
             <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.16em] text-muted">
@@ -52,7 +52,7 @@ export function LessonNav({ slug }: { slug: LessonSlug }) {
       ) : next ? (
         <Link
           href={`/lesson?slug=${next.slug}`}
-          className="group flex items-center justify-end gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 text-right shadow-[3px_3px_0_var(--border)] transition-transform hover:-translate-y-0.5"
+          className="group flex items-center justify-end gap-3 rounded-[var(--radius)] border-2 border-foreground bg-panel px-4 py-3 text-right shadow-[3px_3px_0_var(--border)] transition-all hover:-translate-y-0.5 hover:shadow-[2px_2px_0_var(--border)] motion-reduce:hover:translate-y-0"
         >
           <span className="min-w-0">
             <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.16em] text-muted">

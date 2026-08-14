@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "@fontsource/lato";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -141,4 +140,70 @@ body {
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-top: 7px solid var(--panel);
+}
+
+/* Motion — comic-book reactions, nothing ambient. Every entrance is one
+   authored snap: a bubble rising into place, a verdict fading in, a stamp
+   landing flat. No idle, loop, or drift. */
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes bubble-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes stamp-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.bubble-in {
+  animation: bubble-in 130ms ease-out both;
+}
+.bubble-out {
+  animation: bubble-out 100ms ease-in both;
+}
+.fade-in {
+  animation: fade-in 150ms ease-out both;
+}
+.stamp-in {
+  animation: stamp-in 150ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 50ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -49,7 +49,7 @@ export function QuizDialog({
             className="fixed inset-0 z-50 overflow-y-auto"
           >
             <div className="flex min-h-full items-start justify-center p-4 pb-16 pt-[8vh]">
-              <div className="w-full max-w-2xl rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[6px_6px_0_var(--border)]">
+              <div className="w-full max-w-2xl rounded-[var(--radius)] border-2 border-foreground bg-panel shadow-[4px_4px_0_var(--border)]">
                 <div className="flex items-center justify-between gap-2 border-b-2 border-foreground px-4 py-3">
                   <Dialog.Title className="min-w-0 font-serif text-lg font-bold text-foreground">
                     Let&rsquo;s Quiz — {lesson.title}
