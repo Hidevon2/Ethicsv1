@@ -142,13 +142,13 @@ export function Prose({
               return (
                 <blockquote
                   key={blockIndex}
-                  className="mb-8 mt-8 rounded-[var(--radius)] border border-border bg-panel px-5 py-4"
+                  className="mb-10 mt-10 border-y border-primary/50 px-1 py-6"
                 >
                   <p className="font-serif text-lg italic leading-relaxed text-foreground">
                     &ldquo;{block.text}&rdquo;
                   </p>
                   {block.source && (
-                    <cite className="mt-2 block font-mono text-[11px] font-semibold uppercase tracking-[0.14em] not-italic text-muted">
+                    <cite className="mt-3 block font-sans text-[10px] font-semibold uppercase tracking-[0.18em] not-italic text-primary">
                       — {block.source}
                     </cite>
                   )}
@@ -168,7 +168,7 @@ export function Prose({
                 key={blockIndex}
                 data-paragraph-id={paragraphId}
                 data-full-text={plain}
-                className="mb-6 max-w-[68ch] text-pretty font-serif text-[17px] leading-relaxed text-foreground"
+                className="mb-7 max-w-[65ch] text-pretty font-sans text-[17px] leading-[1.7] text-foreground"
               >
                 {nodes.map((node, index) => {
                   if (node.kind === "term") {

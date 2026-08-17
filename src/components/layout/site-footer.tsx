@@ -1,10 +1,10 @@
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-panel">
+    <footer className="border-t border-border bg-panel-raised">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between">
           <div>
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+            <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-primary">
               Source
             </p>
             <p className="mt-2 max-w-[78ch] font-sans text-[14px] leading-relaxed text-ink-body">

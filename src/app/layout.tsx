@@ -49,10 +49,10 @@ export default function RootLayout({
           aria-hidden="true"
           dangerouslySetInnerHTML={{
             __html: `<!-- THE COMMIT
-THESIS: Unit I and II read as a nocturnal study object — a course reader annotated at night; illumination (a single amber wick line) is the measure of progress, and the interface refuses the gamified study-app dashboard.
-OWN-WORLD: near-black void and panel neutrals, one amber accent (accent-amber) reserved for links, active states, progress, and focus; oxblood reserved exclusively for the Mendez hazing content; parchment/body/muted ink roles; Fraunces display, Work Sans body, IBM Plex Mono chrome.
-STORY: a student reads lesson by lesson — marks terms that pop open, drags selections to leave amber ink, answers quizzes that light a wick instead of stamping a score, and watches Unit I light up lesson by lesson.
-FIRST VIEWPORT: the open issue — a lone amber wick at the top of the void; ETHICS masthead in Fraunces; five chapter bands below that light as they scroll into view.
+THESIS: Ethics is a candlelit archive — a rare course reader consulted by lamplight; illumination is the measure of progress, never gamification.
+OWN-WORLD: void-black canvas, umber panels, parchment ink, and restrained brass-gold light; Fraunces leads editorial moments, Work Sans carries reading and UI, and geometry replaces ornamental imagery.
+STORY: a student reads lesson by lesson — terms open as parchment notes, selections leave amber ink, quizzes light the wick, and Unit I kindles down the manuscript index.
+FIRST VIEWPORT: a full-width void field holds a low brass glow and a single geometric ornament; the Ethics masthead occupies the left field and the scroll wick begins below it.
 FORM: the brief-pinned world, the nocturnal amber study reader; no seed key (user-pinned direction).
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md.
 -->`,

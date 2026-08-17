@@ -36,14 +36,14 @@ export function ReflectionsPage() {
 
   return (
     <div>
-      <header className="mb-10">
+      <header className="mb-12 border-b border-border pb-10">
         <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
           Your voice
         </p>
         <h1 className="mt-3 text-balance font-serif text-4xl font-bold leading-tight text-foreground sm:text-5xl">
           Reflections
         </h1>
-        <p className="mt-4 max-w-[68ch] text-balance font-serif text-lg italic leading-relaxed text-ink-body">
+        <p className="mt-4 max-w-[62ch] text-balance font-sans text-[17px] leading-[1.7] text-ink-body">
           The challenge prompts you answered inside each lesson, saved to the
           database and gathered here for exam-week review.
         </p>
@@ -54,9 +54,9 @@ export function ReflectionsPage() {
       )}
 
       {!loading && reflections.length === 0 && (
-        <div className="rounded-[var(--radius)] border border-border bg-panel px-6 py-10 text-center">
-          <p className="font-serif text-lg text-foreground">No reflections saved yet.</p>
-          <p className="mt-1 font-serif text-sm text-muted">
+        <div className="parchment-note mx-auto max-w-2xl border border-primary/60 px-8 py-12 text-center">
+          <p className="font-serif text-xl text-[#241d11]">No reflections saved yet.</p>
+          <p className="mt-2 font-sans text-sm leading-relaxed text-[#554529]">
             Open a lesson and answer a Challenge prompt — your words will land here.
           </p>
         </div>
@@ -73,9 +73,9 @@ export function ReflectionsPage() {
             <section
               key={lesson.slug}
               aria-labelledby={`reflections-${lesson.slug}`}
-              className="overflow-hidden rounded-[var(--radius)] border border-border bg-panel"
+              className="overflow-hidden border-y border-border bg-panel"
             >
-              <header className="flex flex-wrap items-center gap-3 border-b border-border bg-panel-muted px-4 py-3">
+              <header className="flex flex-wrap items-center gap-3 border-b border-border bg-panel-raised px-5 py-4">
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-sm border border-border bg-primary/10 font-mono text-xs font-semibold text-primary">
                   {lesson.number}
                 </span>

@@ -11,8 +11,8 @@ const ICONS: Record<string, ReactNode> = {
 
 function SourceCard({ source }: { source: SourceComparison }) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-[var(--radius)] border border-border bg-panel">
-      <header className="flex items-center gap-3 border-b border-border bg-panel-muted px-4 py-3">
+    <article className="flex flex-col border-y border-border bg-panel">
+      <header className="flex items-center gap-3 border-b border-border bg-panel-raised px-4 py-4">
         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-sm border border-border bg-primary/10 text-primary">
           {ICONS[source.id]}
         </span>
@@ -26,7 +26,7 @@ function SourceCard({ source }: { source: SourceComparison }) {
         </div>
       </header>
 
-      <div className="flex flex-1 flex-col gap-4 px-4 py-4">
+      <div className="flex flex-1 flex-col gap-5 px-5 py-6">
         <p className="text-pretty font-serif text-[15px] leading-relaxed text-foreground">
           {source.intro}
         </p>
@@ -70,14 +70,14 @@ function SourceCard({ source }: { source: SourceComparison }) {
 export function SourcesView() {
   return (
     <div>
-      <header className="mb-10">
+      <header className="mb-12 border-b border-border pb-10">
         <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
           Lesson 4 · Sources of Authority
         </p>
         <h1 className="mt-3 text-balance font-serif text-4xl font-bold leading-tight text-foreground sm:text-5xl">
           Where do the commands come from?
         </h1>
-        <p className="mt-4 max-w-[68ch] text-balance font-serif text-lg italic leading-relaxed text-ink-body">
+        <p className="mt-4 max-w-[62ch] text-balance font-sans text-[17px] leading-[1.7] text-ink-body">
           Three authorities claim our obedience — the state, the divine, and
           the community. Compare their strengths and their limits, then judge.
         </p>
