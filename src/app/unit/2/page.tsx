@@ -4,15 +4,12 @@ import Link from "next/link";
 import { AppHeader } from "@/components/layout/app-header";
 import { SearchDialog } from "@/components/search/search-dialog";
 import { getLessonsByUnit, unit2 } from "@/lib/content";
-import { useLessonProgress, useUnit1Exam } from "@/lib/hooks";
-import { UNIT1_EXAM_PASS_SCORE, unit1Exam } from "@/lib/content/unit1-exam";
-import { Button } from "@/components/ui/button";
+import { useLessonProgress } from "@/lib/hooks";
 import { CheckIcon, ArrowRightIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
 export default function UnitTwoPage() {
   const { progress, loading } = useLessonProgress();
-  const { state: exam, loading: examLoading } = useUnit1Exam();
   const unitLessons = getLessonsByUnit(2);
   const completedCount = unitLessons.filter((lesson) =>
     progress.some((item) => item.lessonSlug === lesson.slug && item.completed),
@@ -51,12 +48,6 @@ export default function UnitTwoPage() {
         </div>
 
         <div className="mx-auto max-w-3xl px-4 pb-24 pt-10 sm:px-6">
-          {examLoading ? (
-            <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
-              Loading Unit II…
-            </p>
-          ) : exam.passed ? (
-            <>
           <div className="relative overflow-hidden rounded-[var(--radius)] border border-border bg-panel">
             <ol role="list" className="divide-y divide-border">
               {unitLessons.map((lesson) => {
@@ -137,38 +128,6 @@ export default function UnitTwoPage() {
               </p>
             )}
           </div>
-            </>
-          ) : (
-            <div className="rise-in overflow-hidden rounded-[var(--radius)] border border-border bg-panel">
-              <div className="flex items-center gap-3 border-b border-border bg-primary/10 px-4 py-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-sm border border-primary bg-primary/10 font-mono text-sm font-semibold text-primary">
-                  {UNIT1_EXAM_PASS_SCORE}
-                </span>
-                <div>
-                  <p className="font-mono text-sm font-semibold uppercase tracking-[0.12em] text-foreground">
-                    Unit II is locked
-                  </p>
-                  <p className="font-serif text-sm text-ink-body">
-                    Pass the Unit I examination first
-                  </p>
-                </div>
-              </div>
-              <div className="px-5 py-6">
-                <p className="text-pretty font-serif text-[17px] leading-relaxed text-ink-body">
-                  Score {UNIT1_EXAM_PASS_SCORE} of {unit1Exam.length} on the Unit I examination to
-                  unlock Unit II. Below that, you will need to take the examination again.
-                </p>
-                <div className="mt-5">
-                  <Button asChild>
-                    <Link href="/unit/1/exam">
-                      Take the Unit I examination
-                      <ArrowRightIcon className="h-4 w-4" />
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          )}
 
           <Link
             href="/"

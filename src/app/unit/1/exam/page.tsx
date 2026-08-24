@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { AppHeader } from "@/components/layout/app-header";
 import { SearchDialog } from "@/components/search/search-dialog";
@@ -11,6 +12,7 @@ import { useUnit1Exam } from "@/lib/hooks";
 
 export default function UnitOneExamPage() {
   const { state, loading, submit } = useUnit1Exam();
+  const [started, setStarted] = useState(false);
 
   return (
     <div className="flex min-h-dvh flex-col bg-background font-serif text-foreground">
@@ -33,8 +35,8 @@ export default function UnitOneExamPage() {
               </p>
               <p className="mt-6 max-w-[54ch] text-balance font-serif text-[17px] leading-relaxed text-ink-body">
                 This examination covers everything from the Mendez case through the senses of the
-                self. Score {UNIT1_EXAM_PASS_SCORE} of {unit1Exam.length} or higher to unlock Unit
-                II — below that, you take it again.
+                self. The choice is yours — take the examination, or proceed straight to Unit II
+                without one.
               </p>
             </div>
           </div>
@@ -46,10 +48,7 @@ export default function UnitOneExamPage() {
               Loading examination…
             </p>
           ) : state.passed ? (
-            <div
-              className="rise-in overflow-hidden rounded-[var(--radius)] border border-border bg-panel"
-              role="status"
-            >
+            <div className="rise-in overflow-hidden rounded-[var(--radius)] border border-border bg-panel" role="status">
               <div className="flex items-center gap-3 border-b border-border bg-primary/10 px-4 py-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-sm border border-primary bg-primary/10 text-primary">
                   <CheckCircleIcon className="h-5 w-5" />
@@ -68,22 +67,66 @@ export default function UnitOneExamPage() {
                   Congratulations — you may now continue to Unit II, Utilitarianism. Your passing
                   score is saved, so you can return to this page anytime.
                 </p>
-                <div className="mt-5 flex flex-wrap items-center gap-4">
-                  <Button asChild>
+                <div className="mt-6 space-y-4">
+                  <Button
+                    asChild
+                    className="border border-primary bg-primary text-primary-contrast"
+                  >
                     <Link href="/unit/2">
-                      Continue to Unit II
+                      Proceed to Unit II
+                      <ArrowRightIcon className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    className="border border-border bg-background hover:bg-panel-muted"
+                  >
+                    <Link href="/unit/1/exam">
+                      Retake the Unit I examination
                       <ArrowRightIcon className="h-4 w-4" />
                     </Link>
                   </Button>
                 </div>
               </div>
             </div>
-          ) : (
+          ) : started ? (
             <ExamRunner
               questions={unit1Exam}
               passScore={UNIT1_EXAM_PASS_SCORE}
               onSubmit={(score) => void submit(score)}
             />
+          ) : (
+            <div className="rise-in overflow-hidden rounded-[var(--radius)] border border-border bg-panel">
+              <div className="px-5 py-6">
+                <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">
+                  Your choice
+                </p>
+                <p className="mt-3 text-pretty font-serif text-[17px] leading-relaxed text-ink-body">
+                  Take the Unit I examination to test what you have learned, or proceed straight to
+                  Unit II — no examination required.
+                </p>
+                <div className="mt-6 space-y-4">
+                  <Button
+                    asChild
+                    className="border border-primary bg-primary text-primary-contrast"
+                  >
+                    <button type="button" onClick={() => setStarted(true)}>
+                      Take the Unit I examination
+                      <ArrowRightIcon className="h-4 w-4" />
+                    </button>
+                  </Button>
+                  <Button
+                    asChild
+                    className="border border-border bg-background hover:bg-panel-muted"
+                  >
+                    <Link href="/unit/2">
+                      Proceed to Unit II
+                      <ArrowRightIcon className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
           )}
 
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-border pt-6">

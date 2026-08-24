@@ -1,0 +1,19 @@
+<html>
+<head>
+
+<style>
+frame{
+padding: 100px 100px;
+background-color: Matte;
+}
+</style>
+
+<frameset cols = "100%, 100%" rows= "100%, 100%">
+<frame src ="file:///C:/Users/PC/Documents/YoshiLabworks1.html">
+<frame src ="file:///C:/Users/PC/Documents/Yoshilabworks2.html">
+<frame src ="file:///C:/Users/PC/Documents/YoshiLabworks3.html">
+<frame src ="file:///C:/Users/PC/Documents/Yoshilabworks4.html">
+
+  </frame>
+</head>
+</html>
