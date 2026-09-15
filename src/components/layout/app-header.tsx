@@ -7,8 +7,9 @@ import { SearchIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
 const UNIT_TABS = [
-  { href: "/", label: "Unit I", activeOn: (pathname: string) => !pathname.startsWith("/unit/2") },
+  { href: "/", label: "Unit I", activeOn: (pathname: string) => !pathname.startsWith("/unit/2") && !pathname.startsWith("/unit/3") },
   { href: "/unit/2", label: "Unit II", activeOn: (pathname: string) => pathname.startsWith("/unit/2") },
+  { href: "/unit/3", label: "Unit III", activeOn: (pathname: string) => pathname.startsWith("/unit/3") },
 ];
 
 const NAV_ITEMS = [

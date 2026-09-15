@@ -24,9 +24,9 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ethics Reviewer — Units I & II",
+  title: "Ethics Reviewer — Units I, II & III",
   description:
-    "A lesson-by-lesson reviewer for Ethics: Unit I on the ethical dimension of human existence (the Mendez hazing case, valuation, moral thinking, sources of authority, and senses of the self) and Unit II on utilitarianism (the common good, the principle of utility, the greatest number, and justice and rights) — with quizzes, key terms, and reflection prompts.",
+    "A lesson-by-lesson reviewer for Ethics: Unit I on the ethical dimension of human existence (the Mendez hazing case, valuation, moral thinking, sources of authority, and senses of the self), Unit II on utilitarianism (the common good, the principle of utility, the greatest number, and justice and rights), and Unit III on deontology (moral conviction and duty) — with quizzes, key terms, and reflection prompts.",
 };
 
 export const viewport: Viewport = {

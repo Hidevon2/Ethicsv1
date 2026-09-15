@@ -8,6 +8,7 @@ import { unit2Lesson01 } from "@/lib/content/unit2/lesson-01";
 import { unit2Lesson02 } from "@/lib/content/unit2/lesson-02";
 import { unit2Lesson03 } from "@/lib/content/unit2/lesson-03";
 import { unit2Lesson04 } from "@/lib/content/unit2/lesson-04";
+import { unit3Lesson01 } from "@/lib/content/unit3/lesson-01";
 
 export const unit1: Unit = {
   number: "I",
@@ -21,9 +22,15 @@ export const unit2: Unit = {
   tagline: "Unit II of Ethics",
 };
 
+export const unit3: Unit = {
+  number: "III",
+  title: "Deontology",
+  tagline: "Unit III of Ethics",
+};
+
 export const unit = unit1;
 
-export const units: Unit[] = [unit1, unit2];
+export const units: Unit[] = [unit1, unit2, unit3];
 
 export const lessons: Lesson[] = [
   lesson01,
@@ -35,10 +42,13 @@ export const lessons: Lesson[] = [
   unit2Lesson02,
   unit2Lesson03,
   unit2Lesson04,
+  unit3Lesson01,
 ];
 
 export function getUnit(unit: UnitNumber): Unit {
-  return unit === 2 ? unit2 : unit1;
+  if (unit === 2) return unit2;
+  if (unit === 3) return unit3;
+  return unit1;
 }
 
 export function getLessonsByUnit(unit: UnitNumber): Lesson[] {

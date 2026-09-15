@@ -7,14 +7,15 @@ export type LessonSlug =
   | "the-common-good"
   | "principle-of-utility"
   | "principle-of-the-greatest-number"
-  | "justice-and-rights";
+  | "justice-and-rights"
+  | "on-moral-conviction";
 
 export type LessonNumber = 1 | 2 | 3 | 4 | 5;
 
-export type UnitNumber = 1 | 2;
+export type UnitNumber = 1 | 2 | 3;
 
 export interface Unit {
-  number: "I" | "II";
+  number: "I" | "II" | "III";
   title: string;
   tagline: string;
 }

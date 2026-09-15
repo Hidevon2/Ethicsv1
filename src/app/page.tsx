@@ -36,6 +36,16 @@ function buildChapters(): Chapter[] {
   }));
 }
 
+function buildUnit3Chapters(): Chapter[] {
+  return getLessonsByUnit(3).map((lesson) => ({
+    index: lesson.number,
+    title: lesson.title,
+    coverLine: lesson.coverLine,
+    meta: `${lesson.learningOutcomes.length} outcomes · ${lesson.keyTerms.length} key terms · ${lesson.quiz.length} quiz items`,
+    href: `/lesson?slug=${lesson.slug}`,
+  }));
+}
+
 function ScalesMark() {
   return (
     <span className="archive-scales" aria-hidden="true">
@@ -112,6 +122,7 @@ function MosaicTile({
 
 export default function Home() {
   const chapters = buildChapters();
+  const unit3Chapters = buildUnit3Chapters();
   const { progress, loading, completedCount } = useLessonProgress();
   const journeyRef = useRef<HTMLDivElement>(null);
   const archiveRef = useRef<HTMLElement>(null);
@@ -119,6 +130,10 @@ export default function Home() {
   const wickScale = useTransform(scrollYProgress, [0, 1], [0.04, 1]);
   const complete = progress.filter((item) => item.completed);
   const chapterOne = chapters[0];
+  const unit3ChapterOne = unit3Chapters[0];
+  const unit3CompletedCount = unit3Chapters.filter((lesson) =>
+    progress.some((item) => item.lessonSlug === lesson.href.replace("/lesson?slug=", "") && item.completed)
+  ).length;
 
   return (
     <div className="flex min-h-dvh flex-col bg-background font-sans text-foreground">
@@ -139,7 +154,7 @@ export default function Home() {
             <p className="mt-7 max-w-[52ch] font-sans text-[15px] leading-[1.7] text-ink-body sm:text-[17px]">A collegiate study read, story-first — five chapters from the Mendez case to the sources of moral authority.</p>
             <ScrollCue target={archiveRef} />
           </div>
-          <p className="absolute bottom-5 left-5 z-10 font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Ethics · Units I & II</p>
+          <p className="absolute bottom-5 left-5 z-10 font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-muted">Ethics · Units I, II & III</p>
           <button type="button" onClick={() => window.dispatchEvent(new Event("opencode:search"))} className="absolute bottom-4 right-4 z-10 flex h-10 w-10 items-center justify-center border border-border text-muted transition-colors hover:border-primary hover:text-primary" aria-label="Search the archive"><SearchIcon className="h-4 w-4" /></button>
         </header>
 
@@ -160,6 +175,22 @@ export default function Home() {
             <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="mosaic-wide"><MosaicTile imageSrc="/images/sw2.jpg" imagePosition="center 40%" kicker="Compare · Consider · Judge" title="Sources of moral authority" description="Trace the claims of law, religion, and culture — then test where each can guide a moral judgment." href="/sources" /></motion.div>
             <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="mosaic-small"><MosaicTile imageSrc="/images/sw3.jpg" imagePosition="center 40%" kicker="Unit I" title="Harness · Summary · Key Words" href="/unit/1/wrap-up" /></motion.div>
             <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="mosaic-progress"><MosaicTile kicker="Your place in the archive" title={`${completedCount} of ${chapters.length} studies lit`} href="/reflections"><div className="mt-6"><div className="wick-track"><motion.div className="wick-fill" style={{ scaleX: wickScale }} /></div><p className="mt-3 font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">{loading ? "Reading progress…" : `${complete.length} completed · reflections on file`}</p></div></MosaicTile></motion.div>
+          </motion.div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6" aria-labelledby="unit3-archive-heading">
+          <div className="mb-10 flex items-end justify-between gap-6 border-b border-border pb-5">
+            <div>
+              <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.28em] text-primary">Unit III Archive</p>
+              <h2 id="unit3-archive-heading" className="mt-3 font-serif text-4xl font-semibold leading-none tracking-[-0.03em] text-foreground sm:text-5xl">Duty before consequence.</h2>
+            </div>
+            <p className="hidden max-w-[28ch] text-right font-sans text-sm leading-relaxed text-muted sm:block">The archive extends: one study on moral conviction, with more to follow.</p>
+          </div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.07 } } }} className="mosaic-grid">
+            {unit3ChapterOne && <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="mosaic-featured"><MosaicTile featured imageSrc="/images/lady-justice.png" imagePosition="center 24%" kicker="Featured · Chapter 01" title={unit3ChapterOne.title} description={unit3ChapterOne.coverLine} href={unit3ChapterOne.href}><span className="mt-6 inline-flex items-center gap-2 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">Open study <ArrowRightIcon className="h-3.5 w-3.5" /></span></MosaicTile></motion.div>}
+            <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="mosaic-small"><MosaicTile imageSrc="/images/sw3.jpg" imagePosition="center 40%" kicker="Unit III" title="Harness · Summary · Key Words" href="/unit/3/wrap-up" /></motion.div>
+            <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="mosaic-progress"><MosaicTile kicker="Your place in the archive" title={`${unit3CompletedCount} of ${unit3Chapters.length} studies lit`} href="/reflections"><div className="mt-6"><div className="wick-track"><motion.div className="wick-fill" style={{ transform: `scaleX(${unit3Chapters.length === 0 ? 0 : unit3CompletedCount / unit3Chapters.length})` }} /></div><p className="mt-3 font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">{loading ? "Reading progress…" : `${unit3CompletedCount} completed · reflections on file`}</p></div></MosaicTile></motion.div>
           </motion.div>
         </section>
       </main>
