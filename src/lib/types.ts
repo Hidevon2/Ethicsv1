@@ -8,7 +8,8 @@ export type LessonSlug =
   | "principle-of-utility"
   | "principle-of-the-greatest-number"
   | "justice-and-rights"
-  | "on-moral-conviction";
+  | "on-moral-conviction"
+  | "duty-and-agency";
 
 export type LessonNumber = 1 | 2 | 3 | 4 | 5;
 

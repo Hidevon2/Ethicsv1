@@ -18,7 +18,7 @@ export const unitThreeWrapUp = {
     "Defined duty as the obligation to do the right thing even when another course of action would benefit you more.",
     "Defined moral conviction as the principle that doing the right thing is one's duty, regardless of reward or punishment.",
     "Distinguished reward (a freely given, unrequired gift) from payment (what a reward becomes when demanded or expected).",
-    "Noted that this unit currently contains one lesson; more lessons on deontology will be added in future updates.",
+    "Noted that this unit currently contains two lessons; more lessons on deontology will be added in future updates.",
   ],
   keyWords: [
     { label: "Deontology", lessonSlug: "on-moral-conviction", termSlug: "deontology" },

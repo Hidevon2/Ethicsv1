@@ -9,6 +9,7 @@ import { unit2Lesson02 } from "@/lib/content/unit2/lesson-02";
 import { unit2Lesson03 } from "@/lib/content/unit2/lesson-03";
 import { unit2Lesson04 } from "@/lib/content/unit2/lesson-04";
 import { unit3Lesson01 } from "@/lib/content/unit3/lesson-01";
+import { unit3Lesson02 } from "@/lib/content/unit3/lesson-02";
 
 export const unit1: Unit = {
   number: "I",
@@ -43,6 +44,7 @@ export const lessons: Lesson[] = [
   unit2Lesson03,
   unit2Lesson04,
   unit3Lesson01,
+  unit3Lesson02,
 ];
 
 export function getUnit(unit: UnitNumber): Unit {
