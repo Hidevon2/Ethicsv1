@@ -59,13 +59,16 @@ export function useUnit1Exam() {
 export function useLessonProgress() {
   const [progress, setProgress] = useState<LessonProgress[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
+    setLoading(true);
     try {
       const data = await fetchProgress();
       setProgress(data);
+      setError(null);
     } catch {
-      // keep whatever we have
+      setError("Your saved progress couldn’t be loaded.");
     } finally {
       setLoading(false);
     }
@@ -104,7 +107,7 @@ export function useLessonProgress() {
 
   const completedCount = progress.filter((p) => p.completed).length;
 
-  return { progress, loading, refresh, toggleComplete, submitScore, getProgress, completedCount };
+  return { progress, loading, error, refresh, toggleComplete, submitScore, getProgress, completedCount };
 }
 
 export function useReflections(lessonSlug?: LessonSlug) {

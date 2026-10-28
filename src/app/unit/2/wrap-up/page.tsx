@@ -19,7 +19,7 @@ export default function UnitTwoWrapUpPage() {
       <AppHeader />
       <SearchDialog />
 
-      <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-24 pt-10 sm:px-6">
+      <main id="main-content" className="mx-auto w-full max-w-3xl flex-1 px-4 pb-24 pt-10 sm:px-6">
         <header className="mb-10">
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
             Unit II · Wrap-up
@@ -34,7 +34,7 @@ export default function UnitTwoWrapUpPage() {
 
           <div className="mt-8" role="presentation">
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
-              The unit's lessons
+              The unit&rsquo;s lessons
             </p>
             <ol className="mt-3 flex items-center">
               {lessons.map((lesson, index) => {
@@ -96,7 +96,7 @@ export default function UnitTwoWrapUpPage() {
             Summary
           </h2>
           <p className="mb-4 max-w-[68ch] font-serif text-sm italic leading-relaxed text-muted">
-            The book's own four-part recap of Unit II.
+            The book&rsquo;s own four-part recap of Unit II.
           </p>
           <div className="overflow-hidden rounded-[var(--radius)] border border-border bg-panel">
             <ol className="px-5 py-2">
@@ -185,7 +185,7 @@ export default function UnitTwoWrapUpPage() {
               {unitTwoWrapUp.furtherReading.text}
             </p>
             <p className="mb-2 mt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
-              Read further into this site's key terms
+              Read further into this site&rsquo;s key terms
             </p>
             <div className="flex flex-wrap gap-2">
               {unitTwoWrapUp.furtherReading.topics.map((topicSlug) => {

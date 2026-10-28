@@ -95,7 +95,7 @@ export function findGlossaryTerm(slug: string): GlossaryEntry | undefined {
 }
 
 export function stripMarkers(text: string): string {
-  return text.replace(/\{\{[a-z0-9-]+\}\}/g, "");
+  return text.replace(/\{\{([^{}]+)\}\}/g, (_marker, term: string) => term.replace(/-/g, " "));
 }
 
 export interface SearchResult {

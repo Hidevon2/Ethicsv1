@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d0b08",
+  themeColor: "#100f0c",
 };
 
 export default function RootLayout({
@@ -50,9 +50,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `<!-- THE COMMIT
 THESIS: Ethics is a candlelit archive — a rare course reader consulted by lamplight; illumination is the measure of progress, never gamification.
-OWN-WORLD: void-black canvas, umber panels, parchment ink, and restrained brass-gold light; Fraunces leads editorial moments, Work Sans carries reading and UI, and geometry replaces ornamental imagery.
-STORY: a student reads lesson by lesson — terms open as parchment notes, selections leave amber ink, quizzes light the wick, and Unit I kindles down the manuscript index.
-FIRST VIEWPORT: a full-width void field holds a low brass glow and a single geometric ornament; the Ethics masthead occupies the left field and the scroll wick begins below it.
+OWN-WORLD: warm charcoal, umber surfaces, parchment text, and brass-gold accents; Fraunces carries titles, Work Sans carries reading and UI, and the existing classical imagery anchors the course library.
+STORY: a student chooses a unit, opens the next unfinished lesson, reads and reflects, and sees actual completion progress across the course.
+FIRST VIEWPORT: an editorial heading and learning action sit beside illuminated sculptures; the three-unit course navigation begins directly below the compact cover.
 FORM: the brief-pinned world, the nocturnal amber study reader; no seed key (user-pinned direction).
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md.
 -->`,

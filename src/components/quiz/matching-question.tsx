@@ -52,7 +52,7 @@ export function MatchingQuestion({
                 }}
                 disabled={revealed}
                 aria-label={`Match ${pair.left}`}
-                className="h-9 w-full rounded-[var(--radius)] border border-border bg-background px-2 font-sans text-sm text-foreground focus:border-primary/60 sm:w-[300px]"
+                className="min-h-11 w-full min-w-0 flex-1 rounded-[var(--radius)] border border-border bg-background px-3 font-sans text-sm text-foreground focus:border-primary/60"
               >
                 <option value="">Choose…</option>
                 {rightOptions.map((right, rightIndex) => (

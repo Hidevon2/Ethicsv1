@@ -37,15 +37,12 @@ export function ReflectionsPage() {
   return (
     <div>
       <header className="mb-12 border-b border-border pb-10">
-        <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
-          Your voice
-        </p>
         <h1 className="mt-3 text-balance font-serif text-4xl font-bold leading-tight text-foreground sm:text-5xl">
           Reflections
         </h1>
         <p className="mt-4 max-w-[62ch] text-balance font-sans text-[17px] leading-[1.7] text-ink-body">
-          The challenge prompts you answered inside each lesson, saved to the
-          database and gathered here for exam-week review.
+          Your thoughts, in one place. Return to the challenge prompts you’ve
+          answered, revisit an idea, or see how your perspective has changed.
         </p>
       </header>
 
@@ -59,6 +56,7 @@ export function ReflectionsPage() {
           <p className="mt-2 font-sans text-sm leading-relaxed text-[#554529]">
             Open a lesson and answer a Challenge prompt — your words will land here.
           </p>
+          <Link href="/#course-library" className="study-button study-button-primary mt-6">Find a lesson to reflect on</Link>
         </div>
       )}
 

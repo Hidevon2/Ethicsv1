@@ -27,7 +27,7 @@ export function QuizRunner({
 }: {
   lesson: Lesson;
   best: number | null;
-  onSubmitScore: (score: number) => void;
+  onSubmitScore: (score: number) => void | Promise<void>;
   embedded?: boolean;
 }) {
   const [attempt, setAttempt] = useState<RenderedQuizItem[]>(() =>
@@ -38,6 +38,8 @@ export function QuizRunner({
   const [results, setResults] = useState<Record<string, boolean>>({});
   const [phase, setPhase] = useState<"quiz" | "review">("quiz");
   const [scope, setScope] = useState<"full" | "missed">("full");
+  const [saveError, setSaveError] = useState(false);
+  const [saving, setSaving] = useState(false);
 
   const total = attempt.length;
   const fullTotal = lesson.quiz.length;
@@ -57,7 +59,8 @@ export function QuizRunner({
     return rendered !== undefined && isAnswered(rendered, answers[id]);
   };
 
-  const allAnswered = attempt.every((rendered) => answered(rendered.item.id));
+  const answeredCount = attempt.filter((rendered) => answered(rendered.item.id) && revealed[rendered.item.id]).length;
+  const allAnswered = answeredCount === total;
 
   function startAttempt(nextSeed: number, nextScope: "full" | "missed") {
     const items =
@@ -70,6 +73,7 @@ export function QuizRunner({
     setRevealed({});
     setResults({});
     setPhase("quiz");
+    setSaveError(false);
   }
 
   function handleAnswer(item: RenderedQuizItem["item"], value: AnswerValue) {
@@ -87,9 +91,15 @@ export function QuizRunner({
     setResults((prev) => ({ ...prev, [id]: correct }));
   }
 
-  function finish() {
+  async function finish() {
     setPhase("review");
-    if (scope === "full") onSubmitScore(score);
+    if (scope === "full") {
+      setSaving(true);
+      setSaveError(false);
+      try { await onSubmitScore(score); }
+      catch { setSaveError(true); }
+      finally { setSaving(false); }
+    }
   }
 
   function retakeFull() {
@@ -103,14 +113,18 @@ export function QuizRunner({
 
   const quizBody = (
     <>
+      {phase === "quiz" && <div className="quiz-attempt-progress"><div><strong>{scope === "missed" ? "Revisit the missed questions" : "A little practice, a clearer perspective."}</strong><span>{answeredCount} of {total} answered</span></div><div className="wick-track" role="progressbar" aria-label="Quiz questions answered" aria-valuemin={0} aria-valuemax={total} aria-valuenow={answeredCount}><div className="wick-fill" style={{ transform: `scaleX(${total ? answeredCount / total : 0})` }} /></div><p>Select an answer to see the explanation. For matching questions, choose your pairs and check them.</p></div>}
       {phase === "review" && (
         <div className="mb-6">
+          {saving && <p className="mb-4 font-sans text-sm text-muted" role="status">Saving your score…</p>}
+          {saveError && <p className="mb-4 font-sans text-sm text-oxblood-soft" role="alert">Your result is shown below, but your score couldn’t be saved. <button className="underline underline-offset-4" onClick={() => void finish()}>Try saving again</button></p>}
           <QuizResult
             score={score}
             total={total}
             best={best}
             fullTotal={fullTotal}
             missed={missedCount}
+            disabled={saving}
             onRetry={retakeFull}
             onRetryMissed={missedCount > 0 ? retryMissed : undefined}
           />
@@ -137,7 +151,7 @@ export function QuizRunner({
 
       {phase === "quiz" && (
         <div className="mt-8 flex justify-center">
-          <Button variant="primary" size="lg" onClick={finish} disabled={!allAnswered}>
+          <Button variant="primary" size="lg" onClick={() => void finish()} disabled={!allAnswered}>
             Finish and see your score
           </Button>
         </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import * as Dialog from "@radix-ui/react-dialog";
 import { searchLessons } from "@/lib/content";
 import { SearchIcon, XIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
@@ -20,10 +21,12 @@ export function SearchDialog() {
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
+  const returnFocusRef = useRef<HTMLElement | null>(null);
 
   const results = useMemo(() => searchLessons(query), [query]);
 
   const openDialog = () => {
+    returnFocusRef.current = document.activeElement as HTMLElement | null;
     setQuery("");
     setActiveIndex(0);
     setOpen(true);
@@ -33,7 +36,7 @@ export function SearchDialog() {
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       const tag = (e.target as HTMLElement)?.tagName;
-      const typing = tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
+      const typing = tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (e.target as HTMLElement)?.isContentEditable;
       if (e.key === "/" && !typing) {
         e.preventDefault();
         openDialog();
@@ -65,6 +68,10 @@ export function SearchDialog() {
         e.preventDefault();
         setActiveIndex((i) => Math.max(i - 1, 0));
       }
+      if (e.key === "Enter" && document.activeElement === inputRef.current) {
+        e.preventDefault();
+        listRef.current?.querySelector<HTMLAnchorElement>("[data-active='true']")?.click();
+      }
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
@@ -78,16 +85,12 @@ export function SearchDialog() {
   if (!open) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 p-4 pt-[12vh]"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Search lessons and key terms"
-      onMouseDown={(e) => {
-        if (e.target === e.currentTarget) setOpen(false);
-      }}
-    >
-      <div className="w-full max-w-xl overflow-hidden rounded-[var(--radius)] border border-border bg-panel shadow-[0_24px_64px_rgba(0,0,0,0.6)]">
+    <Dialog.Root open={open} onOpenChange={setOpen}>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 z-50 bg-black/75" />
+        <Dialog.Content className="fixed left-1/2 top-[12vh] z-50 w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 overflow-hidden rounded-[var(--radius)] border border-border bg-panel shadow-[0_24px_64px_rgba(0,0,0,0.6)]" aria-describedby="search-description" onOpenAutoFocus={(event) => { event.preventDefault(); inputRef.current?.focus(); }} onCloseAutoFocus={(event) => { event.preventDefault(); returnFocusRef.current?.focus(); }}>
+        <Dialog.Title className="sr-only">Search lessons and key terms</Dialog.Title>
+        <Dialog.Description id="search-description" className="sr-only">Search the course. Use the arrow keys to select a result and Enter to open it.</Dialog.Description>
         <div className="flex items-center gap-2 border-b border-border px-3 focus-within:border-primary">
           <SearchIcon className="h-4 w-4 shrink-0 text-muted" />
           <label htmlFor="search-input" className="sr-only">
@@ -97,12 +100,17 @@ export function SearchDialog() {
             ref={inputRef}
             id="search-input"
             type="search"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded={results.length > 0}
+            aria-controls="course-search-results"
+            aria-activedescendant={results.length > 0 ? `search-result-${activeIndex}` : undefined}
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
               setActiveIndex(0);
             }}
-            placeholder={`Search ${"lessons and key terms"}…`}
+            placeholder="Search a lesson, idea, or key term…"
             className="h-12 w-full bg-transparent font-serif text-base text-foreground placeholder:text-muted focus:outline-none"
           />
           <button
@@ -129,11 +137,12 @@ export function SearchDialog() {
               Nothing matches &ldquo;{query}&rdquo;.
             </p>
           ) : (
-            <ul ref={listRef} role="listbox" aria-label="Search results">
+            <ul id="course-search-results" ref={listRef} role="listbox" aria-label="Search results">
               {results.map((result, index) => (
                 <li
                   key={`${result.lesson.slug}-${result.kind}-${index}`}
                   role="option"
+                  id={`search-result-${index}`}
                   aria-selected={index === activeIndex}
                 >
                   <Link
@@ -165,7 +174,8 @@ export function SearchDialog() {
             </ul>
           )}
         </div>
-      </div>
-    </div>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }

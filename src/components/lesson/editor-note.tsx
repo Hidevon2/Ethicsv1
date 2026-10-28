@@ -33,7 +33,7 @@ function Block({ block }: { block: EditorNote["blocks"][number] }) {
 export function EditorNotes({ notes }: { notes: EditorNote[] }) {
   if (notes.length === 0) return null;
   return (
-    <section aria-labelledby="editor-notes-heading" className="mt-12 space-y-8">
+    <section aria-labelledby="editor-notes-heading" className="reader-section lesson-editor-notes space-y-8">
       <h2
         id="editor-notes-heading"
         className="sr-only"

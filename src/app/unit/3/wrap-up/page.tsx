@@ -19,7 +19,7 @@ export default function UnitThreeWrapUpPage() {
       <AppHeader />
       <SearchDialog />
 
-      <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-24 pt-10 sm:px-6">
+      <main id="main-content" className="mx-auto w-full max-w-3xl flex-1 px-4 pb-24 pt-10 sm:px-6">
         <header className="mb-10">
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
             Unit III · Wrap-up

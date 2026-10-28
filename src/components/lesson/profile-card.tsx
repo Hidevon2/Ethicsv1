@@ -2,7 +2,7 @@ import type { Profile } from "@/lib/types";
 
 export function ProfileCard({ profile }: { profile: Profile }) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-[var(--radius)] border border-border bg-panel">
+    <article className="thinker-profile">
       <header className="border-b border-border bg-panel-muted px-4 py-3">
         <div className="flex items-baseline gap-2">
           <h3 className="font-serif text-lg font-bold leading-tight text-foreground">
@@ -33,10 +33,10 @@ export function ProfileCard({ profile }: { profile: Profile }) {
 export function Profiles({ profiles }: { profiles: Profile[] }) {
   if (profiles.length === 0) return null;
   return (
-    <section aria-labelledby="profiles-heading" className="mt-12">
+    <section id="thinkers" aria-labelledby="profiles-heading" className="reader-section">
       <h2
         id="profiles-heading"
-        className="mb-4 text-balance font-serif text-2xl font-bold leading-snug text-foreground"
+        className="reader-section-title mb-6"
       >
         The thinkers
       </h2>

@@ -49,6 +49,16 @@ export function Prose({
 }) {
   const [tooltip, setTooltip] = useState<HighlightTooltipState | null>(null);
 
+  function renderInline(text: string) {
+    return text.split(/(\{\{[^{}]+\}\})/g).map((part, index) => {
+      if (!part.startsWith("{{")) return part;
+      const label = part.slice(2, -2);
+      const slug = label.toLowerCase().replace(/\s+/g, "-");
+      const term = lookupTerm(lesson, slug);
+      return term ? <KeyTerm key={index} term={term} label={/[A-Z\s]/.test(label) ? label : undefined} /> : label.replace(/-/g, " ");
+    });
+  }
+
   const annotationsByParagraph = useMemo(() => {
     const map = new Map<string, Annotation[]>();
     for (const ann of annotations) {
@@ -118,7 +128,7 @@ export function Prose({
   );
 
   return (
-    <div onMouseUp={handleMouseUp} className="relative">
+    <div onMouseUp={handleMouseUp} className="lesson-prose relative">
       {lesson.think.map((section) => (
         <section key={section.id} id={section.id} aria-labelledby={`heading-${section.id}`}>
           <h2
@@ -134,7 +144,7 @@ export function Prose({
                   key={blockIndex}
                   className="mb-3 mt-8 text-balance font-serif text-lg font-semibold italic text-foreground"
                 >
-                  {block.text}
+                  {renderInline(block.text)}
                 </h3>
               );
             }
@@ -145,7 +155,7 @@ export function Prose({
                   className="mb-10 mt-10 border-y border-primary/50 px-1 py-6"
                 >
                   <p className="font-serif text-lg italic leading-relaxed text-foreground">
-                    &ldquo;{block.text}&rdquo;
+                    &ldquo;{renderInline(block.text)}&rdquo;
                   </p>
                   {block.source && (
                     <cite className="mt-3 block font-sans text-[10px] font-semibold uppercase tracking-[0.18em] not-italic text-primary">
@@ -199,7 +209,7 @@ export function Prose({
                       </span>
                     );
                   }
-                  return <span key={index}>{node.text}</span>;
+                  return <span key={index}>{renderInline(node.text)}</span>;
                 })}
               </p>
             );

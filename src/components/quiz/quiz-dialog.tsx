@@ -2,83 +2,28 @@
 
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
+import { ArrowUpRight, CheckCheck, Layers3, ListChecks, X } from "lucide-react";
 import type { Lesson } from "@/lib/types";
 import { QuizRunner } from "@/components/quiz/quiz-runner";
 import { Button } from "@/components/ui/button";
-import { ListCheckIcon, XIcon } from "@/components/ui/icons";
 
-export function QuizDialog({
-  lesson,
-  best,
-  onSubmitScore,
-}: {
-  lesson: Lesson;
-  best: number | null;
-  onSubmitScore: (score: number) => void;
-}) {
+export function QuizDialog({ lesson, best, onSubmitScore }: { lesson: Lesson; best: number | null; onSubmitScore: (score: number) => Promise<void> }) {
   const [open, setOpen] = useState(false);
-
-  return (
-    <section id="quiz" aria-labelledby="quiz-heading" className="mt-14">
-      <header className="mb-6 text-center">
-        <h2
-          id="quiz-heading"
-          className="text-balance font-serif text-2xl font-bold leading-snug text-foreground"
-        >
-          Let&rsquo;s Quiz
-        </h2>
-        <p className="mt-1 font-serif text-sm italic leading-relaxed text-muted">
-          {lesson.quiz.length} questions, shuffled fresh each attempt. Answer to see the
-          explanation immediately; matching questions are checked when you finish them. Your best
-          score is saved.
-        </p>
-      </header>
-
-      <div className="flex justify-center">
-        <Button variant="primary" size="lg" onClick={() => setOpen(true)}>
-          <ListCheckIcon className="h-4 w-4" />
-          Let&rsquo;s Quiz
-        </Button>
-      </div>
-
-      <Dialog.Root open={open} onOpenChange={setOpen}>
-        <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 z-50 bg-black/70" />
-          <Dialog.Content
-            aria-describedby={undefined}
-            className="fixed inset-0 z-50 overflow-y-auto"
-          >
-            <div className="flex min-h-full items-start justify-center p-4 pb-16 pt-[8vh]">
-              <div className="w-full max-w-2xl overflow-hidden rounded-[var(--radius)] border border-border bg-panel">
-                <div className="flex items-center justify-between gap-2 border-b border-border bg-panel-muted px-4 py-3">
-                  <Dialog.Title className="min-w-0 font-serif text-lg font-bold text-foreground">
-                    Let&rsquo;s Quiz — {lesson.title}
-                  </Dialog.Title>
-                  <Dialog.Close asChild>
-                    <button
-                      type="button"
-                      aria-label="Close quiz"
-                      className="shrink-0 rounded-sm p-1.5 text-muted transition-colors hover:text-foreground"
-                    >
-                      <XIcon className="h-4 w-4" />
-                    </button>
-                  </Dialog.Close>
-                </div>
-                <div className="p-4 sm:p-6">
-                  {open && (
-                    <QuizRunner
-                      lesson={lesson}
-                      best={best}
-                      onSubmitScore={onSubmitScore}
-                      embedded
-                    />
-                  )}
-                </div>
-              </div>
-            </div>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
+  return <Dialog.Root open={open} onOpenChange={setOpen}>
+    <section id="quiz" aria-labelledby="quiz-heading" className="reader-section practice-invitation">
+      <ListChecks size={29} strokeWidth={1.4} />
+      <h2 id="quiz-heading">Put your understanding<br />to work.</h2>
+      <p>Connect the ideas and see what stays with you. Each answer comes with an explanation, so every question is another way to learn.</p>
+      <div className="practice-meta"><span><Layers3 size={14} />{lesson.quiz.length} questions</span><span><CheckCheck size={15} />Immediate feedback</span>{best !== null && <span>Best: {best}/{lesson.quiz.length}</span>}</div>
+      <Dialog.Trigger asChild><Button size="lg">Start practice quiz<ArrowUpRight size={16} /></Button></Dialog.Trigger>
+      <span className="practice-footnote">Go at your own pace. Retake it whenever you like.</span>
     </section>
-  );
+    <Dialog.Portal>
+      <Dialog.Overlay className="fixed inset-0 z-50 bg-black/80" />
+      <Dialog.Content className="lesson-quiz-dialog" aria-describedby="quiz-dialog-description">
+        <header className="lesson-quiz-dialog-header"><div><Dialog.Title>Practice quiz</Dialog.Title><Dialog.Description id="quiz-dialog-description">{lesson.title} · {lesson.quiz.length} questions</Dialog.Description></div><Dialog.Close className="quiz-close" aria-label="Close quiz"><X size={20} /></Dialog.Close></header>
+        <div className="lesson-quiz-dialog-body">{open && <QuizRunner lesson={lesson} best={best} onSubmitScore={onSubmitScore} embedded />}</div>
+      </Dialog.Content>
+    </Dialog.Portal>
+  </Dialog.Root>;
 }

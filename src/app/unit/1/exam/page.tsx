@@ -19,7 +19,7 @@ export default function UnitOneExamPage() {
       <AppHeader />
       <SearchDialog />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <div className="border-b border-border">
           <div className="mx-auto max-w-3xl px-4 pb-12 pt-14 sm:px-6 sm:pt-20">
             <div className="relative">

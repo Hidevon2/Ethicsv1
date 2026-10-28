@@ -9,6 +9,7 @@ export function QuizResult({
   missed,
   onRetry,
   onRetryMissed,
+  disabled = false,
 }: {
   score: number;
   total: number;
@@ -17,6 +18,7 @@ export function QuizResult({
   missed: number;
   onRetry: () => void;
   onRetryMissed?: () => void;
+  disabled?: boolean;
 }) {
   const perfect = score === total;
   const bestLabel =
@@ -52,11 +54,11 @@ export function QuizResult({
           />
         </div>
         <div className="flex flex-wrap items-center gap-4">
-          <Button variant="secondary" size="sm" onClick={onRetry}>
+          <Button variant="secondary" size="sm" onClick={onRetry} disabled={disabled}>
             Retake the quiz
           </Button>
           {onRetryMissed && missed > 0 && (
-            <Button variant="primary" size="sm" onClick={onRetryMissed}>
+            <Button variant="primary" size="sm" onClick={onRetryMissed} disabled={disabled}>
               Retry the {missed} missed
             </Button>
           )}

@@ -28,7 +28,7 @@ export function ScrollProgress() {
       aria-valuenow={Math.round(pct * 100)}
       aria-valuemin={0}
       aria-valuemax={100}
-      className="sticky top-14 z-30 h-[3px] w-full bg-border"
+      className="sticky top-[70px] z-30 h-[3px] w-full bg-border min-[561px]:top-20"
     >
       <div className="h-full bg-primary" style={{ width: `${pct * 100}%` }} />
     </div>

@@ -49,7 +49,7 @@ function RadioOptions({
           <label
             key={index}
             className={cn(
-              "flex cursor-pointer items-start gap-3 rounded-[var(--radius)] border bg-background px-3 py-2.5 transition-colors",
+              "quiz-option flex cursor-pointer items-start gap-3 rounded-[var(--radius)] border bg-background px-3 py-2.5 transition-colors",
               !revealed && checked && "border-primary bg-primary/10",
               !revealed && !checked && "border-border hover:bg-panel-muted",
               revealed && isCorrectOption && "border-primary bg-primary/10",
@@ -57,6 +57,7 @@ function RadioOptions({
               revealed && !isCorrectOption && !isWrongPick && "border-border/60",
               disabled ? "cursor-default" : "",
             )}
+            data-result={isCorrectOption ? "correct" : isWrongPick ? "incorrect" : undefined}
           >
             <input
               type="radio"
@@ -82,7 +83,7 @@ function RadioOptions({
             </span>
             <span
               className={cn(
-                "font-serif text-[15px] leading-relaxed",
+                "font-sans text-[15px] leading-relaxed",
                 isWrongPick ? "text-muted" : "text-foreground",
               )}
             >
@@ -95,9 +96,10 @@ function RadioOptions({
   );
 }
 
-function MultipleChoiceCard({ item, options, value, revealed, onAnswer }: {
+function MultipleChoiceCard({ item, options, correctIndex, value, revealed, onAnswer }: {
   item: QuizMultipleChoice;
   options: string[];
+  correctIndex: number;
   value: number | undefined;
   revealed: boolean;
   onAnswer: (index: number) => void;
@@ -106,7 +108,7 @@ function MultipleChoiceCard({ item, options, value, revealed, onAnswer }: {
     <RadioOptions
       options={options}
       selected={value}
-      correctIndex={item.correctIndex}
+      correctIndex={correctIndex}
       disabled={revealed}
       revealed={revealed}
       verdict={undefined}
@@ -136,9 +138,10 @@ function TrueFalseCard({ item, value, revealed, onAnswer }: {
   );
 }
 
-function ClassificationCard({ item, options, value, revealed, onAnswer }: {
+function ClassificationCard({ item, options, correctIndex, value, revealed, onAnswer }: {
   item: QuizClassification;
   options: string[];
+  correctIndex: number;
   value: number | undefined;
   revealed: boolean;
   onAnswer: (index: number) => void;
@@ -149,14 +152,14 @@ function ClassificationCard({ item, options, value, revealed, onAnswer }: {
         <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
           {item.categoryLabel} — classify the statement
         </p>
-        <p className="mt-1 text-pretty font-serif text-[17px] italic leading-relaxed text-foreground">
+        <p id={`quiz-${item.id}-prompt`} className="mt-1 text-pretty font-serif text-[17px] italic leading-relaxed text-foreground">
           &ldquo;{item.prompt}&rdquo;
         </p>
       </div>
       <RadioOptions
         options={options}
         selected={value}
-        correctIndex={item.correctIndex}
+        correctIndex={correctIndex}
         disabled={revealed}
         revealed={revealed}
         verdict={undefined}
@@ -188,7 +191,7 @@ export function QuizCard({
 
   return (
     <article
-      className="overflow-hidden rounded-[var(--radius)] border border-border bg-panel"
+      className="quiz-question overflow-hidden rounded-[var(--radius)] border border-border bg-panel"
       aria-labelledby={`quiz-${item.id}-heading`}
     >
       <header className="flex items-center gap-2.5 border-b border-border bg-panel-muted px-4 py-2">
@@ -211,6 +214,7 @@ export function QuizCard({
           <MultipleChoiceCard
             item={item}
             options={rendered.options ?? item.options}
+            correctIndex={rendered.correctIndex ?? item.correctIndex}
             value={typeof value === "number" ? value : undefined}
             revealed={revealed}
             onAnswer={(answer) => onAnswer(item, answer)}
@@ -228,6 +232,7 @@ export function QuizCard({
           <ClassificationCard
             item={item}
             options={rendered.options ?? item.categories}
+            correctIndex={rendered.correctIndex ?? item.correctIndex}
             value={typeof value === "number" ? value : undefined}
             revealed={revealed}
             onAnswer={(answer) => onAnswer(item, answer)}
@@ -247,10 +252,8 @@ export function QuizCard({
 
         <div aria-live="polite">
           {verdict && (
-            <div className="rise-in mt-4 rounded-[var(--radius)] border px-3 py-2.5"
-              style={{
-                borderColor: verdict === "Correct" ? "rgba(217,143,63,0.5)" : "var(--border)",
-              }}
+            <div className="quiz-feedback rise-in mt-4 rounded-[var(--radius)] border px-3 py-2.5"
+              data-correct={correct}
             >
               <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em]">
                 {verdict === "Correct" ? (
@@ -262,7 +265,7 @@ export function QuizCard({
                   <span className="flex items-center gap-2 text-muted">
                     Not quite
                     <span className="font-normal normal-case tracking-normal text-muted/70">
-                      — try again
+                      — correct answer marked above
                     </span>
                   </span>
                 )}

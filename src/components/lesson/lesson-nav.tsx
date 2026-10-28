@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { getAdjacentLesson, getLessonsByUnit } from "@/lib/content";
+import { getAdjacentLesson, getLesson, getLessonsByUnit } from "@/lib/content";
 import { ArrowLeftIcon, ArrowRightIcon } from "@/components/ui/icons";
 import type { LessonSlug } from "@/lib/types";
 
 export function LessonNav({ slug }: { slug: LessonSlug }) {
   const prev = getAdjacentLesson(slug, -1);
   const next = getAdjacentLesson(slug, 1);
+  const currentUnit = getLesson(slug)?.unit ?? 1;
   const unitOneLessons = getLessonsByUnit(1);
   const lastUnitOne = unitOneLessons[unitOneLessons.length - 1];
   const isLastUnitOne = lastUnitOne?.slug === slug;
@@ -56,7 +57,7 @@ export function LessonNav({ slug }: { slug: LessonSlug }) {
         >
           <span className="min-w-0">
             <span className="block font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
-              Next lesson
+              {next.unit && next.unit !== currentUnit ? `Next · Unit ${next.unit === 3 ? "III" : "II"}` : "Next lesson"}
             </span>
             <span className="block truncate font-serif text-sm font-semibold text-foreground">
               {next.number}. {next.title}
@@ -65,7 +66,7 @@ export function LessonNav({ slug }: { slug: LessonSlug }) {
           <ArrowRightIcon className="h-4 w-4 shrink-0 text-primary" />
         </Link>
       ) : (
-        <span aria-hidden="true" />
+        <Link href={`/unit/${currentUnit}/wrap-up`} className="flex items-center justify-end gap-3 rounded-[var(--radius)] border border-border bg-panel px-4 py-3 text-right text-primary"><span className="font-serif text-base">Review this unit</span><ArrowRightIcon className="h-4 w-4" /></Link>
       )}
     </nav>
   );

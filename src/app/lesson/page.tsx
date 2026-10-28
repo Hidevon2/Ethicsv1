@@ -1,6 +1,7 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState, type CSSProperties } from "react";
+import { BookOpen, Minus, Plus } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getAdjacentLesson, getLesson } from "@/lib/content";
@@ -37,6 +38,7 @@ function LessonView({ slug }: { slug: LessonSlug }) {
   const lesson = getLesson(slug);
 
   const { getProgress, toggleComplete, submitScore } = useLessonProgress();
+  const [textSize, setTextSize] = useState(18);
   const { annotations, add, remove } = useAnnotations(slug);
   const { reflections, upsert, remove: removeReflection } = useReflections(slug);
 
@@ -48,7 +50,7 @@ function LessonView({ slug }: { slug: LessonSlug }) {
         target.tagName === "TEXTAREA" ||
         target.tagName === "SELECT" ||
         target.isContentEditable;
-      if (typing) return;
+      if (typing || target.closest('[role="dialog"]')) return;
       if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
         const direction = e.key === "ArrowLeft" ? -1 : 1;
         const adjacent = getAdjacentLesson(slug, direction);
@@ -64,7 +66,7 @@ function LessonView({ slug }: { slug: LessonSlug }) {
 
   if (!lesson) {
     return (
-      <main className="mx-auto w-full max-w-2xl flex-1 px-4 pb-24 pt-16 sm:px-6">
+      <main id="main-content" className="mx-auto w-full max-w-2xl flex-1 px-4 pb-24 pt-16 sm:px-6">
         <h1 className="font-serif text-3xl font-bold text-foreground">
           Lesson not found
         </h1>
@@ -87,18 +89,20 @@ function LessonView({ slug }: { slug: LessonSlug }) {
   );
 
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 px-4 pb-24 pt-8 sm:px-6 lg:px-8">
-      <div className="lg:grid lg:grid-cols-[minmax(0,220px)_1fr] lg:gap-12">
+    <main id="main-content" className="lesson-page" style={{ "--reader-size": `${textSize}px` } as CSSProperties}>
+      <LessonHeader lesson={lesson} />
+      <div className="lesson-workspace">
         <SidebarToc
           lesson={lesson}
-          className="sticky top-24 hidden max-h-[calc(100vh-7rem)] self-start overflow-y-auto lg:block"
+          completed={progress?.completed ?? false}
+          className="desktop-lesson-sidebar"
         />
-        <div className="min-w-0">
-          <LessonHeader lesson={lesson} />
-          <MarkComplete
-            completed={progress?.completed ?? false}
-            onToggle={() => void toggleComplete(lesson.slug, !(progress?.completed ?? false))}
-          />
+        <article className="lesson-article" aria-label={lesson.title}>
+          <details className="lesson-mobile-contents">
+            <summary>In this lesson</summary>
+            <SidebarToc lesson={lesson} compact />
+          </details>
+          <div className="reader-toolbar"><span><BookOpen size={15} />Make room for a little reflection.</span><div aria-label="Reading text size"><span>Text size</span><button type="button" aria-label="Decrease reading text size" disabled={textSize <= 16} onClick={() => setTextSize((size) => size - 1)}><Minus size={14} /></button><button type="button" aria-label="Increase reading text size" disabled={textSize >= 22} onClick={() => setTextSize((size) => size + 1)}><Plus size={14} /></button></div></div>
           <LearningOutcomes lesson={lesson} />
           <Prose
             lesson={lesson}
@@ -112,26 +116,31 @@ function LessonView({ slug }: { slug: LessonSlug }) {
           <section
             id="reflections"
             aria-labelledby="reflections-heading"
-            className="mt-14"
+            className="reader-section lesson-reflections"
           >
             <h2
               id="reflections-heading"
-              className="mb-6 text-balance font-serif text-2xl font-bold leading-snug text-foreground"
+              className="reader-section-title"
             >
-              Reflect
+              Make the lesson your own.
             </h2>
+            <p className="reader-section-description">Pause, consider, and put your perspective into words.</p>
             <ReflectionSection
               lesson={lesson}
               savedByPromptId={savedByPromptId}
-              onSave={(input) => void upsert(input)}
-              onRemove={(id) => void removeReflection(id)}
+              onSave={upsert}
+              onRemove={removeReflection}
             />
           </section>
           <QuizDialog
             lesson={lesson}
             best={progress?.quizBest ?? null}
-            onSubmitScore={(score) => void submitScore(lesson.slug, score)}
+            onSubmitScore={(score) => submitScore(lesson.slug, score)}
           />
+          <div className="lesson-completion"><MarkComplete
+            completed={progress?.completed ?? false}
+            onToggle={() => toggleComplete(lesson.slug, !(progress?.completed ?? false))}
+          /></div>
           <LessonNav slug={lesson.slug} />
           <p className="mt-6 text-center font-sans text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
             <kbd className="rounded-sm border border-foreground/40 bg-panel px-1 text-foreground">←</kbd>{" "}
@@ -140,7 +149,7 @@ function LessonView({ slug }: { slug: LessonSlug }) {
             <kbd className="rounded-sm border border-foreground/40 bg-panel px-1 text-foreground">/</kbd>{" "}
             search
           </p>
-        </div>
+        </article>
       </div>
     </main>
   );
@@ -151,7 +160,7 @@ function LessonRouter() {
   const slug = params.get("slug");
   if (!slug) {
     return (
-      <main className="mx-auto w-full max-w-2xl flex-1 px-4 pb-24 pt-16 sm:px-6">
+      <main id="main-content" className="mx-auto w-full max-w-2xl flex-1 px-4 pb-24 pt-16 sm:px-6">
         <p className="font-serif text-lg text-foreground">
           Pick a lesson from the{" "}
           <Link href="/" className="text-primary underline underline-offset-4">
@@ -168,7 +177,7 @@ function LessonRouter() {
 export default function LessonPage() {
   return (
     <PageFrame>
-      <Suspense fallback={null}>
+      <Suspense fallback={<main id="main-content" className="lesson-page lesson-loading" aria-busy="true"><div /><div /><p>Opening your lesson…</p></main>}>
         <LessonRouter />
       </Suspense>
     </PageFrame>
